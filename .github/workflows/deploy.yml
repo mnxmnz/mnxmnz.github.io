@@ -1,0 +1,65 @@
+name: Deploy Gatsby Blog with GitHub Actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Cache Dependencies
+        id: yarn-cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-yarn-
+
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --production --pure-lockfile
+
+      - name: Cache Gatsby '.cache'
+        uses: actions/cache@v4
+        id: gatsby-cache
+        with:
+          path: .cache
+          key: ${{ runner.OS }}-cache-gatsby
+          restore-keys: |
+            ${{ runner.OS }}-cache-gatsby
+
+      - name: Cache Gatsby 'public'
+        uses: actions/cache@v4
+        id: gatsby-public
+        with:
+          path: public
+          key: ${{ runner.OS }}-public-gatsby
+          restore-keys: |
+            ${{ runner.OS }}-public-gatsby
+
+      - name: Run Build
+        run: yarn build --prefix-paths
+        env:
+          NODE_ENV: production
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public

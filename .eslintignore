@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+
+# Dependency Directory
+node_modules
+dist
+
+# Build Path of Test Fixtures
+.gatsby-context.js
+.DS_Store
+public/
+node_modules/
+.cache/
+
+# IDE Specific
+.idea/
+.vscode/
+
+# Lock Files
+yarn.lock
+package-lock.json
+
+# Gatsby Config
+gatsby-browser.js
+gatsby-config.js
+gatsby-node.js
+gatsby-ssr.js
+
+# Type Declaration
+**/*.d.ts
