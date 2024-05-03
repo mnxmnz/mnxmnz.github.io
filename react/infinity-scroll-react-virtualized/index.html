@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" name="description" content="react-virtualized 라이브러리를 사용한 무한 스크롤 최적화 방법입니다. windowing 기법과 개발자 도구를 활용한 성능 측정 방법도 포함하고 있습니다."/><meta data-react-helmet="true" name="keywords" content="HTML, CSS, JavaScript, TypeScript, React, FrontEnd"/><meta data-react-helmet="true" name="author" content="김민지"/><meta data-react-helmet="true" property="og:title" content="react-virtualized를 사용한 무한 스크롤 최적화 - 김민지 기술 블로그"/><meta data-react-helmet="true" property="og:description" content="react-virtualized 라이브러리를 사용한 무한 스크롤 최적화 방법입니다. windowing 기법과 개발자 도구를 활용한 성능 측정 방법도 포함하고 있습니다."/><meta data-react-helmet="true" property="og:image" content="/static/ec3a0e92c4fd5dee03e251347aa26289/infinity-scroll-react-virtualized.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:site_name" content="Devlog"/><meta data-react-helmet="true" name="twitter:title" content="react-virtualized를 사용한 무한 스크롤 최적화 - 김민지 기술 블로그"/><meta data-react-helmet="true" name="twitter:description" content="react-virtualized 라이브러리를 사용한 무한 스크롤 최적화 방법입니다. windowing 기법과 개발자 도구를 활용한 성능 측정 방법도 포함하고 있습니다."/><meta data-react-helmet="true" name="twitter:image" content="/static/ec3a0e92c4fd5dee03e251347aa26289/infinity-scroll-react-virtualized.png"/><meta data-react-helmet="true" property="email" content="minzidev@gmail.com"/><meta data-react-helmet="true" name="theme-color" content="#6868AC"/><meta data-react-helmet="true" name="naver-site-verification" content="2cc40621eb11418be5791db057b14a2d2cc2800c"/><title data-react-helmet="true">react-virtualized를 사용한 무한 스크롤 최적화 - 김민지 기술 블로그</title><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="canonical" href="https://mnxmnz.github.io/react/infinity-scroll-react-virtualized/" data-baseprotocol="https:" data-basehost="mnxmnz.github.io"/><link rel="icon" href="/favicon-32x32.png?v=4fcda45b2971c9464814328be65da8c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=4fcda45b2971c9464814328be65da8c7"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1tb6sot">.css-1tb6sot{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin:0 auto;}</style><div class="css-1tb6sot e1bwmqn31"><style data-emotion="css-global 1g0qqo6">@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}*,*::after,*::before{box-sizing:border-box;margin:0;border:0;padding:0;}html,body,#___gatsby,#gatsby-focus-wrapper{width:100%;height:100%;color:rgb(41 40 45 / 100%);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;font-size:62.5%;font-weight:400;}@media all and (min-width: 250px) and (max-width: 800px){html,body,#___gatsby,#gatsby-focus-wrapper{font-size:55%;}}a{-webkit-text-decoration:none;text-decoration:none;color:inherit;}input,button{outline:none;border:none;background-color:transparent;}img{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;}::-webkit-scrollbar{width:10px;}::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:10px;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:rgb(98 92 96 / 70%);}::-webkit-scrollbar-track{border-radius:10px;box-shadow:inset 0 0 5px white;background-color:rgb(241 237 233 / 50%);}::selection{background-color:rgb(104 104 172 / 80%);color:rgb(255 255 255 / 100%);}</style><style data-emotion="css 1jmd4tu">.css-1jmd4tu{position:fixed;top:0;z-index:1000;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;background:rgba(255, 255, 255, 0.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-transition:box-shadow 0.5s;transition:box-shadow 0.5s;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><header class="css-1jmd4tu e1592gzh5"><style data-emotion="css mpd2yu">.css-mpd2yu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;height:6rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-mpd2yu{width:100%;padding:0 2rem 0 1.5rem;}}</style><nav class="css-mpd2yu e1592gzh4"><style data-emotion="css 1d3w5wq">.css-1d3w5wq{width:100%;}</style><a class="css-1d3w5wq e1592gzh3" href="/"><style data-emotion="css e9xe8s">.css-e9xe8s{width:12rem;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1592gzh2"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVQoz2XSv2/TQBQH8GeKoIKBgQGBisTGypqBraJqcnFPsZ3L1bWdOGfX10i0E0MHpA78kLrza2hRxYYEBMcJTYOTpkqbEDc4VEKIgX8l6NpSEfVJX910n7v37oDzIXAeg+sOwHEiKBb7kmnug2l2YH5+VyIkBBFNa0iKUgdZDkQkhHyYmflwnFTqM5wV58OrnMf3XXeAHSe6USz2wbL+gW2BXSYkvK1pDYFCNvv1GBVgMlmG2dnyOFgqHa15XrzluoNlxqLno9EI8vnuzYWFvWv5fPdKLtd8SEhzDSF/MpsNJxVlR4BTCPnXT8BP50DsefFHxzm8x1hUse3eS8s6eG0YHV/X2wqlrTIh4TtV3XmhKPVVjGvLshxsIORviVEAoHMtJzgfvnWcQ4Ox6Ldtfwssa5+bZqeq621KaSsiJPypaY1SJrP9GONaOZ2uPELIXxdtI+RPiPWslpZ+pDiP37ju4Clj/Qe23XtlWQfYMDqbur6XpLT1hJBwU1UbzxSlPoVxbV2Wgz8I+YaA0unKOFgo9GBx8fulUulIYiyCQqF7UVXF8MPjR6G0BYQ0IZPZnsD4C2BcI7IcDBHy75yC0ljLKyu/BAieFwNj0QVxgIBOI1G6C7lcCxKJDbEZ5uaqt2Q5uHvyfaowPf0e/r/hX4ml7Ne3/vMmAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></a><style data-emotion="css 2ct79s">.css-2ct79s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-2ct79s{display:none;}}</style><div class="css-2ct79s e1592gzh1"><style data-emotion="css 1io7q0s">.css-1io7q0s{margin:0 0 0 2rem;font-weight:500;}.css-1io7q0s:hover{color:rgba(104, 104, 172, 1);}.css-1io7q0s:nth-of-type(1){margin:0;}</style><a aria-label="Home" class="css-1io7q0s e1592gzh0" href="/">Home</a><a aria-label="Category" class="css-1io7q0s e1592gzh0" href="/category">Category</a></div></nav></header><style data-emotion="css y212p3">.css-y212p3{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex:1;-ms-flex:1;flex:1;width:76.8rem;margin:0 auto;padding:6rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-y212p3{width:100%;padding:6rem 1.2rem 0;}}</style><main class="css-y212p3 e1bwmqn30"><style data-emotion="css 8ui95l">.css-8ui95l{display:-webkit-box;-webkit-box-orient:vertical;padding:5rem 0 1rem;font-size:3.3rem;font-weight:600;line-height:130%;word-break:keep-all;}</style><h1 class="css-8ui95l eesot1s4">react-virtualized를 사용한 무한 스크롤 최적화</h1><style data-emotion="css kzgyhw">.css-kzgyhw{width:100%;border-bottom:0.3rem solid rgba(241, 237, 233, 0.5);}</style><div class="css-kzgyhw eesot1s0"></div><style data-emotion="css 1q414jc">.css-1q414jc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:2.5rem 0 5rem;}</style><div class="css-1q414jc eesot1s3"><style data-emotion="css x3lgmq">.css-x3lgmq{padding:0.4rem;border-radius:0.3rem;background:rgba(41, 40, 45, 1);color:rgba(255, 255, 255, 1);font-size:1.3rem;font-weight:500;}.css-x3lgmq:hover{background:rgba(104, 104, 172, 1);}</style><a class="css-x3lgmq eesot1s1" href="/react">React</a><style data-emotion="css 1ksu8mr">.css-1ksu8mr{font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-1ksu8mr{display:none;}}</style><span class="css-1ksu8mr eesot1s2">2021-05-30<!-- --> · <!-- -->6<!-- --> min read</span></div><style data-emotion="css 1brmzz2">.css-1brmzz2{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;width:100%;margin:0 auto;padding:3rem 0;word-wrap:break-word;line-height:175%;font-size:1.7rem;font-weight:400;color:rgba(41, 40, 45, 1);}.css-1brmzz2 h1,.css-1brmzz2 h2,.css-1brmzz2 h3,.css-1brmzz2 h4{font-weight:600;line-height:130%;}.css-1brmzz2 h1,.css-1brmzz2 h2,.css-1brmzz2 h3{margin:0 0 3rem 0;}.css-1brmzz2 h4{margin:0 0 2rem 0;}.css-1brmzz2 h1{font-size:3.1rem;}.css-1brmzz2 h2{font-size:2.7rem;}.css-1brmzz2 h3{font-size:2.3rem;}.css-1brmzz2 h4{font-size:2rem;}.css-1brmzz2 *+h1{margin-top:6rem;}.css-1brmzz2 *+h2{margin-top:5.5rem;}.css-1brmzz2 *+h3{margin-top:4.5rem;}.css-1brmzz2 *+h4{margin-top:4rem;}.css-1brmzz2 hr+h1,.css-1brmzz2 hr+h2,.css-1brmzz2 hr+h3,.css-1brmzz2 hr+h4{margin-top:0;}.css-1brmzz2 p{margin:2rem 0;}.css-1brmzz2 blockquote{margin:2.7rem 0;padding:0.5rem 1.5rem;border-left:0.4rem solid rgba(104, 104, 172, 1);background-color:rgba(241, 237, 233, 0.5);}.css-1brmzz2 blockquote strong{font-weight:600;}.css-1brmzz2 blockquote p{margin:0.5rem 0;}.css-1brmzz2 ol,.css-1brmzz2 ul{margin-top:0;margin-bottom:0;padding:0 0 0 3rem;}.css-1brmzz2 ol p,.css-1brmzz2 ul p{margin:0.5rem 0;}.css-1brmzz2 ul{list-style-type:disc;}.css-1brmzz2 ul ul{list-style-type:circle;}.css-1brmzz2 ul ul ul{list-style-type:square;}.css-1brmzz2 ol{list-style-type:decimal;}.css-1brmzz2 details{border:0.1rem solid rgba(104, 104, 172, 1);border-radius:1rem;margin:2rem 0;padding:1.5rem;background-color:rgba(231, 231, 250, 0.5);}.css-1brmzz2 details summary{cursor:pointer;}.css-1brmzz2 details summary::marker{color:rgba(104, 104, 172, 1);}.css-1brmzz2 details p{margin:1rem 0;}.css-1brmzz2 details blockquote{margin:1.5rem 0 0;background-color:inherit;}.css-1brmzz2 hr{border:0.1rem solid rgba(98, 92, 96, 0.3);margin:5.5rem 0;}.css-1brmzz2 a{color:rgba(104, 104, 172, 1);}.css-1brmzz2 a:active,.css-1brmzz2 a:hover{outline-width:0;-webkit-text-decoration:underline;text-decoration:underline;}.css-1brmzz2 strong{font-weight:600;}.css-1brmzz2 img{width:100%;border-style:none;border-radius:1rem;}.css-1brmzz2 em{font-size:1.2rem;font-style:italic;display:block;text-align:center;margin:-1.5rem auto 0;}.css-1brmzz2 table{display:table;border:0.2rem solid rgba(98, 92, 96, 0.3);border-collapse:collapse;margin:1rem 0;}.css-1brmzz2 thead{display:table-header-group;font-weight:600;border-bottom:0.5rem solid rgba(98, 92, 96, 0.3);}.css-1brmzz2 tr{display:table-row;}.css-1brmzz2 th,.css-1brmzz2 td{display:table-cell;padding:1rem;border:0.2rem solid rgba(98, 92, 96, 0.3);}.css-1brmzz2 .deckgo-highlight-code-carbon{margin:1.5rem 0 2.5rem 0;border-radius:1rem;font-size:1.5rem;}.css-1brmzz2 code{margin:0 0.3rem 0 0;padding:0.2rem 0.6rem;border-radius:0.3rem;background:#e9ecef;font-size:85%;}</style><div class="css-1brmzz2 eh9rs160"><blockquote>
+<p>다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂</p>
+</blockquote>
+<h2>들어가며</h2>
+<p>React 공식 문서에서 소개하는 <strong>react-virtualized 라이브러리를 사용한 무한 스크롤 최적화</strong> 포스팅입니다. <strong>windowing 기법</strong>과 <strong>크롬 개발자 도구를 활용한 성능 측정 방법</strong>에 대해 먼저 알아본 후 react-virtualized 라이브러리 사용 방법을 소개합니다.</p>
+<h2>1. react-virtualized 가 무엇인가요?</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/93c159303577b0c7c97d3bdfcc8c2c50/79e31/react-virtualized-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 45.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABlklEQVQoz5WR227aQBRF/TUtaVAgAVIpRVVf+tQPbxI1ECdKgBfAF5gxNhd7PHa42KtiUujtKSNtnZlzdLbW1liVaoPal2/U2l+pfKhTOb2g2mxz2vpM47LN2flHLpqfqNYuOW9e0Wi1eX9S512lRrXWMjLvk7qp1tNzj679wO2PDt17m7u7Dp3HJ+zeAPvhkV5/8Kre4I97n+de/+/ZL1mUBaPRkOvr7/i+T/e+y+3NDXa3Y5beeqzNZs1qFZOqFK01SZKglELr1PQXyyVJEpOmqZnF8et8MZ+jdUZZlux2O4qiMLLyPMdzPVzHwXEcpBBMp1N832MymeB7Ho4zxvN8xqMRY8cxSaSUxKvYUO1Nj4S7okDpnJVSKK2JU43OX0iVIokTsjxHZ9ok2Pd0mpJl2ZHoYHao1nq9xp+FeFLiTQV+EDHyJoSzECEFgZQIIZBCGuIgCAzdnnIV/yY8Gu4ju47LcDjEd12WiwVBIImiOcEsIIpCwjAkjA6KCGczhJCoRP0feY+92WzYbreURfHmX/038k+8In5oIXPEAwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/93c159303577b0c7c97d3bdfcc8c2c50/a59e9/react-virtualized-1.webp 192w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/0ca9f/react-virtualized-1.webp 384w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/dc9b9/react-virtualized-1.webp 768w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/2bbcb/react-virtualized-1.webp 951w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/93c159303577b0c7c97d3bdfcc8c2c50/3b721/react-virtualized-1.png 192w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/66595/react-virtualized-1.png 384w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/fe486/react-virtualized-1.png 768w,
+/static/93c159303577b0c7c97d3bdfcc8c2c50/79e31/react-virtualized-1.png 951w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/93c159303577b0c7c97d3bdfcc8c2c50/fe486/react-virtualized-1.png"
+            alt="react-virtualized-1"
+            title="react-virtualized-1"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>react-virtualized 란 React 공식 문서 <a href="https://ko.reactjs.org/docs/optimizing-performance.html" target="_blank" rel="nofollow">성능 최적화 페이지</a>에서 소개하는 두 개의 라이브러리 중 하나입니다.</p>
+<blockquote>
+<p>react-virtualized 를 널리 알려진 windowing 라이브러리라고 소개하고 있습니다.</p>
+</blockquote>
+<p>여기서 <strong>windowing 기법</strong>이란 무엇일까요?</p>
+<p>React 공식 문서에는 이렇게 적혀 있습니다.</p>
+<blockquote>
+<p>주어진 시간에 목록의 부분 목록만 렌더링하며 컴포넌트를 다시 렌더링하는 데 걸리는 시간과 생성된 DOM 노드의 수를 크게 줄일 수 있습니다.</p>
+</blockquote>
+<p>windowing 기법에 대해 조금 더 자세히 알아보겠습니다.</p>
+<h3>1-1. windowing 기법</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/78edfe551cdefc6d39b713398b0cc22a/bbbf7/react-virtualized-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.29166666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVQoz22QXW/TMBSG9///AFxxwW7YEBKCCU3VpnZtk1G0LaRqlsRxbNfLV/PRQmMvS0JyUJNRDeh7YR0d+fF5jo8AoG1bAIiiaHB+fjEYpEkspWyaBgDCeHVp34xcbXA/GxFtaN4IKeBPjnZwV+VSflBnrz+dLQhNkyQIw92LaaLyxbVvjt3vXwPzmi6klH/BfVqASy969U1XXPqrKtlyCQCrNBkzXXlYDPGd4hlTVxf/w5046Kvszdw+vZsHYZgkSQ9P2VzxjJGrqf79lOj/au/X9tPs9GL48Wr8c5v3/ThLrxxtQvSRfTuh+gRpj8XjAW0AKJ+evpx9fn/yjlH63Kkq6nGXM7ykLmc88PoxB2AAUFT17fHxbDbrdeq69j2Pc84Ye+A8iqK2y2FYCBEEQZZl+3WklEKIPM+FEEVRvLy8g8uyxBhTSk3TtG2bEOL7PkLIcRyMMWPMsiyEkGVZrusahmHbdlmWz3BVVZsuP7oEQYAQIoRgjPvCcZw4jjebzXq9TtM0y7K6rg9oA0DTNNvttrftz6IoXv7TXvs3Jotg0aLrtD4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/78edfe551cdefc6d39b713398b0cc22a/a59e9/react-virtualized-2.webp 192w,
+/static/78edfe551cdefc6d39b713398b0cc22a/0ca9f/react-virtualized-2.webp 384w,
+/static/78edfe551cdefc6d39b713398b0cc22a/dc9b9/react-virtualized-2.webp 768w,
+/static/78edfe551cdefc6d39b713398b0cc22a/e2c2f/react-virtualized-2.webp 1152w,
+/static/78edfe551cdefc6d39b713398b0cc22a/94b1e/react-virtualized-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/78edfe551cdefc6d39b713398b0cc22a/3b721/react-virtualized-2.png 192w,
+/static/78edfe551cdefc6d39b713398b0cc22a/66595/react-virtualized-2.png 384w,
+/static/78edfe551cdefc6d39b713398b0cc22a/fe486/react-virtualized-2.png 768w,
+/static/78edfe551cdefc6d39b713398b0cc22a/d2d74/react-virtualized-2.png 1152w,
+/static/78edfe551cdefc6d39b713398b0cc22a/bbbf7/react-virtualized-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/78edfe551cdefc6d39b713398b0cc22a/fe486/react-virtualized-2.png"
+            alt="react-virtualized-2"
+            title="react-virtualized-2"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://www.patterns.dev/posts/virtual-lists/" target="_blank" rel="noreferrer noopener" aria-label="sitemap-vs-website">patterns.dev</a></em></p>
+<p>많은 데이터를 list 로 만들고 초기 렌더링에 모든 데이터를 불러오려면 굉장히 오랜 시간이 걸립니다. 사용자로서 긴 렌더링 시간이 불편하게 느껴질 수 있습니다.</p>
+<blockquote>
+<p>이를 해결하기 위해서 <strong>list 중 viewport 에 보이는 부분만 렌더링하고 나머지는 스크롤 할 때 보이도록 하는 것</strong>을 권장합니다.</p>
+</blockquote>
+<p>그리고 이 방법을 windowing 기법이라고 합니다.</p>
+<h3>1-2. react-virtualized 를 선택한 이유</h3>
+<p>위에서 react-virtualized 에 대해 작성할 때 React 공식 문서에서 소개하는 두 개의 라이브러리 중 하나라고 했는데, 다른 하나는 react-window 라이브러리입니다. 이 포스팅에서 react-window 가 아닌 react-virtualized 를 다루는 이유는 다음과 같습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/22034c1690e811b6ed9991e23603c846/03d4c/react-virtualized-3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.45833333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABv0lEQVQ4y5VTSW4cMQyc/78jnwiSB+Sco+HccpixZ3GrJe5FBWp1JjacBSEajRIlUkWydGC1pZKIEFFm9v+xg6qez+fL5XI8nU6np3Vd9+Xx2Fr7R3AEKnFtVNamQnBz04hwdwD5Vzuw4Xnhp4UvhWx9tnJOrREBwH2kiM0mmP9fwe5eylJKEREWKWVlljux9z147TkkMJNtO2PVE1VRSMMd7eomiPh9zQBUNTMlkhTiKZ4vHIV9YSciEi/sReKFYpVoGjcKdfSehxEmulA0RRt7IAMbVkFkJ+/Ne+Tg1DOrZlMEsPAWDEBEsNEeJ0ZRoxk9I427jy+tgUtK6dpSa3IplQJ93Kwi2LzbiTVl3YELjNMkw/b+hiGsJ7QtbNhvzuHKu8Jegfft3jiGpPO42cymHO4zHABIjEnsYLPpmXDM+bViVBVA7111iGyCedDMZuo72EXCRG955Vvm+SfJHJCpPpLjJ+F1vbl7ayVCmbnW2ntvtTJVd1+WxQMxaZvH8VqrxK35yLJpZivNZyFjFnOcwPV6/fzp44cvD+c55w5PutKmkBzyxHhPmYhRvLmPdu5NBRF9e3z8+v2iYzN/APJq5tg5jDr3AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/22034c1690e811b6ed9991e23603c846/a59e9/react-virtualized-3.webp 192w,
+/static/22034c1690e811b6ed9991e23603c846/0ca9f/react-virtualized-3.webp 384w,
+/static/22034c1690e811b6ed9991e23603c846/dc9b9/react-virtualized-3.webp 768w,
+/static/22034c1690e811b6ed9991e23603c846/e2c2f/react-virtualized-3.webp 1152w,
+/static/22034c1690e811b6ed9991e23603c846/f80fb/react-virtualized-3.webp 1266w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/22034c1690e811b6ed9991e23603c846/3b721/react-virtualized-3.png 192w,
+/static/22034c1690e811b6ed9991e23603c846/66595/react-virtualized-3.png 384w,
+/static/22034c1690e811b6ed9991e23603c846/fe486/react-virtualized-3.png 768w,
+/static/22034c1690e811b6ed9991e23603c846/d2d74/react-virtualized-3.png 1152w,
+/static/22034c1690e811b6ed9991e23603c846/03d4c/react-virtualized-3.png 1266w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/22034c1690e811b6ed9991e23603c846/fe486/react-virtualized-3.png"
+            alt="react-virtualized-3"
+            title="react-virtualized-3"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<blockquote>
+<p>react-virtualized 사용자</p>
+</blockquote>
+<p>위 사진은 최근 6개월 동안 react-virtualized 와 react-window 의 다운로드 횟수를 나타낸 것입니다. react-virtualized 패키지의 사용자가 더 많은 것을 확인할 수 있습니다. 또한, react-virtualized 에는 react-window 에 없는 기능이 있는데 그중 두 가지는 아래와 같습니다.</p>
+<blockquote>
+<p>window 스크롤</p>
+</blockquote>
+<p>react-window 는 컨테이너의 너비와 높이를 명시적으로 지정하여 해당 컨테이너 내에서만 가상화가 가능합니다. react-virtualized 의 WindowScroller 컴포넌트를 사용하면 페이스북이나 트위터처럼 <strong>window 스크롤을 기준으로 목록이 가상화되도록 구현</strong>할 수 있습니다.</p>
+<blockquote>
+<p>요소의 동적인 height 측정</p>
+</blockquote>
+<p>콘텐츠형 광고 페이지 내에서 렌더링 되는 요소의 <code>height</code>값은 요소의 내용에 따라 변하기 때문에 동적인 <code>height</code>을 측정할 수 있어야 합니다. react-window 는 요소의 동적인 <code>height</code>값을 측정할 방법이 없지만, react-virtualized 에서 <code>CellMeasurer</code>라는 컴포넌트는 <strong>원하는 요소의 동적인 height 값을 측정</strong>해주는 역할을 담당하고 있습니다. 동적인 height 값에 대해서는 <a href="http://bvaughn.github.io/react-virtualized/##/components/List" target="_blank" rel="nofollow">react-virtualized</a> 링크에서 확인할 수 있습니다.</p>
+<blockquote>
+<p>그러나 위 사진의 size 항목에서 확인할 수 있는 거처럼 react-window 가 react-virtualized 보다 훨씬 작아서 추가적인 기능을 사용하지 않는다면 react-window 사용을 권장하기도 합니다.</p>
+</blockquote>
+<h2>2. 크롬 개발자 도구로 성능 측정하는 방법</h2>
+<p>성능을 분석해야 할 때는 느려졌다는 느낌이 아니라 정확히 몇 초가 걸리는지 확인이 필요합니다. 크롬 개발자 도구의 <strong>Performance 탭</strong>으로 이를 측정할 수 있습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/fd14d6b4a43b1e9a86649c26d28b26e5/ac7a9/react-virtualized-4.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.958333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB3UlEQVQoz42Ry27UMBhG57nY8AR9G5bs2PIOsOCyZdMNm4JQu4C2o4JQr5DpNLdxHMdJJnESOznImQq1CyQsHdn6F8efPy82mSJWFWFRk5TbmUhvCfOSjSxIhCQVKUIKlIyJojvSKCBLAtI4Ig5j4jAijmLCMGShlObZxyOevtln790+e2/3efLqA88/nyBzPQsTuSHJU7S4RudXSHmJyq+5TRJ+RzFBnBBEIeu7NQuf4uuPc46OlxzOnHL47ZTzq1/3CRX1tmMYJnoHWm1I198p0kvKeEmVLCnjE2p5Q2sGFmlWoMsKpomHq29akiwnlSW1cVRNT2NhfXHA+cFLwuPX3H55MbP69Jzo7D1Va3cJZa5o2pZ+sHT9wDAM1GVFkimELFgltwQiIFIhK3nBTbpkJU4JsjNW2RmBWLLa/GSjBItUFuSFxnQd1joGa3HWsa3qWSiVpmkbrLOMo8O6kd6Cf884PabrzC6hyCStMbhxxDrH6ByNTyhylK4eVTFOE4Mb8crJ1zTd776mvt91mCvNtmlpTU9jOozpKXU1f4hU5S61czP+wn5wjOP4Fz/3uzHGC9X8m17sz48pEFJRaE3XdXMCa+0/8d0vdjIv3Ykf4udZXrCta5qm+S/+ABDk7zTUHyGGAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/fd14d6b4a43b1e9a86649c26d28b26e5/a59e9/react-virtualized-4.webp 192w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/0ca9f/react-virtualized-4.webp 384w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/dc9b9/react-virtualized-4.webp 768w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/e2c2f/react-virtualized-4.webp 1152w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/f3efb/react-virtualized-4.webp 1536w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/0b34d/react-virtualized-4.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/fd14d6b4a43b1e9a86649c26d28b26e5/3b721/react-virtualized-4.png 192w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/66595/react-virtualized-4.png 384w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/fe486/react-virtualized-4.png 768w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/d2d74/react-virtualized-4.png 1152w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/e8464/react-virtualized-4.png 1536w,
+/static/fd14d6b4a43b1e9a86649c26d28b26e5/ac7a9/react-virtualized-4.png 1920w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/fd14d6b4a43b1e9a86649c26d28b26e5/fe486/react-virtualized-4.png"
+            alt="react-virtualized-4"
+            title="react-virtualized-4"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>녹화 버튼을 클릭한 후, 할 일 목록에 체크하고 화면에 변화가 반영되면 Stop 버튼을 누릅니다.</p>
+<blockquote>
+<p>성능 분석 결과에 나타나는 Timings 를 열어 보면 각 시간대에 컴포넌트의 어떤 작업이 처리되었는지 확인할 수 있습니다.</p>
+</blockquote>
+<p>App [update] 박스를 열어 작업 처리 시간을 확인했습니다. 2500개의 데이터가 있는데 1.4초가 걸린다는 것은 성능이 매우 나쁘다는 의미입니다. 최적화를 한 이후 이 성능을 비교해보겠습니다.</p>
+<h2>3. react-virtualized 사용 방법</h2>
+<h3>3-1. 패키지 설치</h3>
+<p>우선 yarn 을 통해 react-virtualized 를 설치하겠습니다.</p>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">yarn add react-virtualized</code>
+        </deckgo-highlight-code>
+<p>이제 react-virtualized 에서 제공하는 List 컴포넌트를 사용하여 To Do List 컴포넌트 성능 최적화를 하겠습니다.</p>
+<h3>3-2. 각 항목의 px 단위 측정하기</h3>
+<p>최적화를 수행하기 전에 필요한 작업은 각 항목의 실제 크기를 px 단위로 알아내는 것입니다. <strong>크롬 개발자 도구</strong>를 통해 이 크기를 쉽게 알아낼 수 있습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/798b813fcd11943eed872dd58db10434/ac7a9/react-virtualized-5.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.958333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABx0lEQVQoz32SS24UMRBA52LsOACchh13gU1YwAIFRIJQNMqOj2A1QihsUGYy/fOv3W13t+1+yD1RMiBESSVblvXqVdmrspbsZMu1stzojr3u2OYUhqKW1ELR1IreeYbB472n73uKskIqhZSKphFUZY0QgpUQmicfPvLw5IzHL854dPKOB89OeXr5jbpRCNXijMUoi3OeGAMxBFpj6KxdiuRIKS2FVpXQrD995uX5e07XF7y9XPNmfcHXzYayVghtGZynLiVSdozTRAJ6KdFNwxQjaZ4XoHOOVdUofu62XBUVW63ZasO1UhRNvQBr1WI7z75Q7PYGYx0+zPTW4p2DmEghMI7jwbCoFUoZwjQxp5kUE6SZvu24qQTSWMLgEaWkKgyDzy3OxHx37Pjx5TnX318vbQ/jyKrIc5IK5wemXGkKy2pby/4WOHlPUwiKvV6s5vkAJHh+bV5RXJ3fA8tGUdUNzntiSoQ8kxjpTXsw1JbpyDC/8gzEGPk7xsUwD15qut7h/EjvB7wfMbo9GOpbw1JSZkPv/gBm25xHQEm2zOC8v8tGsa/kPbAQd0D+BzzAMvQAPs58LnS7AGWlqEqzAPMXCSH8E/gbO6z2ipsX4/AAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/798b813fcd11943eed872dd58db10434/a59e9/react-virtualized-5.webp 192w,
+/static/798b813fcd11943eed872dd58db10434/0ca9f/react-virtualized-5.webp 384w,
+/static/798b813fcd11943eed872dd58db10434/dc9b9/react-virtualized-5.webp 768w,
+/static/798b813fcd11943eed872dd58db10434/e2c2f/react-virtualized-5.webp 1152w,
+/static/798b813fcd11943eed872dd58db10434/f3efb/react-virtualized-5.webp 1536w,
+/static/798b813fcd11943eed872dd58db10434/0b34d/react-virtualized-5.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/798b813fcd11943eed872dd58db10434/3b721/react-virtualized-5.png 192w,
+/static/798b813fcd11943eed872dd58db10434/66595/react-virtualized-5.png 384w,
+/static/798b813fcd11943eed872dd58db10434/fe486/react-virtualized-5.png 768w,
+/static/798b813fcd11943eed872dd58db10434/d2d74/react-virtualized-5.png 1152w,
+/static/798b813fcd11943eed872dd58db10434/e8464/react-virtualized-5.png 1536w,
+/static/798b813fcd11943eed872dd58db10434/ac7a9/react-virtualized-5.png 1920w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/798b813fcd11943eed872dd58db10434/fe486/react-virtualized-5.png"
+            alt="react-virtualized-5"
+            title="react-virtualized-5"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>각 항목의 크기는 가로 <code>495px</code>, 세로 <code>57px</code>입니다. 여기서 첫 번째 항목이 아니라 두 번째 항목을 확인하는 이유는 테두리가 포함된 값을 알아내기 위해서입니다.</p>
+<h3>3-3. 코드 수정하기</h3>
+<blockquote>
+<p>예시 코드 구조</p>
+</blockquote>
+<deckgo-highlight-code  terminal="carbon" theme="seti"  >
+          <code slot="code">src
+ ┣ components
+ ┃ ┣ TodoInsert.js
+ ┃ ┣ TodoInsert.scss
+ ┃ ┣ TodoList.js
+ ┃ ┣ TodoList.scss
+ ┃ ┣ TodoListItem.js
+ ┃ ┣ TodoListItem.scss
+ ┃ ┣ TodoTemplate.js
+ ┃ ┗ TodoTemplate.scss
+ ┣ App.css
+ ┣ App.js
+ ┣ App.test.js
+ ┣ index.css
+ ┣ index.js
+ ┣ logo.svg
+ ┗ serviceWorker.js</code>
+        </deckgo-highlight-code>
+<blockquote>
+<p>수정 전 To Do List 코드</p>
+</blockquote>
+<deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
+          <code slot="code">import React from &#39;react&#39;;
+import TodoListItem from &#39;./TodoListItem&#39;;
+import &#39;./TodoList.scss&#39;;
+
+const TodoList = ({ todos, onRemove, onToggle }) =&gt; {
+  return (
+    &lt;div className=&quot;TodoList&quot;&gt;
+      {todos.map(todo =&gt; (
+        &lt;TodoListItem
+          todo={todo}
+          key={todo.id}
+          onRemove={onRemove}
+          onToggle={onToggle}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+
+export default TodoList;</code>
+        </deckgo-highlight-code>
+<blockquote>
+<p>react-virtualized 를 적용한 To Do List 코드</p>
+</blockquote>
+<ul>
+<li>
+<p><code>useCallback</code>과 <code>memo</code>로 최적화를 한 이후에 react-virtualized 를 적용한 코드입니다.</p>
+</li>
+<li>
+<p>react-virtualized 관련 내용은 <code>return</code>문의 <code>List</code>컴포넌트입니다.</p>
+</li>
+</ul>
+<deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
+          <code slot="code">import React, { useCallback } from &#39;react&#39;;
+import { List } from &#39;react-virtualized&#39;;
+import TodoListItem from &#39;./TodoListItem&#39;;
+import &#39;./TodoList.scss&#39;;
+
+const TodoList = ({ todos, onRemove, onToggle }) =&gt; {
+  const rowRenderer = useCallback(
+    ({ index, key, style }) =&gt; {
+      const todo = todos[index];
+      return (
+        &lt;TodoListItem
+          todo={todo}
+          key={key}
+          onRemove={onRemove}
+          onToggle={onToggle}
+          style={style}
+        /&gt;
+      );
+    },
+    [onRemove, onToggle, todos],
+  );
+  return (
+    &lt;List
+      className=&quot;TodoList&quot;
+      width={495} // 전체 크기
+      height={513} // 전체 높이
+      rowCount={todos.length} // 항목 개수
+      rowHeight={57} // 항목 높이
+      rowRenderer={rowRenderer} // 항목을 렌더링할 때 쓰는 함수
+      list={todos} // 배열
+      style={{ outline: &#39;none&#39; }} // List에 기본 적용되는 outline 스타일 제거
+    /&gt;
+  );
+};
+
+export default React.memo(TodoList);</code>
+        </deckgo-highlight-code>
+<p><code>List</code>컴포넌트를 사용하기 위해 <code>rowRenderer</code>라는 함수를 새로 작성했습니다. 이 함수는 react-virtualized 의 <code>List</code>컴포넌트에서 각 To Do Item을 렌더링할 때 사용하며, 이 함수를 <code>List</code>컴포넌트의 <code>props</code>값으로 설정해야 합니다. 이 함수는 파라미터에 <code>index</code>, <code>key</code>, <code>style</code>값을 객체 타입으로 받아 와서 사용합니다.</p>
+<blockquote>
+<p>List 컴포넌트를 사용할 때는 <strong>해당 리스트의 전체 크기와 각 항목의 높이, 각 항목을 렌더링할 때 사용해야 하는 함수, 그리고 배열</strong>을 <code>props</code>로 넣어 주어야 합니다.</p>
+</blockquote>
+<p>그러면 이 컴포넌트가 전달받은 <code>props</code>를 사용하여 자동으로 최적화를 해줍니다.</p>
+<h3>3-4. 최적화 이후 성능 비교</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b9da5d9fa76c8de87822aeb39bd80e07/ac7a9/react-virtualized-6.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.958333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB2UlEQVQoz32Ry27UMBSG58XY8AR9HDas2PEYLBCsWZQFSG1ZQKvCAlCl3ieZSTIzuTiZ+BI7Tj7kpIIuAEu/dHzs8/s7x4tNXpFVe9K6ZVNLNo0krSVp2bAtBNm2YLVakSQJWZZxcxdxv4yI4yXrdcinv7VOEhaianj24ZSnrw85ePuegzeHPHn1jucn3yiqmnSbs1xFRElElK5Ypmtu0xXXScz1eslVdMUymCcJURyz2JU1X75fcHL2ddLx6TlHn8/4eXlDOEt3gkYZdD9S5AnRxTHRxRHZ3Tki/YHULdoNGDsglWGxyQV1s4dx5PFyxrAJLec10nhUN1C3hvT6IzefXhCdvqQqUvbSoDuwDpS2s2FRCZQ2WNfTWYftLO1esi1qNruCpqmQStF2BgUIq8mbNbp3yKbjPrslrmJ29Y5FoCgrgTEdfe9xvad3DtnKiTAvBW3b4r2f0ccB7wf6sH3oqnMG4xRSSxbhJ3dFiTEGP4SLHu8cKhjmglLsQyV/BjLih5Hez5nx0aisnVquKEWNVBrTWXRnJ9qmaQlnRdXMjzxomB4dsP0cB/lhjgPURBgK/65AXyFETWfMRND3/T/lnJsJg+lj4+1DLsRhhrJt0VpPUkr9V78Ajb7yqhtNDPgAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/b9da5d9fa76c8de87822aeb39bd80e07/a59e9/react-virtualized-6.webp 192w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/0ca9f/react-virtualized-6.webp 384w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/dc9b9/react-virtualized-6.webp 768w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/e2c2f/react-virtualized-6.webp 1152w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/f3efb/react-virtualized-6.webp 1536w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/0b34d/react-virtualized-6.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/b9da5d9fa76c8de87822aeb39bd80e07/3b721/react-virtualized-6.png 192w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/66595/react-virtualized-6.png 384w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/fe486/react-virtualized-6.png 768w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/d2d74/react-virtualized-6.png 1152w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/e8464/react-virtualized-6.png 1536w,
+/static/b9da5d9fa76c8de87822aeb39bd80e07/ac7a9/react-virtualized-6.png 1920w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/b9da5d9fa76c8de87822aeb39bd80e07/fe486/react-virtualized-6.png"
+            alt="react-virtualized-6"
+            title="react-virtualized-6"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<blockquote>
+<p>최적화 이전에는 1.4초가 걸렸지만, 최적화 이후 11ms(0.011초) 가 걸리는 것을 확인할 수 있습니다. 👍</p>
+</blockquote>
+<p>현재 다룬 예시는 react-virtualized 만 적용했을 때 최적화 성능은 아니지만, 다른 예시를 통해 최적화 적용 순서대로 성능을 측정했을 때는 다음과 같습니다.</p>
+<ul>
+<li>
+<p>최적화 적용 전 코드: 1.02초</p>
+</li>
+<li>
+<p>React.memo 적용 코드: 0.059초</p>
+</li>
+<li>
+<p>react-virtualized 적용 코드: 0.005초</p>
+</li>
+</ul>
+<h2>마치며</h2>
+<p>react-virtualized 사용 방법에 대해 알아봤습니다. 리액트 컴포넌트의 렌더링은 기본적으로 빨라서 컴포넌트를 개발할 때 최적화 작업에 대해 너무 큰 스트레스를 받거나 모든 컴포넌트에 일일이 React.memo 를 작성할 필요는 없습니다. 단, 리스트와 관련된 컴포넌트를 만들 때 보여 줄 항목이 100개 이상이고 업데이트가 자주 발생한다면, 최적화가 필요합니다.</p>
+<hr>
+<p>참고 자료 📩</p>
+<ul>
+<li><a href="https://ko.reactjs.org/docs/optimizing-performance.html" target="_blank" rel="nofollow">성능 최적화 – React</a></li>
+<li><a href="https://book.naver.com/bookdb/book_detail.nhn?bid=15372757" target="_blank" rel="nofollow">리액트를 다루는 기술 : 네이버 도서</a></li>
+<li><a href="https://blog.bitsrc.io/10-ways-to-optimize-your-react-apps-performance-e5e437c9abce" target="_blank" rel="nofollow">10 Ways to Optimize Your React App’s Performance | by Chidume Nnamdi 🔥💻🎵🎮 | Bits and Pieces</a></li>
+</ul></div><style data-emotion="css 103ou0r">.css-103ou0r{width:100%;height:10rem;margin:4rem 0 0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;border-radius:1rem;background-color:rgba(241, 237, 233, 0.5);}</style><div class="css-103ou0r e1acrhes1"><style data-emotion="css 1q8iwno">.css-1q8iwno{width:12rem;height:4.5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;border-radius:1rem;font-size:1.5rem;font-weight:500;color:rgba(255, 255, 255, 1);background-color:rgba(104, 104, 172, 1);cursor:pointer;}.css-1q8iwno svg{font-size:2rem;margin:0 0.8rem 0 0;}.css-1q8iwno:hover{background-color:rgba(144, 144, 205, 1);}</style><button class="css-1q8iwno e1acrhes0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 15a3.51 3.51 0 0 0 2.36-.93l6.26 3.58a3.06 3.06 0 0 0-.12.85 3.53 3.53 0 1 0 1.14-2.57l-6.26-3.58a2.74 2.74 0 0 0 .12-.76l6.15-3.52A3.49 3.49 0 1 0 14 5.5a3.35 3.35 0 0 0 .12.85L8.43 9.6A3.5 3.5 0 1 0 5.5 15zm12 2a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5zm0-13A1.5 1.5 0 1 1 16 5.5 1.5 1.5 0 0 1 17.5 4zm-12 6A1.5 1.5 0 1 1 4 11.5 1.5 1.5 0 0 1 5.5 10z"></path></svg>공유하기</button></div><style data-emotion="css 1ke897m">.css-1ke897m{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;padding:8rem 0 8rem 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1ke897m{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;text-align:center;}}</style><div class="css-1ke897m er55s1u0"><style data-emotion="css 1t8kc11">.css-1t8kc11{width:13rem;height:13rem;border-radius:6.5rem;overflow:hidden;text-align:center;z-index:0;}</style><div class="css-1t8kc11 e1i74uee1"><style data-emotion="css 1h37zi1">.css-1h37zi1{width:100%;height:100%;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1i74uee0"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;220&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAARlAAAEZQAGA43XUAAAEq0lEQVQ4yx3T+28TdQAA8IuayMYe3dau7fXbe/Z6d7273t2u7dbr2vVdunZdHxt0EGSMbY7Vji12y8RMBWXgZMCWmPAwGh8IjoE8DGJ4SUANiKhghKBoACHZBvwNRv+Dzy8fyGmzuDiLTGGylZAJRAJwkCaacEDptJ0eZVtfxxvr2reuz27rzY7l45s6omNdrcVsZCAVLGajkIMlJSvOEyiLghaaEIHRSyIKAusrK7OqvKO/c3t/52RfbvPqRCEd7k36e+LegVRwKBfbmA5CftkWd9kjCh8U2ShLeknURyISMAJNdd7r2DmYL62KDefCo13x/rbA2qja3erbkPB3hZq6wk2QylqyjWLGZS+lQ9kGthk3NwAjB+vhquqMy96b9K+KqB1+Z0dzQ7tbDCtci2TLeJVMc0PSI0O0ydDmFAI2SzHhy8hMMw5Yfb2xsqrshRc9NLEl5hl32zsVW9jBu22UgyZ9dsYr0DGJ3aCwEAuMCQffKjLDSX+CpyRjfdRGTLb7Wkh0nAJfiehFETspkykr6mbJFs7it1m8nKWHQXdYAWTR69xWIimxg8HGpGBto7HukHrv1L7DKfcXAjYv4t86qMMisZE0ZTC4FTGGEEMLYgiY6+OoAbKjoAFHQjbrelXeHFLeCym0tm48n7jQqe7nzKck4pJi+YTHpmjzuAUMk6Y+HF6Dwe2oMY7BUAOONFKYh0SL8ZYTA7kxr1ixrDzPEvvD0jdu602VudvMnpbJOQmfl4k9LJhmwDbaXCBMJRqBGKPeTxPDqdB3H++8sr2YlmhdRcVMZ3AuH/wtIS7EhMdh4ZyDmmTMx2TiHRpsIuECaVqJGddgRog26FSKuHrys/tHZw6vjQz4FM2y8smo81whdb2j6VmKW8za/w7azv+P30yZOzBjwFwfI8AKAkCUTptVlfs3Lv7wzsB8T/zLwfSBvvTZQvpaKfeg3/+kX114Lba4WvnTa7vipA4J+E7GPELA3RzZrXAQa9DlVOcf5+Z+fnfw2szozd0jd/YU70wVro/l/ikEFibaH82sWxrwLES4283MGQd5gEcnrOZXLKBXYiCktkYwwaVMZDjkunDyyL252ZvThV/e7L02mn04mnwy6FkcCS5taHxa8N3LOy+5LF8rlinGPGEFRRsB0Qa9HcARGouQ4OyJo3cPTd+aHbo6lLtUaLs1klrIcUs5+2JGePJq5Ha7Ms9hn4vE+xyymwElDodMmhpCpw0wZIJCzh4/snTh4F+zgz/1xr4vtF1+Of57xPY0YX8UExbj/K9u+rhI7BOwj+z4NA2GaBQidFqrvt6BggiF9ORSeyc27Xlpxet+8e20b1fGN6XyjyPCwyD3IMTfUJnTEv6hgO3j0S2UqcigEFmvM2k0DtQU4SmRxLCaWqSmtq6y6jnoeYkixgPO+1HuYZi/pdKXndQxEf+Ax2ZYZKsVjFEAwrV1mrJy1qj3CbSDoSw6rblWY6r+b1UTBs54uKWV8rPuxsdR/keX9ZSIH7LjB3hskja9RSOQsbqqelkZrq1zC4yAmQ2VFdrly+HqyvKy8hIBn5bJgzJ5xkufd1PHJeKYHfvUju/l0FkW7OLQfwHCd2NdUDchsgAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/4b2a4668ab39f6bacdce8044df06e1c8/6d333/profile.webp 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/529ff/profile.webp 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/58add/profile.webp 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/de6fa/profile.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png" data-srcset="/static/4b2a4668ab39f6bacdce8044df06e1c8/03c8e/profile.png 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/8dd11/profile.png 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/e59d1/profile.png 440w" alt="profile"/></picture><noscript><picture><source type="image/webp" srcSet="/static/4b2a4668ab39f6bacdce8044df06e1c8/6d333/profile.webp 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/529ff/profile.webp 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/58add/profile.webp 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/de6fa/profile.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png" srcSet="/static/4b2a4668ab39f6bacdce8044df06e1c8/03c8e/profile.png 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/8dd11/profile.png 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/e59d1/profile.png 440w" alt="profile"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><style data-emotion="css uvdonz">.css-uvdonz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin:0 0 0 1.8rem;}@media all and (min-width: 250px) and (max-width: 800px){.css-uvdonz{margin:1.5rem 0 0;}}</style><div class="css-uvdonz e1vgmnt64"><style data-emotion="css 1wtyapr">.css-1wtyapr{font-size:3rem;font-weight:500;}</style><p class="css-1wtyapr e1vgmnt63">김민지</p><style data-emotion="css ghwq6o">.css-ghwq6o{margin:1.3rem 0 0.9rem;font-size:1.5rem;line-height:150%;}@media all and (min-width: 250px) and (max-width: 800px){.css-ghwq6o{margin:1.5rem 0;}}</style><p class="css-ghwq6o e1vgmnt62">안녕하세요 👋 개발자 김민지입니다. 방문해 주셔서 감사합니다.</p><style data-emotion="css 4cf5bo">.css-4cf5bo{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}@media all and (min-width: 250px) and (max-width: 800px){.css-4cf5bo{margin:0 auto;}}</style><div class="css-4cf5bo e1vgmnt61"><style data-emotion="css 1gs1t8l">.css-1gs1t8l{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin:0 0 0 2rem;font-size:1.3rem;}.css-1gs1t8l:hover{color:rgba(104, 104, 172, 1);}.css-1gs1t8l:nth-of-type(1){margin:0;}.css-1gs1t8l a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.css-1gs1t8l svg{margin:0 0.5rem 0 0;font-size:1.5rem;}</style><div class="css-1gs1t8l e1vgmnt60"><a href="mailto:minzidev@gmail.com" aria-label="Email"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path></svg>Email</a></div><div class="css-1gs1t8l e1vgmnt60"><a href="https://github.com/mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="Github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a></div><div class="css-1gs1t8l e1vgmnt60"><a href="https://www.linkedin.com/in/dev-mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg> LinkedIn</a></div></div></div></div><style data-emotion="css 1pp3v41">.css-1pp3v41{padding:0 0 4rem 0;font-size:1.5rem;text-align:center;}</style><p class="css-1pp3v41 e1lg3j550">최신글 보러가기</p><style data-emotion="css 905evm">.css-905evm{width:76.8rem;margin:0 auto;}@media all and (min-width: 250px) and (max-width: 800px){.css-905evm{width:100%;}}</style><div class="css-905evm e17b5y1l0"><style data-emotion="css 1qnxx8n">.css-1qnxx8n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 0 4.5rem;cursor:pointer;}.css-1qnxx8n:hover h1{color:rgba(104, 104, 172, 1);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}.css-1qnxx8n:hover img{-webkit-transform:scale(1.1);-moz-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}.css-1qnxx8n:nth-last-of-type(1){margin:0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1qnxx8n{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;}}</style><a class="css-1qnxx8n elj48mc4" href="/etc/2023-ossca-introduction/"><style data-emotion="css bp3xiq">.css-bp3xiq{width:22rem;height:14rem;border-radius:1rem;overflow:hidden;z-index:0;margin:0 3rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-bp3xiq{width:100%;height:auto;margin:0 0 1.7rem;}}</style><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRUlEQVQoz5VS70vCUBR92/Jt7ofTbWyOMdegiaAuKyKJ6EtQKDHJ0gwkCAKN6nN//on3Qoncyj4cuLx37rmHey4hhGAFQRCgKAqq1SqHbdtotVpI0xRBEEDTNM753pOD4k+BsGYBtCTDthwkewm6nS7iOIZlWXyArusol8uglEKSpN8F87BDBXieh2bS5MK1Wg2qqnJxwzDyBS0xRl3chy+lMEkDntRGRPu8Vkl9zatUKgjDEFEUwXGcYof9OMP9yQey3juuDuYYdha4br8hO3zF6PgFve4Rot3Gmi/LMnzf545zBc/OT/G8fMJ4OsL88QGT2RiXgwvc3GWYzG6xWC4wHAyLAtoU/Fq2wcFS1zUdmqpBkRXQEuW7Yq7+nfJG6j8ciaLI8afg6haZC1az5TPXLFH2ZpomD4Cdjuu62znc4oBzeZ8W++Xtx97gfwAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/48dbebbd71b21542ec2e6adf207d7c74/23fb3/2023-ossca-introduction.webp 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/14dc7/2023-ossca-introduction.webp 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/a5d93/2023-ossca-introduction.webp 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/18a8b/2023-ossca-introduction.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png" data-srcset="/static/48dbebbd71b21542ec2e6adf207d7c74/d6f1d/2023-ossca-introduction.png 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/f45ea/2023-ossca-introduction.png 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/94612/2023-ossca-introduction.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/48dbebbd71b21542ec2e6adf207d7c74/23fb3/2023-ossca-introduction.webp 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/14dc7/2023-ossca-introduction.webp 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/a5d93/2023-ossca-introduction.webp 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/18a8b/2023-ossca-introduction.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png" srcSet="/static/48dbebbd71b21542ec2e6adf207d7c74/d6f1d/2023-ossca-introduction.png 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/f45ea/2023-ossca-introduction.png 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/94612/2023-ossca-introduction.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><style data-emotion="css 1h9e0xm">.css-1h9e0xm{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 1.7rem 0 0;}</style><div class="css-1h9e0xm elj48mc3"><style data-emotion="css 17p5nqe">.css-17p5nqe{display:-webkit-box;-webkit-box-orient:vertical;word-break:keep-all;-webkit-line-clamp:1;overflow:hidden;font-size:2.1rem;font-weight:500;line-height:140%;}@media all and (min-width: 250px) and (max-width: 800px){.css-17p5nqe{-webkit-line-clamp:3;}}</style><h1 class="css-17p5nqe elj48mc2">오픈소스 컨트리뷰션 아카데미 지원부터 발대식까지</h1><style data-emotion="css 1pzr76b">.css-1pzr76b{display:-webkit-box;-webkit-box-orient:vertical;overflow-wrap:break-word;-webkit-line-clamp:3;overflow:hidden;word-break:keep-all;font-size:1.5rem;line-height:130%;margin:1.5rem 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1pzr76b{-webkit-line-clamp:3;}}</style><h2 class="css-1pzr76b elj48mc1">2023 오픈소스 컨트리뷰션 아카데미의 Backend.AI 프로젝트에 멘티로 참여하게 되었습니다. 오픈소스 컨트리뷰션 아카데미 소개와 발대식 참여 후기에 대해 작성했습니다.</h2><style data-emotion="css qxl638">.css-qxl638{font-size:1.3rem;color:rgba(98, 92, 96, 0.8);}</style><p class="css-qxl638 elj48mc0">2023-07-09<!-- --> · <!-- -->3<!-- --> min read</p></div></a><a class="css-1qnxx8n elj48mc4" href="/etc/contribute-to-the-translated-content-of-mdn-web-docs/"><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQElEQVQoz4WSy0oDMRSGk8lMZjReNh2h7lUqxTeQlrquYKUb0TdQ38DrVlFxJS2itLhV6czUaykV3+uXZDqaueEiJDlJvvPn/IcwZiIahsFia31PCIVl8cx7OoMkD3SQaVpqppRBiCkQQkCpocD6vVjifKClgBKy0Wig+9DBZrOJ6ZlZFcsSEAeyKBjOjjMB0+RYrVTQf/Xx/vGGwfAT7dsW6uv1lIgUMFnLaq2Kq+tLeEEPfuDB83t4en7EcDTA0fEBst7lAmWNSsslbO9sodW+QdD3Ebz4+Poe4fziDEIIlTSsMYORB9TNkOuCW0BtrYqT00Pcd+6wt78L150bO26njJEjB8iVSunupBAor5SxuLQQumyYsG3n9yeR47lf1lVaXKr4i0tVnDtj96lSWyzOq0T/tk2yHZINnyxPBPwBINf9D3m0XFQAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/17d6389bbfba63790ce2a3d13720dc44/23fb3/contribute-to-the-translated-content-of-mdn-web-docs.webp 205w,/static/17d6389bbfba63790ce2a3d13720dc44/14dc7/contribute-to-the-translated-content-of-mdn-web-docs.webp 410w,/static/17d6389bbfba63790ce2a3d13720dc44/a5d93/contribute-to-the-translated-content-of-mdn-web-docs.webp 820w,/static/17d6389bbfba63790ce2a3d13720dc44/18a8b/contribute-to-the-translated-content-of-mdn-web-docs.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png" data-srcset="/static/17d6389bbfba63790ce2a3d13720dc44/d6f1d/contribute-to-the-translated-content-of-mdn-web-docs.png 205w,/static/17d6389bbfba63790ce2a3d13720dc44/f45ea/contribute-to-the-translated-content-of-mdn-web-docs.png 410w,/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png 820w,/static/17d6389bbfba63790ce2a3d13720dc44/94612/contribute-to-the-translated-content-of-mdn-web-docs.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/17d6389bbfba63790ce2a3d13720dc44/23fb3/contribute-to-the-translated-content-of-mdn-web-docs.webp 205w,/static/17d6389bbfba63790ce2a3d13720dc44/14dc7/contribute-to-the-translated-content-of-mdn-web-docs.webp 410w,/static/17d6389bbfba63790ce2a3d13720dc44/a5d93/contribute-to-the-translated-content-of-mdn-web-docs.webp 820w,/static/17d6389bbfba63790ce2a3d13720dc44/18a8b/contribute-to-the-translated-content-of-mdn-web-docs.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png" srcSet="/static/17d6389bbfba63790ce2a3d13720dc44/d6f1d/contribute-to-the-translated-content-of-mdn-web-docs.png 205w,/static/17d6389bbfba63790ce2a3d13720dc44/f45ea/contribute-to-the-translated-content-of-mdn-web-docs.png 410w,/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png 820w,/static/17d6389bbfba63790ce2a3d13720dc44/94612/contribute-to-the-translated-content-of-mdn-web-docs.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><div class="css-1h9e0xm elj48mc3"><h1 class="css-17p5nqe elj48mc2">오픈소스는 처음이라 :: MDN 문서 번역</h1><h2 class="css-1pzr76b elj48mc1">MDN Web Docs 번역해서 오픈소스에 기여하는 방법입니다. 번역에 필요한 가이드 문서와 파일 생성 방법에 대해 소개합니다.</h2><p class="css-qxl638 elj48mc0">2023-02-21<!-- --> · <!-- -->4<!-- --> min read</p></div></a><a class="css-1qnxx8n elj48mc4" href="/frontend/caching-build-outputs-to-speed-up-workflows/"><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeklEQVQoz42ST0sCURTF/QJhBuI4jrUIoVaRq2zRola1aROWzj+L0sJCiAxS38ykWWGGiQq5qCgxl2LRIlpGm6Jln+fEG83MNFtc7oPL/d1z7rsGm6SiY4gKWP2tgBMV2CUVrEBg4hWYJa1ZZ0XlR5+hG5AV6zBGUmGS4+j3EAz5k1gIanB5wzqUa4N1BdKpHM2yhlFZwbx7CxvRNGbVLC4zeUgBAiNPVfcAUtCXBatA0OchcC7uoOhbR84t4lo7RuSiCkfgEIxAmj1/AmlmBAWO1QSUYgXBfBnhZBZlpwu58Sk4gyew8KTu4D+W7bIGo3sP/vQVPt5f8fbyjPNyFQE+hMk5P8wNmK0F1gruuEMrVbh2gNPKPUq1R9zVHhA6K2FA3gcnNy6gJVrX1XWHFj6G4cARZtIVhG6fsJS6gU0gjVNSMejTdDd0QE+FzV16Y+CW4xjZLcC2ktDvkNYoaGI7g+lIAWObqeYH9bjDbyuMJ/rLGtdQ2a7wE/VgmrAKwS8kAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/2e2237653170ffb2fc9230d2804915e4/23fb3/caching-build-outputs-to-speed-up-workflows.webp 205w,/static/2e2237653170ffb2fc9230d2804915e4/14dc7/caching-build-outputs-to-speed-up-workflows.webp 410w,/static/2e2237653170ffb2fc9230d2804915e4/a5d93/caching-build-outputs-to-speed-up-workflows.webp 820w,/static/2e2237653170ffb2fc9230d2804915e4/18a8b/caching-build-outputs-to-speed-up-workflows.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png" data-srcset="/static/2e2237653170ffb2fc9230d2804915e4/d6f1d/caching-build-outputs-to-speed-up-workflows.png 205w,/static/2e2237653170ffb2fc9230d2804915e4/f45ea/caching-build-outputs-to-speed-up-workflows.png 410w,/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png 820w,/static/2e2237653170ffb2fc9230d2804915e4/94612/caching-build-outputs-to-speed-up-workflows.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/2e2237653170ffb2fc9230d2804915e4/23fb3/caching-build-outputs-to-speed-up-workflows.webp 205w,/static/2e2237653170ffb2fc9230d2804915e4/14dc7/caching-build-outputs-to-speed-up-workflows.webp 410w,/static/2e2237653170ffb2fc9230d2804915e4/a5d93/caching-build-outputs-to-speed-up-workflows.webp 820w,/static/2e2237653170ffb2fc9230d2804915e4/18a8b/caching-build-outputs-to-speed-up-workflows.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png" srcSet="/static/2e2237653170ffb2fc9230d2804915e4/d6f1d/caching-build-outputs-to-speed-up-workflows.png 205w,/static/2e2237653170ffb2fc9230d2804915e4/f45ea/caching-build-outputs-to-speed-up-workflows.png 410w,/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png 820w,/static/2e2237653170ffb2fc9230d2804915e4/94612/caching-build-outputs-to-speed-up-workflows.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><div class="css-1h9e0xm elj48mc3"><h1 class="css-17p5nqe elj48mc2">Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (2)</h1><h2 class="css-1pzr76b elj48mc1">1편에서는 의존성 캐싱으로 배포 속도를 개선하고 이번에는 빌드 결과물 캐싱으로 개선했습니다. Gatsby의 빌드 과정과 캐싱 방법을 소개합니다.</h2><p class="css-qxl638 elj48mc0">2022-12-04<!-- --> · <!-- -->5<!-- --> min read</p></div></a></div></main><style data-emotion="css zcj3rg">.css-zcj3rg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;width:100%;margin:8rem auto 0;background-color:rgba(241, 237, 233, 0.5);}</style><footer class="css-zcj3rg e1tl9lrx9"><style data-emotion="css 1qutqnu">.css-1qutqnu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;padding:3rem 0 5rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-1qutqnu{width:100%;padding:3rem 1.5rem 5rem;}}@media all and (min-width: 250px) and (max-width: 800px){.css-1qutqnu{width:100%;padding:3rem 1.5rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:unset;-ms-flex-pack:unset;-webkit-justify-content:unset;justify-content:unset;-webkit-align-items:unset;-webkit-box-align:unset;-ms-flex-align:unset;align-items:unset;}}</style><div class="css-1qutqnu e1tl9lrx8"><style data-emotion="css jhzcpj">.css-jhzcpj{width:100%;}@media all and (min-width: 250px) and (max-width: 800px){.css-jhzcpj{margin:0 0 4rem 0;}}</style><div class="css-jhzcpj e1tl9lrx7"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1tl9lrx6"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVQoz2XSv2/TQBQH8GeKoIKBgQGBisTGypqBraJqcnFPsZ3L1bWdOGfX10i0E0MHpA78kLrza2hRxYYEBMcJTYOTpkqbEDc4VEKIgX8l6NpSEfVJX910n7v37oDzIXAeg+sOwHEiKBb7kmnug2l2YH5+VyIkBBFNa0iKUgdZDkQkhHyYmflwnFTqM5wV58OrnMf3XXeAHSe6USz2wbL+gW2BXSYkvK1pDYFCNvv1GBVgMlmG2dnyOFgqHa15XrzluoNlxqLno9EI8vnuzYWFvWv5fPdKLtd8SEhzDSF/MpsNJxVlR4BTCPnXT8BP50DsefFHxzm8x1hUse3eS8s6eG0YHV/X2wqlrTIh4TtV3XmhKPVVjGvLshxsIORviVEAoHMtJzgfvnWcQ4Ox6Ldtfwssa5+bZqeq621KaSsiJPypaY1SJrP9GONaOZ2uPELIXxdtI+RPiPWslpZ+pDiP37ju4Clj/Qe23XtlWQfYMDqbur6XpLT1hJBwU1UbzxSlPoVxbV2Wgz8I+YaA0unKOFgo9GBx8fulUulIYiyCQqF7UVXF8MPjR6G0BYQ0IZPZnsD4C2BcI7IcDBHy75yC0ljLKyu/BAieFwNj0QVxgIBOI1G6C7lcCxKJDbEZ5uaqt2Q5uHvyfaowPf0e/r/hX4ml7Ne3/vMmAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css l30ecc">.css-l30ecc{margin:1rem 0 0;font-size:1.2rem;color:rgba(98, 92, 96, 0.8);}</style><div class="css-l30ecc e1tl9lrx5">© 2021-2024 김민지 All Rights Reserved.</div></div><style data-emotion="css cbo7i">.css-cbo7i{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.css-cbo7i>div:nth-of-type(2){margin:0 0 0 10rem;}@media all and (min-width: 250px) and (max-width: 800px){.css-cbo7i>div:nth-of-type(2){margin:0 0 0 7rem;}}</style><div class="css-cbo7i e1tl9lrx4"><style data-emotion="css 1m4w7xn">.css-1m4w7xn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;font-size:1.5rem;}</style><div class="css-1m4w7xn e1tl9lrx3"><style data-emotion="css qgwzzw">.css-qgwzzw{margin:0 0 3rem 0;font-weight:500;color:rgba(98, 92, 96, 0.8);}</style><p class="css-qgwzzw e1tl9lrx2">Links</p><style data-emotion="css wlp92n">.css-wlp92n{margin:2.2rem 0 0;}.css-wlp92n:hover{color:rgba(104, 104, 172, 1);}.css-wlp92n:nth-of-type(1){margin:0;}</style><a class="css-wlp92n e1tl9lrx1" href="/">Home</a><a class="css-wlp92n e1tl9lrx1" href="/category">Category</a></div><div class="css-1m4w7xn e1tl9lrx3"><p class="css-qgwzzw e1tl9lrx2">More</p><style data-emotion="css viyiff">.css-viyiff{margin:2.2rem 0 0;}.css-viyiff:hover{color:rgba(104, 104, 172, 1);}.css-viyiff:nth-of-type(1){margin:0;}.css-viyiff a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.css-viyiff svg{margin:0 0 0 0.5rem;color:rgba(98, 92, 96, 0.8);}</style><div class="css-viyiff e1tl9lrx0"><a href="mailto:minzidev@gmail.com" aria-label="Email">Email <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div><div class="css-viyiff e1tl9lrx0"><a href="https://github.com/mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="Github">GitHub <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div><div class="css-viyiff e1tl9lrx0"><a href="https://forms.gle/TVvPQHE5yJrZhtzF9" target="_blank" rel="noreferrer noopener" aria-label="Feedback">Feedback <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div></div></div></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+              (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:3147203,hjsv:6};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=')
+          </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react/infinity-scroll-react-virtualized/";window.___webpackCompilationHash="31108b56772df56935ac";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-6fb30148336822408a1e.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-f003f239dd8307335c38.js"],"component---src-pages-category-tsx":["/component---src-pages-category-tsx-77eb24d832ec1db3282e.js"],"component---src-pages-guestbook-tsx":["/component---src-pages-guestbook-tsx-c2646b357e63c3aca7e1.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-acbe1ccd5da6f78c9f23.js"],"component---src-templates-category-template-tsx":["/component---src-templates-category-template-tsx-4f8b699833ce96135549.js"],"component---src-templates-page-template-tsx":["/component---src-templates-page-template-tsx-35679264cb0226609682.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-f6663e621c613d5edb14.js"]};/*]]>*/</script><script src="/app-6fb30148336822408a1e.js" async=""></script><script src="/7779ef99-6ff65495e3059b5feb5c.js" async=""></script><script src="/framework-d12a31ddfab01cb07967.js" async=""></script><script src="/webpack-runtime-4ea4bfa01b5e439b75a7.js" async=""></script></body></html>

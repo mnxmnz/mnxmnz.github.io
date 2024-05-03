@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404
+Disallow: /page/*
+Sitemap: https://mnxmnz.github.io/sitemap.xml
+Host: https://mnxmnz.github.io

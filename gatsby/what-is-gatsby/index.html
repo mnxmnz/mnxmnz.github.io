@@ -1,0 +1,682 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.8"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" name="description" content="Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아본 후 튜토리얼을 통해 Gatsby 개발을 시작하는 방법에 대해 정리했습니다."/><meta data-react-helmet="true" name="keywords" content="HTML, CSS, JavaScript, TypeScript, React, FrontEnd"/><meta data-react-helmet="true" name="author" content="김민지"/><meta data-react-helmet="true" property="og:title" content="Gatsby는 처음이라 :: 개념부터 프로젝트 시작까지 - 김민지 기술 블로그"/><meta data-react-helmet="true" property="og:description" content="Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아본 후 튜토리얼을 통해 Gatsby 개발을 시작하는 방법에 대해 정리했습니다."/><meta data-react-helmet="true" property="og:image" content="/static/e01536a454e865520c1080d7f2551639/what-is-gatsby.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:site_name" content="Devlog"/><meta data-react-helmet="true" name="twitter:title" content="Gatsby는 처음이라 :: 개념부터 프로젝트 시작까지 - 김민지 기술 블로그"/><meta data-react-helmet="true" name="twitter:description" content="Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아본 후 튜토리얼을 통해 Gatsby 개발을 시작하는 방법에 대해 정리했습니다."/><meta data-react-helmet="true" name="twitter:image" content="/static/e01536a454e865520c1080d7f2551639/what-is-gatsby.png"/><meta data-react-helmet="true" property="email" content="minzidev@gmail.com"/><meta data-react-helmet="true" name="theme-color" content="#6868AC"/><meta data-react-helmet="true" name="naver-site-verification" content="2cc40621eb11418be5791db057b14a2d2cc2800c"/><title data-react-helmet="true">Gatsby는 처음이라 :: 개념부터 프로젝트 시작까지 - 김민지 기술 블로그</title><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="canonical" href="https://mnxmnz.github.io/gatsby/what-is-gatsby/" data-baseprotocol="https:" data-basehost="mnxmnz.github.io"/><link rel="icon" href="/favicon-32x32.png?v=4fcda45b2971c9464814328be65da8c7" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=4fcda45b2971c9464814328be65da8c7"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=4fcda45b2971c9464814328be65da8c7"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1tb6sot">.css-1tb6sot{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin:0 auto;}</style><div class="css-1tb6sot e1bwmqn31"><style data-emotion="css-global 1g0qqo6">@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}*,*::after,*::before{box-sizing:border-box;margin:0;border:0;padding:0;}html,body,#___gatsby,#gatsby-focus-wrapper{width:100%;height:100%;color:rgb(41 40 45 / 100%);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;font-size:62.5%;font-weight:400;}@media all and (min-width: 250px) and (max-width: 800px){html,body,#___gatsby,#gatsby-focus-wrapper{font-size:55%;}}a{-webkit-text-decoration:none;text-decoration:none;color:inherit;}input,button{outline:none;border:none;background-color:transparent;}img{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;}::-webkit-scrollbar{width:10px;}::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:10px;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:rgb(98 92 96 / 70%);}::-webkit-scrollbar-track{border-radius:10px;box-shadow:inset 0 0 5px white;background-color:rgb(241 237 233 / 50%);}::selection{background-color:rgb(104 104 172 / 80%);color:rgb(255 255 255 / 100%);}</style><style data-emotion="css 1jmd4tu">.css-1jmd4tu{position:fixed;top:0;z-index:1000;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;background:rgba(255, 255, 255, 0.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-transition:box-shadow 0.5s;transition:box-shadow 0.5s;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><header class="css-1jmd4tu e1592gzh5"><style data-emotion="css mpd2yu">.css-mpd2yu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;height:6rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-mpd2yu{width:100%;padding:0 2rem 0 1.5rem;}}</style><nav class="css-mpd2yu e1592gzh4"><style data-emotion="css 1d3w5wq">.css-1d3w5wq{width:100%;}</style><a class="css-1d3w5wq e1592gzh3" href="/"><style data-emotion="css e9xe8s">.css-e9xe8s{width:12rem;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1592gzh2"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVQoz2XSv2/TQBQH8GeKoIKBgQGBisTGypqBraJqcnFPsZ3L1bWdOGfX10i0E0MHpA78kLrza2hRxYYEBMcJTYOTpkqbEDc4VEKIgX8l6NpSEfVJX910n7v37oDzIXAeg+sOwHEiKBb7kmnug2l2YH5+VyIkBBFNa0iKUgdZDkQkhHyYmflwnFTqM5wV58OrnMf3XXeAHSe6USz2wbL+gW2BXSYkvK1pDYFCNvv1GBVgMlmG2dnyOFgqHa15XrzluoNlxqLno9EI8vnuzYWFvWv5fPdKLtd8SEhzDSF/MpsNJxVlR4BTCPnXT8BP50DsefFHxzm8x1hUse3eS8s6eG0YHV/X2wqlrTIh4TtV3XmhKPVVjGvLshxsIORviVEAoHMtJzgfvnWcQ4Ox6Ldtfwssa5+bZqeq621KaSsiJPypaY1SJrP9GONaOZ2uPELIXxdtI+RPiPWslpZ+pDiP37ju4Clj/Qe23XtlWQfYMDqbur6XpLT1hJBwU1UbzxSlPoVxbV2Wgz8I+YaA0unKOFgo9GBx8fulUulIYiyCQqF7UVXF8MPjR6G0BYQ0IZPZnsD4C2BcI7IcDBHy75yC0ljLKyu/BAieFwNj0QVxgIBOI1G6C7lcCxKJDbEZ5uaqt2Q5uHvyfaowPf0e/r/hX4ml7Ne3/vMmAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></a><style data-emotion="css 2ct79s">.css-2ct79s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-2ct79s{display:none;}}</style><div class="css-2ct79s e1592gzh1"><style data-emotion="css 1io7q0s">.css-1io7q0s{margin:0 0 0 2rem;font-weight:500;}.css-1io7q0s:hover{color:rgba(104, 104, 172, 1);}.css-1io7q0s:nth-of-type(1){margin:0;}</style><a aria-label="Home" class="css-1io7q0s e1592gzh0" href="/">Home</a><a aria-label="Category" class="css-1io7q0s e1592gzh0" href="/category">Category</a></div></nav></header><style data-emotion="css y212p3">.css-y212p3{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex:1;-ms-flex:1;flex:1;width:76.8rem;margin:0 auto;padding:6rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-y212p3{width:100%;padding:6rem 1.2rem 0;}}</style><main class="css-y212p3 e1bwmqn30"><style data-emotion="css 8ui95l">.css-8ui95l{display:-webkit-box;-webkit-box-orient:vertical;padding:5rem 0 1rem;font-size:3.3rem;font-weight:600;line-height:130%;word-break:keep-all;}</style><h1 class="css-8ui95l eesot1s4">Gatsby는 처음이라 :: 개념부터 프로젝트 시작까지</h1><style data-emotion="css kzgyhw">.css-kzgyhw{width:100%;border-bottom:0.3rem solid rgba(241, 237, 233, 0.5);}</style><div class="css-kzgyhw eesot1s0"></div><style data-emotion="css 1q414jc">.css-1q414jc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:2.5rem 0 5rem;}</style><div class="css-1q414jc eesot1s3"><style data-emotion="css x3lgmq">.css-x3lgmq{padding:0.4rem;border-radius:0.3rem;background:rgba(41, 40, 45, 1);color:rgba(255, 255, 255, 1);font-size:1.3rem;font-weight:500;}.css-x3lgmq:hover{background:rgba(104, 104, 172, 1);}</style><a class="css-x3lgmq eesot1s1" href="/gatsby">Gatsby</a><style data-emotion="css 1ksu8mr">.css-1ksu8mr{font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-1ksu8mr{display:none;}}</style><span class="css-1ksu8mr eesot1s2">2021-05-24<!-- --> · <!-- -->7<!-- --> min read</span></div><style data-emotion="css 1brmzz2">.css-1brmzz2{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;width:100%;margin:0 auto;padding:3rem 0;word-wrap:break-word;line-height:175%;font-size:1.7rem;font-weight:400;color:rgba(41, 40, 45, 1);}.css-1brmzz2 h1,.css-1brmzz2 h2,.css-1brmzz2 h3,.css-1brmzz2 h4{font-weight:600;line-height:130%;}.css-1brmzz2 h1,.css-1brmzz2 h2,.css-1brmzz2 h3{margin:0 0 3rem 0;}.css-1brmzz2 h4{margin:0 0 2rem 0;}.css-1brmzz2 h1{font-size:3.1rem;}.css-1brmzz2 h2{font-size:2.7rem;}.css-1brmzz2 h3{font-size:2.3rem;}.css-1brmzz2 h4{font-size:2rem;}.css-1brmzz2 *+h1{margin-top:6rem;}.css-1brmzz2 *+h2{margin-top:5.5rem;}.css-1brmzz2 *+h3{margin-top:4.5rem;}.css-1brmzz2 *+h4{margin-top:4rem;}.css-1brmzz2 hr+h1,.css-1brmzz2 hr+h2,.css-1brmzz2 hr+h3,.css-1brmzz2 hr+h4{margin-top:0;}.css-1brmzz2 p{margin:2rem 0;}.css-1brmzz2 blockquote{margin:2.7rem 0;padding:0.5rem 1.5rem;border-left:0.4rem solid rgba(104, 104, 172, 1);background-color:rgba(241, 237, 233, 0.5);}.css-1brmzz2 blockquote strong{font-weight:600;}.css-1brmzz2 blockquote p{margin:0.5rem 0;}.css-1brmzz2 ol,.css-1brmzz2 ul{margin-top:0;margin-bottom:0;padding:0 0 0 3rem;}.css-1brmzz2 ol p,.css-1brmzz2 ul p{margin:0.5rem 0;}.css-1brmzz2 ul{list-style-type:disc;}.css-1brmzz2 ul ul{list-style-type:circle;}.css-1brmzz2 ul ul ul{list-style-type:square;}.css-1brmzz2 ol{list-style-type:decimal;}.css-1brmzz2 details{border:0.1rem solid rgba(104, 104, 172, 1);border-radius:1rem;margin:2rem 0;padding:1.5rem;background-color:rgba(231, 231, 250, 0.5);}.css-1brmzz2 details summary{cursor:pointer;}.css-1brmzz2 details summary::marker{color:rgba(104, 104, 172, 1);}.css-1brmzz2 details p{margin:1rem 0;}.css-1brmzz2 details blockquote{margin:1.5rem 0 0;background-color:inherit;}.css-1brmzz2 hr{border:0.1rem solid rgba(98, 92, 96, 0.3);margin:5.5rem 0;}.css-1brmzz2 a{color:rgba(104, 104, 172, 1);}.css-1brmzz2 a:active,.css-1brmzz2 a:hover{outline-width:0;-webkit-text-decoration:underline;text-decoration:underline;}.css-1brmzz2 strong{font-weight:600;}.css-1brmzz2 img{width:100%;border-style:none;border-radius:1rem;}.css-1brmzz2 em{font-size:1.2rem;font-style:italic;display:block;text-align:center;margin:-1.5rem auto 0;}.css-1brmzz2 table{display:table;border:0.2rem solid rgba(98, 92, 96, 0.3);border-collapse:collapse;margin:1rem 0;}.css-1brmzz2 thead{display:table-header-group;font-weight:600;border-bottom:0.5rem solid rgba(98, 92, 96, 0.3);}.css-1brmzz2 tr{display:table-row;}.css-1brmzz2 th,.css-1brmzz2 td{display:table-cell;padding:1rem;border:0.2rem solid rgba(98, 92, 96, 0.3);}.css-1brmzz2 .deckgo-highlight-code-carbon{margin:1.5rem 0 2.5rem 0;border-radius:1rem;font-size:1.5rem;}.css-1brmzz2 code{margin:0 0.3rem 0 0;padding:0.2rem 0.6rem;border-radius:0.3rem;background:#e9ecef;font-size:85%;}</style><div class="css-1brmzz2 eh9rs160"><blockquote>
+<p>다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂</p>
+</blockquote>
+<h2>들어가며</h2>
+<p>Gatsby에 대해 처음 공부하면서 새롭게 알게 된 점을 정리했습니다. Gatsby란 무엇인지, 어떠한 장점이 있는지 <strong>전반적인 개념</strong>에 대해 알아본 후 튜토리얼을 통해 <strong>Gatsby 개발을 시작하는 방법</strong>에 대해 정리했습니다.</p>
+<h2>0. 먼저 JAM Stack에 대해 알아보기</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/038c3d962ce2f29981cf5892704f5750/c7a69/jamstack.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRUlEQVQoz6WSzUrDQBDH82b2SXyU3PWgfYDmIhaCii1FC5XiZ1GwgqGKjYcqtUkt1m52SZps9msk3RjSq85pdobf/z+zuwb8I4wio5RKKcu9KIqEEOWKEAJjHMfxGpymaa1mhWEIAEoprWKapm3bmlFKAQBCqFLZsCwLADjnhq76vt/pdHjJRwhxctp+6PcBoJgoobRerzuOoz0M3Vsul4xxQkKtpUNJycvnlZuUSsh8kAwmUl0zGOHF8eBOSwJAtbrbbLX9r+l4jjTJOA9QkDLaa766fT+HacqHHyhMkun3pIAPDo8ub3p0PgiCiVi5SyEJIXEaO1ej95dZDovRxNs02fMjnO2B4PmI+Anw7SrLFlaQCey77a53v7O91Wg1fm+bcTqeqYjA4lMvm62HPZmg4qjjDXt+NL/ong9dd+2d//BJfgAAcjWcp1PtjwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/038c3d962ce2f29981cf5892704f5750/a59e9/jamstack.webp 192w,
+/static/038c3d962ce2f29981cf5892704f5750/0ca9f/jamstack.webp 384w,
+/static/038c3d962ce2f29981cf5892704f5750/dc9b9/jamstack.webp 768w,
+/static/038c3d962ce2f29981cf5892704f5750/e2c2f/jamstack.webp 1152w,
+/static/038c3d962ce2f29981cf5892704f5750/f3efb/jamstack.webp 1536w,
+/static/038c3d962ce2f29981cf5892704f5750/d5269/jamstack.webp 2560w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/038c3d962ce2f29981cf5892704f5750/3b721/jamstack.png 192w,
+/static/038c3d962ce2f29981cf5892704f5750/66595/jamstack.png 384w,
+/static/038c3d962ce2f29981cf5892704f5750/fe486/jamstack.png 768w,
+/static/038c3d962ce2f29981cf5892704f5750/d2d74/jamstack.png 1152w,
+/static/038c3d962ce2f29981cf5892704f5750/e8464/jamstack.png 1536w,
+/static/038c3d962ce2f29981cf5892704f5750/c7a69/jamstack.png 2560w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/038c3d962ce2f29981cf5892704f5750/fe486/jamstack.png"
+            alt="jamstack"
+            title="jamstack"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://velog.io/@kysung95/개발상식-JAM-스택이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack">velog.io</a></em></p>
+<p><strong>Gatsby</strong>는 <strong>JAM Stack을 활용한 정적 사이트 생성기</strong>입니다. Gatsby를 시작하기 전에 꼭 알아야 할 필수 개념인 JAM Stack에 대해 먼저 알아보겠습니다.</p>
+<blockquote>
+<p>JAM Stack(JavaScript, API, Markup Stack)은 JavaScript, API, HTML이나 CSS 등을 칭하는 Markup으로 이루어진 웹 구성 방법입니다.</p>
+</blockquote>
+<p>JAM Stack 공식 홈페이지에서는 이렇게 설명하고 있습니다.</p>
+<blockquote>
+<p>Jamstack is an architecture designed to make the web faster, more secure, and easier to scale.</p>
+<p>JAM Stack 은 더 빠르고, 안전하며, 스케일링하기 쉬운 웹을 만들기 위해 디자인된 아키텍처입니다.</p>
+</blockquote>
+<p>JAM Stack은 어떻게 이런 이점을 가질 수 있는지 홈페이지에 있는 설명을 통해 정리했습니다.</p>
+<h3>0-1. JAM Stack 동작 원리</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 650px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/be60f72ac97caa521232705863209c87/663f3/traditional-web-jamstack.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 77.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVQoz42SzY7TMBSF+zKI9+BNhhXiSVizYsmKxSDQAGI0zGbooGlTVUnTJNOfSGlLGjo0bZo6NHaSa9+LkpRSsaFHlmzL/nyPj92gSqoSVlJK0bEUkkIEKUES7qf1SqPuiqIYjMb3g6HnTYfD0TIMiag8qdxOGRSD+XTkT9yFrxAPx5YwACwWiyAIprOZN5kEwQ/fn6dpWvJE1JzRW0e+d3bnJrxz6PyeWj5VayUshDAMw7L67bbWvP1mWZau6+v1uobli1t1dpE/+7B4+gaef6KzC3ypVTA2antSSqVUlmWcc6UUAODBHi+Kh4gSQSzHDd/5a9oVf20jIudcCMFYEm+3Qog0TQGgzEJhZyWu/e3Xn2mYy4TUQyZSOgqMc67reqfTuby8uvpyrWlat9sNVysiWgt48nH2+FX70Wvn8/zXd8ptEHOV4wGWUm5KxWEYLpfLOI6jKMqyrMxS4WCTmSthrsQmlzkhR5UR4vFT1crzQoisugidokbF5I7j2LZ912q12lrfsmzbiqJon+WfhlX4+A8MAJ7njceu2bds2xmPXdd1kySp4f9Urr5g+Vr1GACKojjF/L7y4H6o60YQBIwx0+wbvR5j7KTKANDpdm9ump43YYwZRk/X9TiOT7W912khH+DfM9dQ2MeOPKkAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/be60f72ac97caa521232705863209c87/a59e9/traditional-web-jamstack.webp 192w,
+/static/be60f72ac97caa521232705863209c87/0ca9f/traditional-web-jamstack.webp 384w,
+/static/be60f72ac97caa521232705863209c87/309d5/traditional-web-jamstack.webp 650w"
+              sizes="(max-width: 650px) 100vw, 650px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/be60f72ac97caa521232705863209c87/3b721/traditional-web-jamstack.png 192w,
+/static/be60f72ac97caa521232705863209c87/66595/traditional-web-jamstack.png 384w,
+/static/be60f72ac97caa521232705863209c87/663f3/traditional-web-jamstack.png 650w"
+            sizes="(max-width: 650px) 100vw, 650px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/be60f72ac97caa521232705863209c87/663f3/traditional-web-jamstack.png"
+            alt="traditional-web-jamstack"
+            title="traditional-web-jamstack"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://jamstack.org" target="_blank" rel="noreferrer noopener" aria-label="traditional-web-jamstack">jamstack.org</a></em></p>
+<p>기존 웹 사이트의 방식은 대부분 서버의 데이터베이스 또는 CMS(Content Management System)에서 추출한 데이터를 프론트엔드에 뿌려주는 방식입니다. 사진에서 보이는 것과 같이 클라이언트에 데이터를 보여주기 위해서 많은 절차를 거쳐야만 해서 구조가 복잡합니다. 하지만 JAM Stack을 사용한 방식은 기존 웹 사이트의 방식과 다르게 절차가 간단합니다.</p>
+<blockquote>
+<p>마크업 요소와 다양한 API를 통해 만든 정적 웹 사이트를 Pre-Render 한 것을 CDN(Content Delivery Network)을 통해 열람할 수 있습니다.</p>
+</blockquote>
+<h3>0-2. JAM Stack 장점</h3>
+<blockquote>
+<ol>
+<li>기존 방식보다 더 빠르게 웹 사이트를 제공할 수 있습니다.</li>
+</ol>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c5cc2173af2470c4ad8cdbf42d082f52/c7a69/jamstack-advantage-01.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9ElEQVQoz72RTWvCQBCG9/8f2mPpr/BapAWh0iaaSBv8iInYgIkpcTfuRhJ3dteJREo/ojehw3sY3mGGmWdIfUWQ7wyxrYt+u1kfEA54PlghArZ9jQgGlUaDSBDrblo8RrtlqvwE5icFCYxX8t6ldy/sPZLhujH9BIIYJnT/8Ck6S54KRZTBtwysDzldweu8soNGg6B69sub3va2y3vjchh++ZZfOTH0c/kUS1Yg4XxruZ7tertCnC782TNK0tki+gWlKa0zOposRl64yQUxRg8HtuM4Wps/eOpacJ4z1qK1r8qcUbrJQMoGmDFGKXXVq/67+Qg29ED4VL/VyAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c5cc2173af2470c4ad8cdbf42d082f52/a59e9/jamstack-advantage-01.webp 192w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/0ca9f/jamstack-advantage-01.webp 384w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/dc9b9/jamstack-advantage-01.webp 768w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/e2c2f/jamstack-advantage-01.webp 1152w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/f3efb/jamstack-advantage-01.webp 1536w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/d5269/jamstack-advantage-01.webp 2560w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c5cc2173af2470c4ad8cdbf42d082f52/3b721/jamstack-advantage-01.png 192w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/66595/jamstack-advantage-01.png 384w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/fe486/jamstack-advantage-01.png 768w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/d2d74/jamstack-advantage-01.png 1152w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/e8464/jamstack-advantage-01.png 1536w,
+/static/c5cc2173af2470c4ad8cdbf42d082f52/c7a69/jamstack-advantage-01.png 2560w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c5cc2173af2470c4ad8cdbf42d082f52/fe486/jamstack-advantage-01.png"
+            alt="jamstack-advantage-01"
+            title="jamstack-advantage-01"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em></p>
+<p>JAM Stack은 렌더링할 화면들을 모두 Pre-Render 하여 제공해서 그만큼 사용자에게 화면을 보여주기 위해 준비하는 시간을 단축할 수 있습니다.</p>
+<blockquote>
+<ol start="2">
+<li>안전한 웹 사이트를 제공할 수 있습니다.</li>
+</ol>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/42646fce6289631b7ab8f8f314089aa9/c7a69/jamstack-advantage-02.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABFUlEQVQoz5WSwU7DMBBE8/9fxB0JJGihQhGi9NA0pY7sxCFpHG/s2B7k0FJVFARPe/Ssd2Y3wREXgvMB3wkh1iWSwwPgTuprpouWIASIYg3DT7IzsXXuie1vV63oDPZ7FMVZMQYpQUNs55y3w6iak5iI7mfzh8eFMeas+ThGgbVQCmWJTQYuqMyr+ZUjlUymPAC2zdfrNQDvPbw/DGztQcl5tMM53ptutxLpjbdDQsZmbb9tdNYZocdlqVhHmVR5Q4EdZ66qGIHWwcdvdm/bNE19CElvzLOkF24WnJbCzBi91nZZ9B1NA19K/pPoOXgnWtrV1CrKSt2T3VS6UTRt4Lc9nQIDQr7Jaim/IvgLyelIJvAfPgCRYkUXs4NBWQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/42646fce6289631b7ab8f8f314089aa9/a59e9/jamstack-advantage-02.webp 192w,
+/static/42646fce6289631b7ab8f8f314089aa9/0ca9f/jamstack-advantage-02.webp 384w,
+/static/42646fce6289631b7ab8f8f314089aa9/dc9b9/jamstack-advantage-02.webp 768w,
+/static/42646fce6289631b7ab8f8f314089aa9/e2c2f/jamstack-advantage-02.webp 1152w,
+/static/42646fce6289631b7ab8f8f314089aa9/f3efb/jamstack-advantage-02.webp 1536w,
+/static/42646fce6289631b7ab8f8f314089aa9/d5269/jamstack-advantage-02.webp 2560w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/42646fce6289631b7ab8f8f314089aa9/3b721/jamstack-advantage-02.png 192w,
+/static/42646fce6289631b7ab8f8f314089aa9/66595/jamstack-advantage-02.png 384w,
+/static/42646fce6289631b7ab8f8f314089aa9/fe486/jamstack-advantage-02.png 768w,
+/static/42646fce6289631b7ab8f8f314089aa9/d2d74/jamstack-advantage-02.png 1152w,
+/static/42646fce6289631b7ab8f8f314089aa9/e8464/jamstack-advantage-02.png 1536w,
+/static/42646fce6289631b7ab8f8f314089aa9/c7a69/jamstack-advantage-02.png 2560w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/42646fce6289631b7ab8f8f314089aa9/fe486/jamstack-advantage-02.png"
+            alt="jamstack-advantage-02"
+            title="jamstack-advantage-02"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em></p>
+<p>JAM Stack은 API를 통해 정적 사이트를 생성합니다. 여기서 사용되는 API는 JAM Stack을 활용한 각 프레임워크에서의 마이크로 서비스로서, 사이트 생성을 위한 프로세스가 추상화되어 있으므로 그만큼 공격 노출 범위가 감소하게 됩니다.</p>
+<blockquote>
+<ol start="3">
+<li>스케일링하기 쉬운 웹 사이트를 제공할 수 있습니다.</li>
+</ol>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/25f645c080d20ecf3b9b46aa6fea67d8/c7a69/jamstack-advantage-03.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABHElEQVQoz5VRXW+CQBDk//+SPpm0SdOm5aUW1IQHaiNqDIcktdLK1+kBHsft0gCSEkpMOrmn2dnZ21mlbIFYvR56TE+jlEOAPwwOyZSGPQr5FmZ2zLu1XSoWwTkRv1YfidjEPG0ZBepuK8oe9sfRkgJgXEiDZicBty69WcUTN00leLywGdf95Pnr5AR5O7ludqggsVRXZ4SSSVgxzgTck9NowWYkSyXseUGYMKP8bpuMZmmzf7UzyMLakNm7bcw3Bz+oC5WlG2bTtU/ZZU6e8znxtMW3auyaEC6BLS1LfXrUtXEY0cquXubgfU71cRiGjWbrkImuufZae30Romi+XekopaZpEuJg5xQACDgQM14/1RV03ZUui4j/MvoBn45ARC/GQwAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/25f645c080d20ecf3b9b46aa6fea67d8/a59e9/jamstack-advantage-03.webp 192w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/0ca9f/jamstack-advantage-03.webp 384w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/dc9b9/jamstack-advantage-03.webp 768w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/e2c2f/jamstack-advantage-03.webp 1152w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/f3efb/jamstack-advantage-03.webp 1536w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/d5269/jamstack-advantage-03.webp 2560w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/25f645c080d20ecf3b9b46aa6fea67d8/3b721/jamstack-advantage-03.png 192w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/66595/jamstack-advantage-03.png 384w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/fe486/jamstack-advantage-03.png 768w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/d2d74/jamstack-advantage-03.png 1152w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/e8464/jamstack-advantage-03.png 1536w,
+/static/25f645c080d20ecf3b9b46aa6fea67d8/c7a69/jamstack-advantage-03.png 2560w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/25f645c080d20ecf3b9b46aa6fea67d8/fe486/jamstack-advantage-03.png"
+            alt="jamstack-advantage-03"
+            title="jamstack-advantage-03"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em></p>
+<p>정적 웹 사이트에서의 스케일링은 더 많은 지역에서 홈페이지를 제공할 수 있게 하는 의미인데, 미리 빌드 된 파일 제공을 담당하는 CDN 서버를 구축하면 비용을 줄일 수 있습니다.</p>
+<h2>1. 왜 Gatsby 인가요?</h2>
+<h3>1-1. 정적 사이트 생성</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f5880d86f344098457ff2ef799cbfc0a/9bcef/npm.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABOElEQVQoz4WQWW7kMAxEff+rzrTdFsWdRQ1sYzpIfvJQEkSAS4kbE805/76OcQ4VZdVzDCJav9Hd26lFcwbtZKf4BBEiCsjMyqyqyou6wXe2wUaDnIc6s84SQVY3+mp9X2t9su/oiy3DzSwzcQ3xtbDW0lrh1qFc2sI/ar6KIy579x+w/k/jgImU8QguGlW1Vj96KLQntvtH2d2Pq4c779tyIqEBDkS1F3YpS2yVn8n9Y5nVrQlPDCtySGAY3lq7VKAf25HXwdQUL/YSi2lgK9KyaHFE9gKe3tN7Z6zOztgAsMiYg2WosgqpvIkHyRH+dj8i3u67+tsuHaovkZf6ESkbCiKnyKHyVr1lp8ruSqbkOl3n/aDQGcrGB88/YZyh22UF6IgUWZmP4FHmK+sR1NrjE6b6ilyFf3PphWkqqrBwAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/f5880d86f344098457ff2ef799cbfc0a/a59e9/npm.webp 192w,
+/static/f5880d86f344098457ff2ef799cbfc0a/0ca9f/npm.webp 384w,
+/static/f5880d86f344098457ff2ef799cbfc0a/dc9b9/npm.webp 768w,
+/static/f5880d86f344098457ff2ef799cbfc0a/e2c2f/npm.webp 1152w,
+/static/f5880d86f344098457ff2ef799cbfc0a/288cf/npm.webp 1325w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/f5880d86f344098457ff2ef799cbfc0a/3b721/npm.png 192w,
+/static/f5880d86f344098457ff2ef799cbfc0a/66595/npm.png 384w,
+/static/f5880d86f344098457ff2ef799cbfc0a/fe486/npm.png 768w,
+/static/f5880d86f344098457ff2ef799cbfc0a/d2d74/npm.png 1152w,
+/static/f5880d86f344098457ff2ef799cbfc0a/9bcef/npm.png 1325w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/f5880d86f344098457ff2ef799cbfc0a/fe486/npm.png"
+            alt="npm"
+            title="npm"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>위 사진은 최근 1년간 대표적인 JAM Stack 기반 프레임워크 4가지의 다운로드 횟수를 나타낸 것입니다. Next.js 다운로드 수가 제일 많고, 다음으로 Gatsby 다운로드 수가 많은 것을 볼 수 있습니다.</p>
+<blockquote>
+<p>그렇다면 더 인기가 많은 Next.js가 아닌 Gatsby를 사용하는 이유는 무엇일까요?</p>
+</blockquote>
+<p>두 프레임워크의 사용 용도가 다르기 때문입니다. <strong>Next.js</strong>는 정적 사이트 생성의 기능도 있지만 주로 <strong>서버 사이드 렌더링을 위해 사용</strong>하는 프레임워크입니다. 즉, 서버와 통신을 하며 요청을 받을 때마다 동적으로 웹 사이트를 생성합니다.</p>
+<blockquote>
+<p>하지만 Gatsby는 서버 없이, 오로지 정적 사이트 생성을 위해 사용하는 프레임워크입니다.</p>
+</blockquote>
+<p>그래서 서비스 및 기업 소개 페이지, 블로그, 포트폴리오 등에 많이 사용됩니다.</p>
+<h3>1-2. 검색 엔진 최적화와 성능 모두 챙기기</h3>
+<p>JavaScript가 실행되면 빈 HTML 페이지 안에 마크업을 추가해주는 SPA(Single Page Application)와 다르게, 개발 후 빌드 과정에서 마크업이 생성됩니다. 페이지 내 모든 콘텐츠가 생성되어있기에 SEO(Search Engine Optimization)를 잘 챙길 수 있습니다.</p>
+<blockquote>
+<p>Gatsby는 단순히 정적 페이지를 만들어 주는 것으로 끝나는 것이 아니라, 필요에 따라 CSR(Client Side Rendering)과 SSR(Server Side Rendering), lazy loading을 적절히 섞어 사용할 수 있어 성능 면에서도 단순 정적 페이지보다 큰 장점이 있습니다.</p>
+</blockquote>
+<h2>2. Gatsby 개념 소개</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dc278b614b85f5a691b411fa1cd1103b/78d47/gatsby-data-sources-build-deploy.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVQ4y21TwW7bMAzNz++0n9h12HEFdhoG9LQBAQoEO/SyAD3M3dLaTmxLFsVHcpNlu3YcQaAt8T2B71Ha2XaoptCf+PTALwelc97dAnemBhZmQNIABMxQi8X37sc7t3+P6hEJwzKNASOJrGoAqmfXlIGjmJqq9o7KItSlQk3ERKX6MwKYRFQ5wjSTGU3Zl4Vv65QBJBK7JnRn59ueAkPQVKF6dpdXH/pU5Eg2s1SKiqqOJQ0C0nIQKvOOZUhe6qD5hmGjO/3PD3S8my3M3/F3iLt0GmTpNDM4AjCpH7V7mrEpFcGUsm+aOeKKHwlm9u3Tcf/196DrrU/56BV5w0/ow/3Tr4diIMhSFrNck7f84BFdAK5TZgaIqSbDMFWyBKWesURCnESKyOaG5ZNmPiH3ybfRN6GrvWto1EnAuv7dbFLucL56WXNumaquUgvzbvV5Uk3Hz7G4v/VqJvLSsCxviOIaKvcf68OX3mPZ3nleu92dQ3ehpgptHaq/7vWk5UnOL767UHehtg6+pRU5G7uaSDFddhHTJHK5P8//Zf8DG5HljM8OKVMAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/dc278b614b85f5a691b411fa1cd1103b/a59e9/gatsby-data-sources-build-deploy.webp 192w,
+/static/dc278b614b85f5a691b411fa1cd1103b/0ca9f/gatsby-data-sources-build-deploy.webp 384w,
+/static/dc278b614b85f5a691b411fa1cd1103b/dc9b9/gatsby-data-sources-build-deploy.webp 768w,
+/static/dc278b614b85f5a691b411fa1cd1103b/cf465/gatsby-data-sources-build-deploy.webp 800w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/dc278b614b85f5a691b411fa1cd1103b/3b721/gatsby-data-sources-build-deploy.png 192w,
+/static/dc278b614b85f5a691b411fa1cd1103b/66595/gatsby-data-sources-build-deploy.png 384w,
+/static/dc278b614b85f5a691b411fa1cd1103b/fe486/gatsby-data-sources-build-deploy.png 768w,
+/static/dc278b614b85f5a691b411fa1cd1103b/78d47/gatsby-data-sources-build-deploy.png 800w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/dc278b614b85f5a691b411fa1cd1103b/fe486/gatsby-data-sources-build-deploy.png"
+            alt="gatsby-data-sources-build-deploy"
+            title="gatsby-data-sources-build-deploy"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://dev.to/sakethkowtha/how-gatsby-works-580f" target="_blank" rel="noreferrer noopener" aria-label="gatsby-data-sources-build-deploy">dev.to</a></em></p>
+<blockquote>
+<p>위 그림에서 확인할 수 있는 Data Sources, Build, Deploy 세 개의 단계로 살펴보겠습니다.</p>
+</blockquote>
+<h3>2-1. Data Sources</h3>
+<p>블로그나 웹사이트를 만들려면 데이터가 필요합니다. 이 <strong>데이터를 가져오는 곳</strong>을 Gatsby에서는 <strong>데이터 소스</strong>라고 부릅니다.</p>
+<blockquote>
+<p>여기서 데이터 소스는 위에 JAM Stack에서 살펴본 거처럼 Wordpress 같은 CMS 도구가 될 수도 있고 다른 정적 사이트 생성기처럼 Markdown 파일이 될 수도 있고 API 등을 통해서 다른 곳에서 가져올 수도 있습니다.</p>
+</blockquote>
+<h3>2-2. Build</h3>
+<p>Gatsby는 플러그인 시스템이 잘 되어 있어서 다양한 데이터 소스에서 데이터를 가져올 수 있습니다.</p>
+<blockquote>
+<p>Gatsby는 기본적으로 GraphQL을 사용해서 데이터 소스에서 데이터를 가져옵니다.</p>
+</blockquote>
+<p>플러그인을 이용해서 RESTful API에서 데이터를 가져올 수도 있지만 GraphQL이 Gatsby에 포함되어 있어서 GraphQL을 사용하면 훨씬 쉽게 쓸 수 있고 원하는 데이터를 선택해서 가져올 수 있습니다.</p>
+<blockquote>
+<p>웹 사이트는 React를 이용해서 만듭니다.</p>
+</blockquote>
+<p>코드는 React를 이용해서 컴포넌트 작성하듯이 사용하지만, 공통 레이아웃을 관리하거나 페이지를 생성하거나 데이터 소스와 컴포넌트를 연결하는 기능을 Gatsby에서 제공하고 있어서 쉽게 만들 수 있습니다.</p>
+<h3>2-3. Deploy</h3>
+<blockquote>
+<p>이를 빌드하면 정적 사이트로 만들어 줍니다.</p>
+</blockquote>
+<p>여기서 SPA가 아닌 정적 사이트로 만드는 부분이 중요합니다. CMS나 파일 등의 데이터 소스에서 GraphQL로 가져온 데이터를 빌드할 때 모두 가져와서 정적 파일의 데이터로 포함합니다.</p>
+<blockquote>
+<p>SPA라면 API로 가져오는 로직이 소스에 들어있고 사용자가 SPA 사이트를 실행할 때 API로 가져오게 되지만 Gatsby는 정적 사이트를 만들어주므로 빌드 시에 GraphQL로 데이터를 가져와서 빌드된 배포 파일에 포함합니다.</p>
+</blockquote>
+<p>그러므로 사이트를 운영할 때 데이터 소스로 이용한 API 서버나 파일은 제공하지 않아도 됩니다. 이 부분이 다른 도구들과 Gatsby의 가장 큰 차이점입니다.</p>
+<h2>3. Gatsby 개발 시작하는 여러 방법 알아보기</h2>
+<h3>3-1. CLI 기본 설정</h3>
+<blockquote>
+<p>gatsby-cli 를 설치했습니다.</p>
+</blockquote>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">yarn global add gatsby-cli</code>
+        </deckgo-highlight-code>
+<p><code>gatsby new</code>를 입력하면 다음과 같은 화면에서 추가 설정을 할 수 있습니다.</p>
+<ul>
+<li>
+<p>다양한 옵션을 직접 선택할 수 있습니다.</p>
+</li>
+<li>
+<p>추가적인 설정을 사용하지 않고 기본 설정만 체크했습니다.</p>
+</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/15e8c5f00c50291f73c062b9641cd9f8/6f641/gatsby-new.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100.52083333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAACPklEQVQ4y3WTCW7bMBBFfY1aXCXumySSkhfFdeIGbZHe/z4FqdiJ4/ZjQAwkPszMJ7lRISnbt1wDzCBlkDBIOSActQJ3ErcStwLXHLUSXQVrbBC3wzDEmFJKU1WMMU+TtRZCCACoK4QQok4hhO9gwm0ffIxxqOr73nsfQlBKSSmVUlxwzoUQAlGBMH6o3IcYk/ch5TyOcRzHaZ7yNM27eX84KKVYxUvbX2AqLGGqhqyDCVAnB7coFhQjUCu+zkwIpu8iVfj6HyDQvK8fyBfDHoRxaY4wQ2Ug3BIRHvfAum8Drmqq1mS73ULSQcoh6fCnbt9JCEE9iI21tv8k51x1fSxeS6GUbCn53DBCSGutlHLOFdh7vzI5l0Oe5znn3F6Frw7ftH7vum7Tdu3qFqUUY0wIqSPB7XZ7GwRA2DQNvPr00fbxctn9fJtfXufTOca42+0Oh0OMsTQthJRSa80YM8YQQsCNX93enZZfb3/S6+/xfEmns+8HKYUxxntvrXVVxpgQAn6Edc77lx/jckrPl3R+0WEQnK1lm6b5dlXx/54ssJvnw/MlHpbx+JS/P0/L07Icj8fjsizelUvuQxjHkTFWH8c9bKxxzq3ua6WssUrpruu44GXiKuscofQflcs7iNF5H1MMfRjjqI0u7mOCAcYQQ1CsRqXqA0wwTjn1th/0MJihlzVxg2RSESWIoJgifHelP+CWdVopyaVkUgstOoFhLVhqrYH+Fxvl3H6/TzmnnK2zXPDqC/rygP4J/wUV6qwbDgfpGQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/15e8c5f00c50291f73c062b9641cd9f8/a59e9/gatsby-new.webp 192w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/0ca9f/gatsby-new.webp 384w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/dc9b9/gatsby-new.webp 768w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/230f6/gatsby-new.webp 1116w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/15e8c5f00c50291f73c062b9641cd9f8/3b721/gatsby-new.png 192w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/66595/gatsby-new.png 384w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/fe486/gatsby-new.png 768w,
+/static/15e8c5f00c50291f73c062b9641cd9f8/6f641/gatsby-new.png 1116w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/15e8c5f00c50291f73c062b9641cd9f8/fe486/gatsby-new.png"
+            alt="gatsby-new"
+            title="gatsby-new"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>Installing Gatsby… 가 끝나면 위에서 설정한 프로젝트 이름으로 폴더가 생성됩니다. Gatsby 서버를 실행하면 기본 템플릿 화면을 확인할 수 있습니다.</p>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">cd &quot;[site-name]&quot;</code>
+        </deckgo-highlight-code>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">yarn start</code>
+        </deckgo-highlight-code>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c16adaee4099693d7883265be25046c2/dabbe/gatsby-template.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.97916666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABFklEQVQ4y62TW0vEMBCF+/9/2j754rqILoKoq72muUwmaXokgdZuWelFQyeFJvk4Z06T9T1ujv63hYWRxampBU7HJzw+POP15YLOh93QBPx6L3G+v+DtnOPucICWegQO0LXwBKzLTzDb9CEEjsfTs8d+FveG4OGpgDc5HGsQWViyMEaDSW9XSJKgBF0pmtbc/iIw9kzJqIxgrYVzLhUzo+u6H+BahUoTRNUmqxHivR8rArcEk4BGEZqqhdEmAf4M1NKgKQW00snyFBhC2B6KUhZ10UC2KvVuCtwVSrQqhQJb/j+gqFtILa9CGeDbe9gSirzC8eMEnin0fkco8WAMg9mNyQ7vXSk722Hpr92U8vyq3aq1Cr8BSKtAOENbPOYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c16adaee4099693d7883265be25046c2/a59e9/gatsby-template.webp 192w,
+/static/c16adaee4099693d7883265be25046c2/0ca9f/gatsby-template.webp 384w,
+/static/c16adaee4099693d7883265be25046c2/dc9b9/gatsby-template.webp 768w,
+/static/c16adaee4099693d7883265be25046c2/e2c2f/gatsby-template.webp 1152w,
+/static/c16adaee4099693d7883265be25046c2/9dd84/gatsby-template.webp 1483w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c16adaee4099693d7883265be25046c2/3b721/gatsby-template.png 192w,
+/static/c16adaee4099693d7883265be25046c2/66595/gatsby-template.png 384w,
+/static/c16adaee4099693d7883265be25046c2/fe486/gatsby-template.png 768w,
+/static/c16adaee4099693d7883265be25046c2/d2d74/gatsby-template.png 1152w,
+/static/c16adaee4099693d7883265be25046c2/dabbe/gatsby-template.png 1483w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c16adaee4099693d7883265be25046c2/fe486/gatsby-template.png"
+            alt="gatsby-template"
+            title="gatsby-template"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<h3>3-2. Default Starter 설정</h3>
+<blockquote>
+<p>site name과 starter-url 옵션으로 starter에서 사이트를 생성할 수 있습니다.</p>
+</blockquote>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">gatsby new &quot;[site-name]&quot; &quot;[starter-url]&quot;</code>
+        </deckgo-highlight-code>
+<blockquote>
+<p>site-name만 설정하고 starter-url은 아무것도 작성하지 않으면 자동으로 gatsby-starter-default가 설정됩니다.</p>
+</blockquote>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">npx gatsby-cli new &quot;[site-name]&quot;</code>
+        </deckgo-highlight-code>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">cd &quot;[site-name]&quot;</code>
+        </deckgo-highlight-code>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">yarn develop or gatsby develop</code>
+        </deckgo-highlight-code>
+<p>gatsby develop 명령어를 실행하면 프로젝트의 루트 디렉터리로 이동하여 개발 서버를 시작합니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/65dcf387707c22b4252f108ee172ddb9/ac7a9/gatsby-yarn-develop.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.875%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAu0lEQVQoz51QzQqCYBD0/d+nQ/eiwCCxKI08CEWC/aiZ5PrtTmjIpyWVLQx72JnZ2TWc2R413LKbO9jTLeZjF97iAN8J4dkBHFPzPsFAR6VZgtMlBIPQtwxWjFeoQoFygr8KcEvuFVF18LrQSigiVecihzWYwBouoZS0Zl8TNuwaIsZ6tMH1nD4nLL+frNPpFFkmiI45mOtFfyTUAkEcF4giAhH3OvfNsNIJwKxARNWT/zbUwra4j1lp+ADEXr/2aahLhQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/65dcf387707c22b4252f108ee172ddb9/a59e9/gatsby-yarn-develop.webp 192w,
+/static/65dcf387707c22b4252f108ee172ddb9/0ca9f/gatsby-yarn-develop.webp 384w,
+/static/65dcf387707c22b4252f108ee172ddb9/dc9b9/gatsby-yarn-develop.webp 768w,
+/static/65dcf387707c22b4252f108ee172ddb9/e2c2f/gatsby-yarn-develop.webp 1152w,
+/static/65dcf387707c22b4252f108ee172ddb9/f3efb/gatsby-yarn-develop.webp 1536w,
+/static/65dcf387707c22b4252f108ee172ddb9/0b34d/gatsby-yarn-develop.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/65dcf387707c22b4252f108ee172ddb9/3b721/gatsby-yarn-develop.png 192w,
+/static/65dcf387707c22b4252f108ee172ddb9/66595/gatsby-yarn-develop.png 384w,
+/static/65dcf387707c22b4252f108ee172ddb9/fe486/gatsby-yarn-develop.png 768w,
+/static/65dcf387707c22b4252f108ee172ddb9/d2d74/gatsby-yarn-develop.png 1152w,
+/static/65dcf387707c22b4252f108ee172ddb9/e8464/gatsby-yarn-develop.png 1536w,
+/static/65dcf387707c22b4252f108ee172ddb9/ac7a9/gatsby-yarn-develop.png 1920w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/65dcf387707c22b4252f108ee172ddb9/fe486/gatsby-yarn-develop.png"
+            alt="gatsby-yarn-develop"
+            title="gatsby-yarn-develop"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<h3>3-3. Blog starter 설정</h3>
+<blockquote>
+<p>Blog starter를 사용하기 위해 starter-url 옵션에 <a href="https://github.com/gatsbyjs/gatsby-starter-blog" target="_blank" rel="nofollow">https://github.com/gatsbyjs/gatsby-starter-blog</a> 를 작성했습니다.</p>
+</blockquote>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">gatsby new &quot;[site-name]&quot; https://github.com/gatsbyjs/gatsby-starter-blog</code>
+        </deckgo-highlight-code>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">cd &quot;[site-name]&quot;</code>
+        </deckgo-highlight-code>
+<deckgo-highlight-code language="shell" terminal="carbon" theme="seti"  >
+          <code slot="code">yarn develop or gatsby develop</code>
+        </deckgo-highlight-code>
+<blockquote>
+<p>Gatsby 서버를 실행하면 Blog 템플릿 화면을 확인할 수 있습니다.</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/31004a44060b0f19125b7301c9ae38c3/ac7a9/gatsby-starter-blog.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.875%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAv0lEQVQoz53Q2wrCQAwEUP//54rgFdQHQbBopdZuNsleRrpK0VqlNrDsy+QwZILOxBjTX5xPmGYZlqs15ss1ZosVNtsdVBUhhLfs60y+gcwMQxYkHuoj/HPXOz8OtOJwvFQ4lTVEFM5pauecbzP/gSw4FiXy4orqVqM2Jj1jCCGMAI1lHPIigQ1ERDBEqWU3OwgkFuzzCypj4VTBLBCRdL84BmyaWGvxufLI9GE/waZJ04jFtUAXGtSwN5ggDJo7WO/GTsdxWiwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/31004a44060b0f19125b7301c9ae38c3/a59e9/gatsby-starter-blog.webp 192w,
+/static/31004a44060b0f19125b7301c9ae38c3/0ca9f/gatsby-starter-blog.webp 384w,
+/static/31004a44060b0f19125b7301c9ae38c3/dc9b9/gatsby-starter-blog.webp 768w,
+/static/31004a44060b0f19125b7301c9ae38c3/e2c2f/gatsby-starter-blog.webp 1152w,
+/static/31004a44060b0f19125b7301c9ae38c3/f3efb/gatsby-starter-blog.webp 1536w,
+/static/31004a44060b0f19125b7301c9ae38c3/0b34d/gatsby-starter-blog.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/31004a44060b0f19125b7301c9ae38c3/3b721/gatsby-starter-blog.png 192w,
+/static/31004a44060b0f19125b7301c9ae38c3/66595/gatsby-starter-blog.png 384w,
+/static/31004a44060b0f19125b7301c9ae38c3/fe486/gatsby-starter-blog.png 768w,
+/static/31004a44060b0f19125b7301c9ae38c3/d2d74/gatsby-starter-blog.png 1152w,
+/static/31004a44060b0f19125b7301c9ae38c3/e8464/gatsby-starter-blog.png 1536w,
+/static/31004a44060b0f19125b7301c9ae38c3/ac7a9/gatsby-starter-blog.png 1920w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/31004a44060b0f19125b7301c9ae38c3/fe486/gatsby-starter-blog.png"
+            alt="gatsby-starter-blog"
+            title="gatsby-starter-blog"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<blockquote>
+<p><a href="http://localhost:8000/___graphql" target="_blank" rel="nofollow">http://localhost:8000/___graphql</a> 에 접속하면 graphql 을 확인할 수 있습니다.</p>
+</blockquote>
+<h2>마치며</h2>
+<p>Gatsby의 개념과 프로젝트를 시작하는 방법에 대해 알아봤습니다. <a href="https://github.com/gatsbyjs/gatsby-starter-blog" target="_blank" rel="nofollow">https://github.com/gatsbyjs/gatsby-starter-blog</a> 이외에도 다양한 starter가 있어서 적절한 starter를 사용하면 편리하게 개발할 수 있을 거 같습니다 🤔</p>
+<hr>
+<p>참고 자료 📩</p>
+<ul>
+<li><a href="https://www.gatsbyjs.com/docs" target="_blank" rel="nofollow">Welcome to the Gatsby Way of Building | Gatsby</a></li>
+<li><a href="https://www.inflearn.com/course/gatsby-%EA%B8%B0%EC%88%A0%EB%B8%94%EB%A1%9C%EA%B7%B8" target="_blank" rel="nofollow">[무료] React 기반 Gatsby로 기술 블로그 개발하기 - 인프런 | 강의</a></li>
+<li><a href="https://blog.banksalad.com/tech/build-a-website-with-gatsby" target="_blank" rel="nofollow">React밖에 모르는 당신에게. GatsbyJS한 잔, ‘채용~’ | 뱅크샐러드</a></li>
+<li><a href="https://blog.outsider.ne.kr/1426" target="_blank" rel="nofollow">정적 사이트 생성기 Gatsby :: Outsider’s Dev Story </a></li>
+</ul></div><style data-emotion="css 103ou0r">.css-103ou0r{width:100%;height:10rem;margin:4rem 0 0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;border-radius:1rem;background-color:rgba(241, 237, 233, 0.5);}</style><div class="css-103ou0r e1acrhes1"><style data-emotion="css 1q8iwno">.css-1q8iwno{width:12rem;height:4.5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;border-radius:1rem;font-size:1.5rem;font-weight:500;color:rgba(255, 255, 255, 1);background-color:rgba(104, 104, 172, 1);cursor:pointer;}.css-1q8iwno svg{font-size:2rem;margin:0 0.8rem 0 0;}.css-1q8iwno:hover{background-color:rgba(144, 144, 205, 1);}</style><button class="css-1q8iwno e1acrhes0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 15a3.51 3.51 0 0 0 2.36-.93l6.26 3.58a3.06 3.06 0 0 0-.12.85 3.53 3.53 0 1 0 1.14-2.57l-6.26-3.58a2.74 2.74 0 0 0 .12-.76l6.15-3.52A3.49 3.49 0 1 0 14 5.5a3.35 3.35 0 0 0 .12.85L8.43 9.6A3.5 3.5 0 1 0 5.5 15zm12 2a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5zm0-13A1.5 1.5 0 1 1 16 5.5 1.5 1.5 0 0 1 17.5 4zm-12 6A1.5 1.5 0 1 1 4 11.5 1.5 1.5 0 0 1 5.5 10z"></path></svg>공유하기</button></div><style data-emotion="css 1ke897m">.css-1ke897m{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;padding:8rem 0 8rem 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1ke897m{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;text-align:center;}}</style><div class="css-1ke897m er55s1u0"><style data-emotion="css 1t8kc11">.css-1t8kc11{width:13rem;height:13rem;border-radius:6.5rem;overflow:hidden;text-align:center;z-index:0;}</style><div class="css-1t8kc11 e1i74uee1"><style data-emotion="css 1h37zi1">.css-1h37zi1{width:100%;height:100%;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1i74uee0"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;220&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAARlAAAEZQAGA43XUAAAEq0lEQVQ4yx3T+28TdQAA8IuayMYe3dau7fXbe/Z6d7273t2u7dbr2vVdunZdHxt0EGSMbY7Vji12y8RMBWXgZMCWmPAwGh8IjoE8DGJ4SUANiKhghKBoACHZBvwNRv+Dzy8fyGmzuDiLTGGylZAJRAJwkCaacEDptJ0eZVtfxxvr2reuz27rzY7l45s6omNdrcVsZCAVLGajkIMlJSvOEyiLghaaEIHRSyIKAusrK7OqvKO/c3t/52RfbvPqRCEd7k36e+LegVRwKBfbmA5CftkWd9kjCh8U2ShLeknURyISMAJNdd7r2DmYL62KDefCo13x/rbA2qja3erbkPB3hZq6wk2QylqyjWLGZS+lQ9kGthk3NwAjB+vhquqMy96b9K+KqB1+Z0dzQ7tbDCtci2TLeJVMc0PSI0O0ydDmFAI2SzHhy8hMMw5Yfb2xsqrshRc9NLEl5hl32zsVW9jBu22UgyZ9dsYr0DGJ3aCwEAuMCQffKjLDSX+CpyRjfdRGTLb7Wkh0nAJfiehFETspkykr6mbJFs7it1m8nKWHQXdYAWTR69xWIimxg8HGpGBto7HukHrv1L7DKfcXAjYv4t86qMMisZE0ZTC4FTGGEEMLYgiY6+OoAbKjoAFHQjbrelXeHFLeCym0tm48n7jQqe7nzKck4pJi+YTHpmjzuAUMk6Y+HF6Dwe2oMY7BUAOONFKYh0SL8ZYTA7kxr1ixrDzPEvvD0jdu602VudvMnpbJOQmfl4k9LJhmwDbaXCBMJRqBGKPeTxPDqdB3H++8sr2YlmhdRcVMZ3AuH/wtIS7EhMdh4ZyDmmTMx2TiHRpsIuECaVqJGddgRog26FSKuHrys/tHZw6vjQz4FM2y8smo81whdb2j6VmKW8za/w7azv+P30yZOzBjwFwfI8AKAkCUTptVlfs3Lv7wzsB8T/zLwfSBvvTZQvpaKfeg3/+kX114Lba4WvnTa7vipA4J+E7GPELA3RzZrXAQa9DlVOcf5+Z+fnfw2szozd0jd/YU70wVro/l/ikEFibaH82sWxrwLES4283MGQd5gEcnrOZXLKBXYiCktkYwwaVMZDjkunDyyL252ZvThV/e7L02mn04mnwy6FkcCS5taHxa8N3LOy+5LF8rlinGPGEFRRsB0Qa9HcARGouQ4OyJo3cPTd+aHbo6lLtUaLs1klrIcUs5+2JGePJq5Ha7Ms9hn4vE+xyymwElDodMmhpCpw0wZIJCzh4/snTh4F+zgz/1xr4vtF1+Of57xPY0YX8UExbj/K9u+rhI7BOwj+z4NA2GaBQidFqrvt6BggiF9ORSeyc27Xlpxet+8e20b1fGN6XyjyPCwyD3IMTfUJnTEv6hgO3j0S2UqcigEFmvM2k0DtQU4SmRxLCaWqSmtq6y6jnoeYkixgPO+1HuYZi/pdKXndQxEf+Ax2ZYZKsVjFEAwrV1mrJy1qj3CbSDoSw6rblWY6r+b1UTBs54uKWV8rPuxsdR/keX9ZSIH7LjB3hskja9RSOQsbqqelkZrq1zC4yAmQ2VFdrly+HqyvKy8hIBn5bJgzJ5xkufd1PHJeKYHfvUju/l0FkW7OLQfwHCd2NdUDchsgAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/4b2a4668ab39f6bacdce8044df06e1c8/6d333/profile.webp 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/529ff/profile.webp 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/58add/profile.webp 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/de6fa/profile.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png" data-srcset="/static/4b2a4668ab39f6bacdce8044df06e1c8/03c8e/profile.png 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/8dd11/profile.png 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/e59d1/profile.png 440w" alt="profile"/></picture><noscript><picture><source type="image/webp" srcSet="/static/4b2a4668ab39f6bacdce8044df06e1c8/6d333/profile.webp 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/529ff/profile.webp 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/58add/profile.webp 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/de6fa/profile.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png" srcSet="/static/4b2a4668ab39f6bacdce8044df06e1c8/03c8e/profile.png 55w,/static/4b2a4668ab39f6bacdce8044df06e1c8/8dd11/profile.png 110w,/static/4b2a4668ab39f6bacdce8044df06e1c8/c48b2/profile.png 220w,/static/4b2a4668ab39f6bacdce8044df06e1c8/e59d1/profile.png 440w" alt="profile"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><style data-emotion="css uvdonz">.css-uvdonz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin:0 0 0 1.8rem;}@media all and (min-width: 250px) and (max-width: 800px){.css-uvdonz{margin:1.5rem 0 0;}}</style><div class="css-uvdonz e1vgmnt64"><style data-emotion="css 1wtyapr">.css-1wtyapr{font-size:3rem;font-weight:500;}</style><p class="css-1wtyapr e1vgmnt63">김민지</p><style data-emotion="css ghwq6o">.css-ghwq6o{margin:1.3rem 0 0.9rem;font-size:1.5rem;line-height:150%;}@media all and (min-width: 250px) and (max-width: 800px){.css-ghwq6o{margin:1.5rem 0;}}</style><p class="css-ghwq6o e1vgmnt62">안녕하세요 👋 개발자 김민지입니다. 방문해 주셔서 감사합니다.</p><style data-emotion="css 4cf5bo">.css-4cf5bo{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}@media all and (min-width: 250px) and (max-width: 800px){.css-4cf5bo{margin:0 auto;}}</style><div class="css-4cf5bo e1vgmnt61"><style data-emotion="css 1gs1t8l">.css-1gs1t8l{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;margin:0 0 0 2rem;font-size:1.3rem;}.css-1gs1t8l:hover{color:rgba(104, 104, 172, 1);}.css-1gs1t8l:nth-of-type(1){margin:0;}.css-1gs1t8l a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.css-1gs1t8l svg{margin:0 0.5rem 0 0;font-size:1.5rem;}</style><div class="css-1gs1t8l e1vgmnt60"><a href="mailto:minzidev@gmail.com" aria-label="Email"><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path></svg>Email</a></div><div class="css-1gs1t8l e1vgmnt60"><a href="https://github.com/mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="Github"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a></div><div class="css-1gs1t8l e1vgmnt60"><a href="https://www.linkedin.com/in/dev-mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg> LinkedIn</a></div></div></div></div><style data-emotion="css 1pp3v41">.css-1pp3v41{padding:0 0 4rem 0;font-size:1.5rem;text-align:center;}</style><p class="css-1pp3v41 e1lg3j550">최신글 보러가기</p><style data-emotion="css 905evm">.css-905evm{width:76.8rem;margin:0 auto;}@media all and (min-width: 250px) and (max-width: 800px){.css-905evm{width:100%;}}</style><div class="css-905evm e17b5y1l0"><style data-emotion="css 1qnxx8n">.css-1qnxx8n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 0 4.5rem;cursor:pointer;}.css-1qnxx8n:hover h1{color:rgba(104, 104, 172, 1);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}.css-1qnxx8n:hover img{-webkit-transform:scale(1.1);-moz-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1);-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}.css-1qnxx8n:nth-last-of-type(1){margin:0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1qnxx8n{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;}}</style><a class="css-1qnxx8n elj48mc4" href="/etc/2023-ossca-introduction/"><style data-emotion="css bp3xiq">.css-bp3xiq{width:22rem;height:14rem;border-radius:1rem;overflow:hidden;z-index:0;margin:0 3rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-bp3xiq{width:100%;height:auto;margin:0 0 1.7rem;}}</style><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRUlEQVQoz5VS70vCUBR92/Jt7ofTbWyOMdegiaAuKyKJ6EtQKDHJ0gwkCAKN6nN//on3Qoncyj4cuLx37rmHey4hhGAFQRCgKAqq1SqHbdtotVpI0xRBEEDTNM753pOD4k+BsGYBtCTDthwkewm6nS7iOIZlWXyArusol8uglEKSpN8F87BDBXieh2bS5MK1Wg2qqnJxwzDyBS0xRl3chy+lMEkDntRGRPu8Vkl9zatUKgjDEFEUwXGcYof9OMP9yQey3juuDuYYdha4br8hO3zF6PgFve4Rot3Gmi/LMnzf545zBc/OT/G8fMJ4OsL88QGT2RiXgwvc3GWYzG6xWC4wHAyLAtoU/Fq2wcFS1zUdmqpBkRXQEuW7Yq7+nfJG6j8ciaLI8afg6haZC1az5TPXLFH2ZpomD4Cdjuu62znc4oBzeZ8W++Xtx97gfwAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/48dbebbd71b21542ec2e6adf207d7c74/23fb3/2023-ossca-introduction.webp 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/14dc7/2023-ossca-introduction.webp 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/a5d93/2023-ossca-introduction.webp 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/18a8b/2023-ossca-introduction.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png" data-srcset="/static/48dbebbd71b21542ec2e6adf207d7c74/d6f1d/2023-ossca-introduction.png 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/f45ea/2023-ossca-introduction.png 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/94612/2023-ossca-introduction.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/48dbebbd71b21542ec2e6adf207d7c74/23fb3/2023-ossca-introduction.webp 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/14dc7/2023-ossca-introduction.webp 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/a5d93/2023-ossca-introduction.webp 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/18a8b/2023-ossca-introduction.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png" srcSet="/static/48dbebbd71b21542ec2e6adf207d7c74/d6f1d/2023-ossca-introduction.png 205w,/static/48dbebbd71b21542ec2e6adf207d7c74/f45ea/2023-ossca-introduction.png 410w,/static/48dbebbd71b21542ec2e6adf207d7c74/28c7a/2023-ossca-introduction.png 820w,/static/48dbebbd71b21542ec2e6adf207d7c74/94612/2023-ossca-introduction.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><style data-emotion="css 1h9e0xm">.css-1h9e0xm{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 1.7rem 0 0;}</style><div class="css-1h9e0xm elj48mc3"><style data-emotion="css 17p5nqe">.css-17p5nqe{display:-webkit-box;-webkit-box-orient:vertical;word-break:keep-all;-webkit-line-clamp:1;overflow:hidden;font-size:2.1rem;font-weight:500;line-height:140%;}@media all and (min-width: 250px) and (max-width: 800px){.css-17p5nqe{-webkit-line-clamp:3;}}</style><h1 class="css-17p5nqe elj48mc2">오픈소스 컨트리뷰션 아카데미 지원부터 발대식까지</h1><style data-emotion="css 1pzr76b">.css-1pzr76b{display:-webkit-box;-webkit-box-orient:vertical;overflow-wrap:break-word;-webkit-line-clamp:3;overflow:hidden;word-break:keep-all;font-size:1.5rem;line-height:130%;margin:1.5rem 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-1pzr76b{-webkit-line-clamp:3;}}</style><h2 class="css-1pzr76b elj48mc1">2023 오픈소스 컨트리뷰션 아카데미의 Backend.AI 프로젝트에 멘티로 참여하게 되었습니다. 오픈소스 컨트리뷰션 아카데미 소개와 발대식 참여 후기에 대해 작성했습니다.</h2><style data-emotion="css qxl638">.css-qxl638{font-size:1.3rem;color:rgba(98, 92, 96, 0.8);}</style><p class="css-qxl638 elj48mc0">2023-07-09<!-- --> · <!-- -->3<!-- --> min read</p></div></a><a class="css-1qnxx8n elj48mc4" href="/etc/contribute-to-the-translated-content-of-mdn-web-docs/"><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQElEQVQoz4WSy0oDMRSGk8lMZjReNh2h7lUqxTeQlrquYKUb0TdQ38DrVlFxJS2itLhV6czUaykV3+uXZDqaueEiJDlJvvPn/IcwZiIahsFia31PCIVl8cx7OoMkD3SQaVpqppRBiCkQQkCpocD6vVjifKClgBKy0Wig+9DBZrOJ6ZlZFcsSEAeyKBjOjjMB0+RYrVTQf/Xx/vGGwfAT7dsW6uv1lIgUMFnLaq2Kq+tLeEEPfuDB83t4en7EcDTA0fEBst7lAmWNSsslbO9sodW+QdD3Ebz4+Poe4fziDEIIlTSsMYORB9TNkOuCW0BtrYqT00Pcd+6wt78L150bO26njJEjB8iVSunupBAor5SxuLQQumyYsG3n9yeR47lf1lVaXKr4i0tVnDtj96lSWyzOq0T/tk2yHZINnyxPBPwBINf9D3m0XFQAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/17d6389bbfba63790ce2a3d13720dc44/23fb3/contribute-to-the-translated-content-of-mdn-web-docs.webp 205w,/static/17d6389bbfba63790ce2a3d13720dc44/14dc7/contribute-to-the-translated-content-of-mdn-web-docs.webp 410w,/static/17d6389bbfba63790ce2a3d13720dc44/a5d93/contribute-to-the-translated-content-of-mdn-web-docs.webp 820w,/static/17d6389bbfba63790ce2a3d13720dc44/18a8b/contribute-to-the-translated-content-of-mdn-web-docs.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png" data-srcset="/static/17d6389bbfba63790ce2a3d13720dc44/d6f1d/contribute-to-the-translated-content-of-mdn-web-docs.png 205w,/static/17d6389bbfba63790ce2a3d13720dc44/f45ea/contribute-to-the-translated-content-of-mdn-web-docs.png 410w,/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png 820w,/static/17d6389bbfba63790ce2a3d13720dc44/94612/contribute-to-the-translated-content-of-mdn-web-docs.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/17d6389bbfba63790ce2a3d13720dc44/23fb3/contribute-to-the-translated-content-of-mdn-web-docs.webp 205w,/static/17d6389bbfba63790ce2a3d13720dc44/14dc7/contribute-to-the-translated-content-of-mdn-web-docs.webp 410w,/static/17d6389bbfba63790ce2a3d13720dc44/a5d93/contribute-to-the-translated-content-of-mdn-web-docs.webp 820w,/static/17d6389bbfba63790ce2a3d13720dc44/18a8b/contribute-to-the-translated-content-of-mdn-web-docs.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png" srcSet="/static/17d6389bbfba63790ce2a3d13720dc44/d6f1d/contribute-to-the-translated-content-of-mdn-web-docs.png 205w,/static/17d6389bbfba63790ce2a3d13720dc44/f45ea/contribute-to-the-translated-content-of-mdn-web-docs.png 410w,/static/17d6389bbfba63790ce2a3d13720dc44/28c7a/contribute-to-the-translated-content-of-mdn-web-docs.png 820w,/static/17d6389bbfba63790ce2a3d13720dc44/94612/contribute-to-the-translated-content-of-mdn-web-docs.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><div class="css-1h9e0xm elj48mc3"><h1 class="css-17p5nqe elj48mc2">오픈소스는 처음이라 :: MDN 문서 번역</h1><h2 class="css-1pzr76b elj48mc1">MDN Web Docs 번역해서 오픈소스에 기여하는 방법입니다. 번역에 필요한 가이드 문서와 파일 생성 방법에 대해 소개합니다.</h2><p class="css-qxl638 elj48mc0">2023-02-21<!-- --> · <!-- -->4<!-- --> min read</p></div></a><a class="css-1qnxx8n elj48mc4" href="/frontend/caching-build-outputs-to-speed-up-workflows/"><div class="css-bp3xiq e1mmm7v91"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1h37zi1 e1mmm7v90"><div style="max-width:820px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;410&#x27; width=&#x27;820&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeklEQVQoz42ST0sCURTF/QJhBuI4jrUIoVaRq2zRola1aROWzj+L0sJCiAxS38ykWWGGiQq5qCgxl2LRIlpGm6Jln+fEG83MNFtc7oPL/d1z7rsGm6SiY4gKWP2tgBMV2CUVrEBg4hWYJa1ZZ0XlR5+hG5AV6zBGUmGS4+j3EAz5k1gIanB5wzqUa4N1BdKpHM2yhlFZwbx7CxvRNGbVLC4zeUgBAiNPVfcAUtCXBatA0OchcC7uoOhbR84t4lo7RuSiCkfgEIxAmj1/AmlmBAWO1QSUYgXBfBnhZBZlpwu58Sk4gyew8KTu4D+W7bIGo3sP/vQVPt5f8fbyjPNyFQE+hMk5P8wNmK0F1gruuEMrVbh2gNPKPUq1R9zVHhA6K2FA3gcnNy6gJVrX1XWHFj6G4cARZtIVhG6fsJS6gU0gjVNSMejTdDd0QE+FzV16Y+CW4xjZLcC2ktDvkNYoaGI7g+lIAWObqeYH9bjDbyuMJ/rLGtdQ2a7wE/VgmrAKwS8kAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/2e2237653170ffb2fc9230d2804915e4/23fb3/caching-build-outputs-to-speed-up-workflows.webp 205w,/static/2e2237653170ffb2fc9230d2804915e4/14dc7/caching-build-outputs-to-speed-up-workflows.webp 410w,/static/2e2237653170ffb2fc9230d2804915e4/a5d93/caching-build-outputs-to-speed-up-workflows.webp 820w,/static/2e2237653170ffb2fc9230d2804915e4/18a8b/caching-build-outputs-to-speed-up-workflows.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" data-src="/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png" data-srcset="/static/2e2237653170ffb2fc9230d2804915e4/d6f1d/caching-build-outputs-to-speed-up-workflows.png 205w,/static/2e2237653170ffb2fc9230d2804915e4/f45ea/caching-build-outputs-to-speed-up-workflows.png 410w,/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png 820w,/static/2e2237653170ffb2fc9230d2804915e4/94612/caching-build-outputs-to-speed-up-workflows.png 1640w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/2e2237653170ffb2fc9230d2804915e4/23fb3/caching-build-outputs-to-speed-up-workflows.webp 205w,/static/2e2237653170ffb2fc9230d2804915e4/14dc7/caching-build-outputs-to-speed-up-workflows.webp 410w,/static/2e2237653170ffb2fc9230d2804915e4/a5d93/caching-build-outputs-to-speed-up-workflows.webp 820w,/static/2e2237653170ffb2fc9230d2804915e4/18a8b/caching-build-outputs-to-speed-up-workflows.webp 1640w" sizes="(min-width: 820px) 820px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 820px) 820px, 100vw" decoding="async" loading="lazy" src="/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png" srcSet="/static/2e2237653170ffb2fc9230d2804915e4/d6f1d/caching-build-outputs-to-speed-up-workflows.png 205w,/static/2e2237653170ffb2fc9230d2804915e4/f45ea/caching-build-outputs-to-speed-up-workflows.png 410w,/static/2e2237653170ffb2fc9230d2804915e4/28c7a/caching-build-outputs-to-speed-up-workflows.png 820w,/static/2e2237653170ffb2fc9230d2804915e4/94612/caching-build-outputs-to-speed-up-workflows.png 1640w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></div><div class="css-1h9e0xm elj48mc3"><h1 class="css-17p5nqe elj48mc2">Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (2)</h1><h2 class="css-1pzr76b elj48mc1">1편에서는 의존성 캐싱으로 배포 속도를 개선하고 이번에는 빌드 결과물 캐싱으로 개선했습니다. Gatsby의 빌드 과정과 캐싱 방법을 소개합니다.</h2><p class="css-qxl638 elj48mc0">2022-12-04<!-- --> · <!-- -->5<!-- --> min read</p></div></a></div></main><style data-emotion="css zcj3rg">.css-zcj3rg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;width:100%;margin:8rem auto 0;background-color:rgba(241, 237, 233, 0.5);}</style><footer class="css-zcj3rg e1tl9lrx9"><style data-emotion="css 1qutqnu">.css-1qutqnu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;padding:3rem 0 5rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-1qutqnu{width:100%;padding:3rem 1.5rem 5rem;}}@media all and (min-width: 250px) and (max-width: 800px){.css-1qutqnu{width:100%;padding:3rem 1.5rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:unset;-ms-flex-pack:unset;-webkit-justify-content:unset;justify-content:unset;-webkit-align-items:unset;-webkit-box-align:unset;-ms-flex-align:unset;align-items:unset;}}</style><div class="css-1qutqnu e1tl9lrx8"><style data-emotion="css jhzcpj">.css-jhzcpj{width:100%;}@media all and (min-width: 250px) and (max-width: 800px){.css-jhzcpj{margin:0 0 4rem 0;}}</style><div class="css-jhzcpj e1tl9lrx7"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1tl9lrx6"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8klEQVQoz2XSv2/TQBQH8GeKoIKBgQGBisTGypqBraJqcnFPsZ3L1bWdOGfX10i0E0MHpA78kLrza2hRxYYEBMcJTYOTpkqbEDc4VEKIgX8l6NpSEfVJX910n7v37oDzIXAeg+sOwHEiKBb7kmnug2l2YH5+VyIkBBFNa0iKUgdZDkQkhHyYmflwnFTqM5wV58OrnMf3XXeAHSe6USz2wbL+gW2BXSYkvK1pDYFCNvv1GBVgMlmG2dnyOFgqHa15XrzluoNlxqLno9EI8vnuzYWFvWv5fPdKLtd8SEhzDSF/MpsNJxVlR4BTCPnXT8BP50DsefFHxzm8x1hUse3eS8s6eG0YHV/X2wqlrTIh4TtV3XmhKPVVjGvLshxsIORviVEAoHMtJzgfvnWcQ4Ox6Ldtfwssa5+bZqeq621KaSsiJPypaY1SJrP9GONaOZ2uPELIXxdtI+RPiPWslpZ+pDiP37ju4Clj/Qe23XtlWQfYMDqbur6XpLT1hJBwU1UbzxSlPoVxbV2Wgz8I+YaA0unKOFgo9GBx8fulUulIYiyCQqF7UVXF8MPjR6G0BYQ0IZPZnsD4C2BcI7IcDBHy75yC0ljLKyu/BAieFwNj0QVxgIBOI1G6C7lcCxKJDbEZ5uaqt2Q5uHvyfaowPf0e/r/hX4ml7Ne3/vMmAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" data-srcset="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/d560a/logo.webp 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/c2999/logo.webp 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/5b8e5/logo.webp 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png" srcSet="/static/3d7cc3941beb5fe23948a539c1bdf35e/a9d86/logo.png 55w,/static/3d7cc3941beb5fe23948a539c1bdf35e/989fe/logo.png 110w,/static/3d7cc3941beb5fe23948a539c1bdf35e/ff035/logo.png 220w,/static/3d7cc3941beb5fe23948a539c1bdf35e/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css l30ecc">.css-l30ecc{margin:1rem 0 0;font-size:1.2rem;color:rgba(98, 92, 96, 0.8);}</style><div class="css-l30ecc e1tl9lrx5">© 2021-2024 김민지 All Rights Reserved.</div></div><style data-emotion="css cbo7i">.css-cbo7i{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.css-cbo7i>div:nth-of-type(2){margin:0 0 0 10rem;}@media all and (min-width: 250px) and (max-width: 800px){.css-cbo7i>div:nth-of-type(2){margin:0 0 0 7rem;}}</style><div class="css-cbo7i e1tl9lrx4"><style data-emotion="css 1m4w7xn">.css-1m4w7xn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;font-size:1.5rem;}</style><div class="css-1m4w7xn e1tl9lrx3"><style data-emotion="css qgwzzw">.css-qgwzzw{margin:0 0 3rem 0;font-weight:500;color:rgba(98, 92, 96, 0.8);}</style><p class="css-qgwzzw e1tl9lrx2">Links</p><style data-emotion="css wlp92n">.css-wlp92n{margin:2.2rem 0 0;}.css-wlp92n:hover{color:rgba(104, 104, 172, 1);}.css-wlp92n:nth-of-type(1){margin:0;}</style><a class="css-wlp92n e1tl9lrx1" href="/">Home</a><a class="css-wlp92n e1tl9lrx1" href="/category">Category</a></div><div class="css-1m4w7xn e1tl9lrx3"><p class="css-qgwzzw e1tl9lrx2">More</p><style data-emotion="css viyiff">.css-viyiff{margin:2.2rem 0 0;}.css-viyiff:hover{color:rgba(104, 104, 172, 1);}.css-viyiff:nth-of-type(1){margin:0;}.css-viyiff a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.css-viyiff svg{margin:0 0 0 0.5rem;color:rgba(98, 92, 96, 0.8);}</style><div class="css-viyiff e1tl9lrx0"><a href="mailto:minzidev@gmail.com" aria-label="Email">Email <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div><div class="css-viyiff e1tl9lrx0"><a href="https://github.com/mnxmnz" target="_blank" rel="noreferrer noopener" aria-label="Github">GitHub <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div><div class="css-viyiff e1tl9lrx0"><a href="https://forms.gle/TVvPQHE5yJrZhtzF9" target="_blank" rel="noreferrer noopener" aria-label="Feedback">Feedback <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 2.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V4.06l-6.22 6.22a.75.75 0 1 1-1.06-1.06L19.94 3h-3.69a.75.75 0 0 1-.75-.75Z"></path><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 0 1 0 1.5h-8.5a.25.25 0 0 0-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 0 0 .25-.25v-8.5a.75.75 0 0 1 1.5 0v8.5a1.75 1.75 0 0 1-1.75 1.75H4.25a1.75 1.75 0 0 1-1.75-1.75V4.25Z"></path></svg></a></div></div></div></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+              (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:3147203,hjsv:6};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=')
+          </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/gatsby/what-is-gatsby/";window.___webpackCompilationHash="31108b56772df56935ac";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-6fb30148336822408a1e.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-f003f239dd8307335c38.js"],"component---src-pages-category-tsx":["/component---src-pages-category-tsx-77eb24d832ec1db3282e.js"],"component---src-pages-guestbook-tsx":["/component---src-pages-guestbook-tsx-c2646b357e63c3aca7e1.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-acbe1ccd5da6f78c9f23.js"],"component---src-templates-category-template-tsx":["/component---src-templates-category-template-tsx-4f8b699833ce96135549.js"],"component---src-templates-page-template-tsx":["/component---src-templates-page-template-tsx-35679264cb0226609682.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-f6663e621c613d5edb14.js"]};/*]]>*/</script><script src="/app-6fb30148336822408a1e.js" async=""></script><script src="/7779ef99-6ff65495e3059b5feb5c.js" async=""></script><script src="/framework-d12a31ddfab01cb07967.js" async=""></script><script src="/webpack-runtime-4ea4bfa01b5e439b75a7.js" async=""></script></body></html>

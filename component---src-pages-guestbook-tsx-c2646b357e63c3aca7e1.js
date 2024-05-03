@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkdevlog=self.webpackChunkdevlog||[]).push([[5738],{2796:function(e,t,u){u.r(t);var n=u(6540),l=u(3002),s=u(7437);t.default=function(){return(0,s.jsx)(n.Fragment,null,(0,s.jsx)(l.A,{title:"Guestbook"}))}}}]);
+//# sourceMappingURL=component---src-pages-guestbook-tsx-c2646b357e63c3aca7e1.js.map
