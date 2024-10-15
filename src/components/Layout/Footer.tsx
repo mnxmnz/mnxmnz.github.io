@@ -55,6 +55,16 @@ function Footer() {
             </NavMoreItem>
             <NavMoreItem>
               <a
+                href="https://www.linkedin.com/in/dev-mnxmnz"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="LinkedIn"
+              >
+                LinkedIn <GoLinkExternal />
+              </a>
+            </NavMoreItem>
+            <NavMoreItem>
+              <a
                 href="https://forms.gle/TVvPQHE5yJrZhtzF9"
                 target="_blank"
                 rel="noreferrer noopener"
