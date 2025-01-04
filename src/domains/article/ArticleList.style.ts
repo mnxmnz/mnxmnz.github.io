@@ -48,7 +48,7 @@ export const ArticleReview = styled.p`
   word-break: keep-all;
   font-size: 1.5rem;
   line-height: 130%;
-  margin: 1.5rem 0 0;
+  margin: 1.5rem 2rem 0 0;
 
   ${customMQ} {
     -webkit-line-clamp: 3;
