@@ -18,10 +18,4 @@ export const articles = [
       '평소에 느끼는 불편함에 익숙해지지 않고 새로운 해결 방법을 찾아서 효율성 개선하기',
     publishedAt: '2024-10-23',
   },
-  {
-    url: 'https://vercel.com/blog/how-core-web-vitals-affect-seo#how-google-ranks-based-on-page-speed',
-    title: 'How Core Web Vitals affect SEO',
-    review: '',
-    publishedAt: '2024-01-19',
-  },
 ];
