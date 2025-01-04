@@ -2,8 +2,8 @@ import React from 'react';
 
 import {
   ArticleItem,
+  ArticleLinkIcon,
   ArticlePageTitle,
-  ArticlePublishedAt,
   ArticleReview,
   ArticleTitle,
 } from './ArticleList.style';
@@ -30,7 +30,7 @@ function ArticleList() {
         >
           <ArticleTitle>{article.title}</ArticleTitle>
           <ArticleReview>💭 {article.review}</ArticleReview>
-          <ArticlePublishedAt>{article.publishedAt}</ArticlePublishedAt>
+          <ArticleLinkIcon />
         </ArticleItem>
       ))}
     </section>
