@@ -36,7 +36,6 @@ exports.createPages = ({ actions, graphql }) => {
 
   const postTemplate = path.resolve('src/templates/PostTemplate.tsx');
   const categoryTemplate = path.resolve('src/templates/CategoryTemplate.tsx');
-  const pageTemplate = path.resolve('src/templates/PageTemplate.tsx');
 
   return graphql(`
     {
@@ -91,23 +90,6 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           category: category.fieldValue,
           count: category.totalCount,
-        },
-      });
-    });
-
-    const postList = result.data.posts.edges;
-    const postsPerPage = 10;
-    const numPages = Math.ceil(postList.length / postsPerPage);
-
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? '/page/1' : `/page/${i + 1}`,
-        component: pageTemplate,
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages: numPages,
-          currentPage: i + 1,
         },
       });
     });

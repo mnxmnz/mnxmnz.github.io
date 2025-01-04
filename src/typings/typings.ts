@@ -63,23 +63,6 @@ export type LatestPostsProps = {
   };
 };
 
-export type PaginationProps = {
-  currentPage: number;
-  numPages: number;
-};
-
-export type PageContextProps = {
-  pageContext: PaginationProps;
-};
-
-export type PageNumContextProps = {
-  node: PageContextProps;
-};
-
-export type PageTemplateProps = {
-  data: LatestPostsProps;
-} & PageContextProps;
-
 export type CategoryItemProps = {
   fieldValue: string;
   totalCount: number;
@@ -107,9 +90,6 @@ export type IndexProps = {
   data: {
     posts: {
       edges: ContentProps[];
-    };
-    allSitePage: {
-      pagination: PageNumContextProps[];
     };
   };
 };
