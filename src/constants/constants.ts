@@ -8,8 +8,8 @@ export const NAV_LINK_ITEMS = [
     url: '/category',
   },
   {
-    title: 'Article',
-    url: '/article',
+    title: 'Archive',
+    url: '/archive',
   },
 ];
 

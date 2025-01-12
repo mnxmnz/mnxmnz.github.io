@@ -2,16 +2,16 @@ import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
 import Profile from '@/components/Profile/Profile';
-import ArticleList from '@/domains/article/ArticleList';
+import ArchiveList from '@/domains/archive/ArchiveList';
 
-function ArticlePage() {
+function ArchivePage() {
   return (
     <>
-      <SEO title="Article" />
+      <SEO title="Archive" />
       <Profile padding="6rem 0" />
-      <ArticleList />
+      <ArchiveList />
     </>
   );
 }
 
-export default ArticlePage;
+export default ArchivePage;

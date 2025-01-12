@@ -1,4 +1,4 @@
-export const articles = [
+export const archive = [
   {
     url: 'https://evan-moon.github.io/2024/12/23/the-illusion-of-a-right-answer',
     title: '좋은 코드란 무엇일까? - 가독성이란 허상에 대하여',
@@ -17,5 +17,11 @@ export const articles = [
     review:
       '평소에 느끼는 불편함에 익숙해지지 않고 새로운 해결 방법을 찾아서 효율성 개선하기',
     publishedAt: '2024-10-23',
+  },
+  {
+    url: 'https://www.developing.dev/p/new-grad-to-staff-at-meta-in-3-years',
+    title: 'New Grad to Staff at Meta in 3 years',
+    review: '기술이 아닌 문제 해결에 집중하기',
+    publishedAt: '2024-12-13',
   },
 ];

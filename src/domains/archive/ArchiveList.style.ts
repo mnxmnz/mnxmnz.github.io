@@ -3,7 +3,7 @@ import { GoLinkExternal } from 'react-icons/go';
 
 import { customMQ } from '@/styles/theme';
 
-export const ArticlePageTitle = styled.h1`
+export const ArchivePageTitle = styled.h1`
   font-size: 1.3rem;
   font-weight: 500;
   margin: 0 0 6rem;
@@ -11,7 +11,7 @@ export const ArticlePageTitle = styled.h1`
   word-break: keep-all;
 `;
 
-export const ArticleItem = styled.a`
+export const ArchiveItem = styled.a`
   position: relative;
   display: block;
   margin: 0 0 2rem;
@@ -24,7 +24,7 @@ export const ArticleItem = styled.a`
   }
 `;
 
-export const ArticleTitle = styled.p`
+export const ArchiveTitle = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   word-break: keep-all;
@@ -39,7 +39,7 @@ export const ArticleTitle = styled.p`
   }
 `;
 
-export const ArticleReview = styled.p`
+export const ArchiveReview = styled.p`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
@@ -55,7 +55,7 @@ export const ArticleReview = styled.p`
   }
 `;
 
-export const ArticleLinkIcon = styled(GoLinkExternal)`
+export const ArchiveLinkIcon = styled(GoLinkExternal)`
   position: absolute;
   bottom: 2rem;
   right: 2rem;
