@@ -59,7 +59,7 @@ const SEO = ({ title, description, cover }: MetaProps) => {
         },
         {
           property: 'og:site_name',
-          content: 'Devlog',
+          content: '김민지 블로그',
         },
         {
           name: 'twitter:title',
