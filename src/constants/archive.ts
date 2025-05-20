@@ -24,4 +24,10 @@ export const archive = [
     review: '기술이 아닌 문제 해결에 집중하기',
     publishedAt: '2024-12-13',
   },
+  {
+    url: 'https://cekrem.github.io/posts/react-reconciliation-deep-dive',
+    title: 'React Reconciliation: The Hidden Engine Behind Your Components',
+    review: '리액트 재조정을 쉽게 이해할 수 있는 글',
+    publishedAt: '2025-04-08',
+  },
 ];
