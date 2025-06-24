@@ -3,7 +3,7 @@ title: 'Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (2)'
 date: '2022-12-04'
 category: 'Frontend'
 summary: '1편에서는 의존성 캐싱으로 배포 속도를 개선하고 이번에는 빌드 결과물 캐싱으로 개선했습니다. Gatsby의 빌드 과정과 캐싱 방법을 소개합니다.'
-thumbnail: './images/caching-build-outputs-to-speed-up-workflows.png'
+thumbnail: './images/caching-build-outputs-to-speed-up-workflows/thumbnail.png'
 ---
 
 ## 들어가며 

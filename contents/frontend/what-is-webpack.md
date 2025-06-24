@@ -3,7 +3,7 @@ title: '웹팩은 처음이라 :: 개념부터 활용 예시까지'
 date: '2021-05-03'
 category: 'Frontend'
 summary: '웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 로더에 대해 상세하게 정리했습니다.'
-thumbnail: './images/what-is-webpack.png'
+thumbnail: './images/what-is-webpack/thumbnail.png'
 ---
 
 > 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
@@ -16,7 +16,7 @@ thumbnail: './images/what-is-webpack.png'
 
 ### 1-1. 페이지 로딩 속도 저하 🚶‍♀️
 
-![webpack-1](./images/webpack-1.png)
+![webpack-1](./images/what-is-webpack/webpack-1.png)
 
 웹 사이트를 개발할 때 CSS, JS, IMG 등 수많은 리소스 파일이 생겨납니다. 위 사진은 GitHub 페이지를 로딩했을 때 다운로드 된 파일입니다. Type 을 보면 script, stylesheet, jpeg 등 다양한 파일이 있습니다. 완성된 웹사이트를 로딩했을 때 많은 파일이 다운로드 된다는 것을 알 수 있습니다. 많은 파일이 다운로드 되는 것의 단점은, 서버와의 접속이 많을수록 **웹 로딩은 느려진다는 것**입니다.
 
@@ -42,7 +42,7 @@ thumbnail: './images/what-is-webpack.png'
 
 ### 1-4. Bundler의 장점 👍
 
-![webpack-2](./images/webpack-2.png)
+![webpack-2](./images/what-is-webpack/webpack-2.png)
 
 <em>사진 출처: <a href="https://webpack.js.org/" target="_blank" rel="noreferrer noopener" aria-label="webpack">webpack.js.org</a></em>
 
@@ -84,7 +84,7 @@ entry 속성에서 번들링하고 싶은 파일들을 선언합니다. 여기�
 
 그래서 JS 코드에서 import 구문을 사용해서 IMG 와 CSS 파일을 가져올 수 있는 것입니다. 모듈을 지원하지 않는 브라우저에서도 웹팩을 사용하면 모듈을 적용할 수 있습니다.
 
-![webpack-2](./images/webpack-2.png)
+![webpack-2](./images/what-is-webpack/webpack-2.png)
 
 위에서 본 사진을 기준으로 **왼쪽 위 .js 파일을 entry** 라고 합니다. entry를 기준으로 모든 모듈을 찾은 후 하나의 코드로 만들어 줍니다.따라서 오른쪽 그림을 보면 하나의 .js 파일이 생성된 것을 볼 수 있습니다. 이렇게 만들어진 **결과물을 output** 이라고 합니다.
 
@@ -233,7 +233,7 @@ function initApp() {
 initApp();
 ```
 
-![webpack-3](./images/webpack-3.png)
+![webpack-3](./images/what-is-webpack/webpack-3.png)
 
 <em>사진 출처: <a href="https://joshua1988.github.io/webpack-guide/concepts/entry.html" target="_blank" rel="noreferrer noopener" aria-label="webpack-entry">joshua1988.github.io</a></em>
 
@@ -255,7 +255,7 @@ node_modules/.bin/webpack --mode development --entry ./src/app.js --output-path 
 
 명령어를 실행한 후 `dist`폴더의 `main.js`파일을 살펴보면 `src`에서 작성한 두 개의 `js`파일이 하나로 합쳐진 것을 볼 수 있습니다.
 
-![webpack-4](./images/webpack-4.png)
+![webpack-4](./images/what-is-webpack/webpack-4.png)
 
 `index.html`파일을 수정해서 `dist/main.js`파일을 사용하겠습니다. 웹팩을 사용하여 모듈을 지원하지 않는 브라우저에서도 사용할 수 있어서 `script`에서 `module`을 제외하고 작성했습니다.
 
@@ -518,7 +518,7 @@ css 적용 결과를 확인하기 위해 html 코드를 수정했습니다.
 npm run build
 ```
 
-![webpack-5](./images/webpack-5.png)
+![webpack-5](./images/what-is-webpack/webpack-5.png)
 
 ## 마치며
 

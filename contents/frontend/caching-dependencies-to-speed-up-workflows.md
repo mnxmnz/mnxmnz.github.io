@@ -3,7 +3,7 @@ title: 'Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (1)'
 date: '2022-11-14'
 category: 'Frontend'
 summary: '블로그 변경 사항에 비해 배포에 드는 시간이 길다고 느껴 이를 개선해봤습니다. GitHub에서 제공하는 캐시(cache) 액션으로 워크플로우 실행 시간을 단축한 경험을 공유합니다.'
-thumbnail: './images/caching-dependencies-to-speed-up-workflows.png'
+thumbnail: './images/caching-dependencies-to-speed-up-workflows/thumbnail.png'
 ---
 
 ## 들어가며
@@ -74,7 +74,7 @@ GitHub Actions에서 지원하는 캐싱으로 패키지 설치 시간을 단축
 
 2022년 8월에 업데이트된 내용에 따라 GitHub Setup Node의 v2부터 cache 옵션을 사용할 수 있습니다. cache 옵션으로 npm, yarn, pnpm과 같은 패키지 매니저를 넘길 수 있습니다. [공식 README](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data)에서 해당 내용을 확인하실 수 있습니다.
 
-![caching-packages-data](./images/caching-packages-data.png)
+![caching-packages-data](./images/caching-dependencies-to-speed-up-workflows/caching-packages-data.png)
 
 ```yml
 name: Deploy Gatsby Blog with GitHub Actions
@@ -119,13 +119,13 @@ jobs:
           publish_dir: ./public
 ```
 
-![18-44](./images/18-44.png)
+![18-44](./images/caching-dependencies-to-speed-up-workflows/18-44.png)
 
 위 사진에서 `yarn cache is not found` 문구를 확인하실 수 있습니다. cache 옵션이 추가된 워크플로우를 처음 실행했을 땐 아직 캐싱된 데이터가 없기 때문입니다.
 
 이제 워크플로우를 재실행해보겠습니다.
 
-![10-21](./images/10-21.png)
+![10-21](./images/caching-dependencies-to-speed-up-workflows/10-21.png)
 
 캐싱된 데이터를 사용해서 패키지 설치 시간이 44초에서 21초로 절반 정도 단축된 것을 확인하실 수 있습니다. 처음보다는 많이 단축된 시간이지만 그래도 조금의 아쉬움이 남았습니다. 패키지 설치에 드는 21초의 시간이 불필요하게 느껴졌습니다.
 
@@ -197,7 +197,7 @@ jobs:
 
 GitHub Actions의 hashFiles 내장 함수를 이용하여 yarn.lock 파일의 SHA 해시값을 키에 포함했습니다. 또한, 워크플로우를 여러 운영체제에서 실행할 때를 대비해서 runner.os 컨텍스트도 키에 포함했습니다. 
 
-![6-0](./images/6-0.png)
+![6-0](./images/caching-dependencies-to-speed-up-workflows/6-0.png)
 
 이렇게 최적화 단계를 거친 워크플로우에서 패키지 설치 단계를 건너뛰어 실행 시간을 단축한 것을 확인하실 수 있습니다 🎉
 
