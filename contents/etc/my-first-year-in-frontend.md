@@ -34,7 +34,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![edit-email](./images/my-first-year-in-frontend-edit-email.png)
 
-<em>가벼운학습지 홈페이지 Footer</em>
+<em>가벼운학습지 하단 Footer</em>
 
 운영 이슈는 홈페이지 하단의 이메일 텍스트를 수정하는 간단한 이슈부터 진행했어요. 점차 도메인 지식이 필요한 운영 이슈에 참여하며 조금씩 서비스에 익숙해질 수 있었어요.
 
