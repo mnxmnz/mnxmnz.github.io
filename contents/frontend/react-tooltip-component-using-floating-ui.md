@@ -178,4 +178,6 @@ Floating UI 기능으로 이제 모바일에서도 자동으로 뷰포트 크기
 
 ![zep](./images/react-tooltip-component-using-floating-ui/zep.jpeg)
 
+<em>항해 플러스 프론트엔드 5기 학습 공간</em>
+
 최근 [항해 플러스 프론트엔드 5기](https://hanghae99.spartacodingclub.kr/plus/fe) 교육을 수강했어요. 매주 토요일마다 자율적으로 발표 신청을 받아서 누구든 자유 주제로 발표할 수 있어요. 이번에 작성한 툴팁 컴포넌트 개선을 주제로 온라인으로 30명 발표해서 이것 또한 좋은 경험이었다고 생각해요.

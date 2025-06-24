@@ -18,6 +18,8 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![mylight-and-zerobase](./images/my-first-year-in-frontend-mylight-zerobase-service.png)
 
+<em>가벼운학습지와 제로베이스</em>
+
 첫 팀에서는 총 세 개의 서비스를 운영하고 있었어요. 그중에서 [제로베이스](https://zero-base.co.kr) 와 [가벼운학습지](https://mylight.co.kr) 를 운영하는 파트에 배정됐어요. 가벼운학습지는 어학과 취미 영역에서 영상과 학습지 교재를 교육용 콘텐츠로 제공하고 제로베이스는 디지털 스킬 분야에서 제2의 온라인 대학 역할을 할 수 있는 취업 연계 부트캠프 서비스를 제공해요.
 
 ### 1-2. 첫 PR
@@ -32,6 +34,8 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![edit-email](./images/my-first-year-in-frontend-edit-email.png)
 
+<em>가벼운학습지 홈페이지 Footer</em>
+
 운영 이슈는 홈페이지 하단의 이메일 텍스트를 수정하는 간단한 이슈부터 진행했어요. 점차 도메인 지식이 필요한 운영 이슈에 참여하며 조금씩 서비스에 익숙해질 수 있었어요.
 
 ### 1-4. 첫 워크플로우 수정
@@ -42,7 +46,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![fix-text-and-link](./images/my-first-year-in-frontend-text.png)
 
-<em>우측 상단 이벤트 텍스트 및 링크 변경</em>
+<em>제로베이스 상단 GNB</em>
 
 성수기인 연말에는 마케팅 관련 급건 작업에 참여했어요. 당일 요구사항 파악 후 즉시 변경하여 배포하는 핫픽스를 경험했어요. 링크 변경과 같은 작은 수정 사항이어도 작업한 후 바로 배포하는 과정 자체가 긴장되었어요.
 
@@ -64,6 +68,8 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![fastcampus](./images/my-first-year-in-frontend-fastcampus.png)
 
+<em>패스트캠퍼스</em>
+
 같은 팀의 다른 파트에서 [패스트캠퍼스](https://fastcampus.co.kr/) 서비스를 운영하고 있었는데 한 달 동안 해당 파트 업무에 참여했어요. 입사 3개월 차에 새로운 서비스를 경험해 볼 수 있었어요. 패스트캠퍼스는 AI 와 Data Science 분야를 중심으로 직장인의 역량 향상을 위한 교육 콘텐츠를 제공해요.
 
 당시 해당 파트에서는 [Vue](https://ko.vuejs.org) 기반 패스트캠퍼스를 Next.js 기반으로 이관하고 있었어요. 그중에서도 LMS 관련 기능 이관에 투입됐어요. Vue 프로젝트를 처음 접해서 새로운 문법이 어색했지만 그래도 무사히 작업을 마무리할 수 있었어요.
@@ -72,7 +78,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![exam-result](./images/my-first-year-in-frontend-exam-result.jpeg)
 
-<em>원인을 파악할 때까지 고민하기</em>
+<em>패스트캠퍼스 LMS 시험 결과 페이지</em>
 
 처음으로 버그를 깊게 파고들어 원인을 파악하는 경험을 했어요. 시험을 응시한 후 시험 결과 페이지에 접속하면 모든 내용이 정상적으로 보이지만, 이후 시험 목록 페이지에서 시험 결과 페이지에 접근하면 특정 내용만 보이지 않는 이슈였어요. 시험 목록 페이지에서 일부 데이터만 가져온 후 캐시하고 시험 결과 페이지에서는 새로운 데이터를 호출하지 않고 이전에 캐시한 데이터만 바라봐서 발생한 이슈였어요. 이 경험으로 유사한 버그를 접하면 데이터 캐싱을 의심하여 빠르게 원인을 파악할 수 있게 되어 상당히 의미 있는 경험이었다고 생각해요.
 
@@ -92,7 +98,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ![3depth-category](./images/my-first-year-in-frontend-3depth-category.png)
 
-<em>카테고리 UI 개선</em>
+<em>제로베이스 카테고리 목록</em>
 
 운영 이슈를 진행하며 제로베이스의 GNB 카테고리 메뉴를 기존 2 depth 에서 3 depth 로 확장하는 작업에 참여했어요. 그리고 GNB 영역에 메뉴가 많아져서 화면보다 길어졌을 때 사용자가 마우스로 드래그를 할 수 없어서 이러한 사용성을 개선하기 위해 가로 스크롤이 가능한 공통 hook 을 추가하여 적용했어요. 
 
@@ -108,8 +114,7 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ![best5](./images/my-first-year-in-frontend-best5.png)
 
-<em>BEST 강의 영역 및 찜하기 기능 도입</em>
-
+<em>실시간 BEST 인기 강의 영역</em>
 
 가벼운학습지와 제로베이스 서비스를 운영할 땐 비교적 짧은 기간에 끝낼 수 있는 작은 단위의 업무가 많았는데 패스트캠퍼스에서는 여러 달에 걸쳐 새로운 기능을 도입하는 업무 위주로 진행됐어요. 6월부터 12월까지 크게 세 개의 프로젝트에 참여했어요.
 
@@ -141,7 +146,7 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ![curriculum](./images/my-first-year-in-frontend-curriculum.png)
 
-<em>자동화 커리큘럼 기능 도입</em>
+<em>강의 상세페이지 커리큘럼</em>
 
 다음 프로젝트로 백오피스에서 입력한 데이터를 기반으로 강의 상세 페이지의 UI 를 생성하는 작업에 참여했어요.
 
