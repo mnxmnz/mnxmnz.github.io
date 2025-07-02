@@ -283,10 +283,23 @@ const tooltipY = isMobileSize ? 41 : 0;</code>
 <li>shift: 툴팁이 화면 경계에 닿을 때 경계 안쪽으로 위치 조정</li>
 </ul>
 <h3>3-3. createPortal API 적용</h3>
-<p>툴팁 컴포넌트를 렌더링할 때 <a href="https://ko.react.dev/reference/react-dom/createPortal" target="_blank" rel="nofollow">createPortal API</a> 를 적용했어요. 툴팁 컴포넌트의 위치를 상위 컴포넌트 내부에 종속하지 않도록 하고 <code>body</code> 내부에 생성한 최상위 계층의 <code>div</code> 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트의 CSS 스타일 영향을 받지 않기 위해서예요.</p>
+<p>툴팁 컴포넌트를 렌더링할 때 <a href="https://ko.react.dev/reference/react-dom/createPortal" target="_blank" rel="nofollow">createPortal API</a> 를 적용했어요. 툴팁 컴포넌트의 위치를 상위 컴포넌트 내부에 종속하지 않도록 하고 <code>body</code> 내부에 생성한 최상위 계층의 <code>div</code> 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트 CSS 스타일의 영향을 받지 않기 위해서예요.</p>
 <h3>3-4. 웹 접근성 고려</h3>
-<p><code>aria-*</code> 속성으로 웹 접근성을 고려했어요. <code>role</code> 속성으로 스크린 리더에게 해당 요소가 툴팁이라는 것을 알릴 수 있도록 설정했어요. <code>aria-describedby</code> 속성으로 툴팁의 내용이 어떤 요소를 설명하는지 연결했어요. <code>aria-hidden</code> 속성으로는 툴팁이 보이지 않을 때 스크린 리더가 해당 내용을 읽지 않도록 했어요.</p>
+<p>툴팁 라이브러리는 여러 웹 접근성을 고려해서 적용하고 있어서 추가 설정이 필요하지 않아요. 다만 현재처럼 Floating UI 라이브러리를 사용한 경우에는 직접 웹 접근성을 고려한 설정을 추가해야 해요. 다음과 같은 속성을 추가했어요.</p>
+<ul>
+<li><code>role</code>: 스크린 리더에게 해당 요소가 툴팁이라는 것을 알릴 수 있도록 설정</li>
+<li><code>aria-describedby</code>: 툴팁의 내용이 어떤 요소를 설명하는지 연결</li>
+<li><code>aria-hidden</code>: 툴팁이 보이지 않을 때 스크린 리더가 해당 내용을 읽지 않도록 설정</li>
+</ul>
 <h3>3-5. 관리 포인트 최소화</h3>
+<deckgo-highlight-code language="tsx" terminal="carbon" theme="seti"  >
+          <code slot="code">import { Tooltip } from &#39;react-tooltip&#39;;
+
+&lt;a data-tooltip-id=&quot;my-tooltip&quot; data-tooltip-content=&quot;Hello world!&quot;&gt;
+  ◕‿‿◕
+&lt;/a&gt;
+&lt;Tooltip id=&quot;my-tooltip&quot; /&gt;</code>
+        </deckgo-highlight-code>
 <p>React Tooltip 라이브러리에서는 툴팁 컴포넌트와 툴팁을 표시하는 대상을 연결하기 위해 아이디 값을 직접 지정해서 사용하고 있어요. 다만 이러한 방식은 엘리먼트에 아이디 값을 부여한 후 그 값을 상수로 관리해야 하는 관리 포인트가 늘어날 수 있는 단점이 있어요.</p>
 <deckgo-highlight-code language="tsx" terminal="carbon" theme="seti"  >
           <code slot="code">&lt;Tooltip content={TOOLTIP_CONTENTS.COMMUNITY.RANK_USER}&gt;
