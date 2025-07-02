@@ -93,6 +93,10 @@ Floating UI 라이브러리에서 제공하는 `useFloating`훅과 `autoUpdate`,
 
 ### 3-3. createPortal API 적용
 
+![portal](./images/react-tooltip-component-using-floating-ui/portal.png)
+
+<em>사진 출처: <a href="https://techhub.iodigital.com/articles/what-are-react-portals" target="_blank" rel="noreferrer noopener" aria-label="react-portal">wtechhub.iodigital.com</a></em>
+
 툴팁 컴포넌트를 렌더링할 때 [createPortal API](https://ko.react.dev/reference/react-dom/createPortal) 를 적용했어요. 툴팁 컴포넌트의 위치가 상위 컴포넌트 내부에 종속되지 않도록 하고 `body` 내부에 생성한 최상위 계층의 `div` 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트의 CSS 스타일 영향을 받지 않기 위해서예요. 
 
 ### 3-4. 웹 접근성 고려
