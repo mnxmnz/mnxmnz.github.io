@@ -283,6 +283,55 @@ const tooltipY = isMobileSize ? 41 : 0;</code>
 <li>shift: 툴팁이 화면 경계에 닿을 때 경계 안쪽으로 위치 조정</li>
 </ul>
 <h3>3-3. createPortal API 적용</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/576db6ab6ca35c290a2f523523a2638c/c7a69/portal.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABLUlEQVQoz31SCY6DMBDr/x/JVY5AuAKJKKcrz24QqN0daUSYmTi2k8dxHGAyjDFI0xRZlkEphW3bcO3P84w8z6WfJAmWZTl7/vu4FqqqQlmWklprDMOAaZrgYxxHASMoD+66Tmr7vp8YN0AOE4hD1lr0fS9rHwQoikLqVMMZzlPJDdCDBkEgoE3TwFkrLLjRB8Eo+xpRFH0C+qAvYRgKcBCGeAYBxq47+3Vdi7c8kMzIlATo5b+SB2PEv1prmDzH8SubHsdxLDNc0wKqWNf1E5DGksGVsXg1DNjrGni9UGp9k8w9BPwqmU16RJaUzUyfT2Eqw8ag11oAyJK28La/Xor/ISiblMDkmrXjZwCdUiiUEiU8iLd8vVQBvD7Kv8L3rXNo21a8Yzrnzr5/2G+0JAVlchXZyAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/576db6ab6ca35c290a2f523523a2638c/a59e9/portal.webp 192w,
+/static/576db6ab6ca35c290a2f523523a2638c/0ca9f/portal.webp 384w,
+/static/576db6ab6ca35c290a2f523523a2638c/dc9b9/portal.webp 768w,
+/static/576db6ab6ca35c290a2f523523a2638c/e2c2f/portal.webp 1152w,
+/static/576db6ab6ca35c290a2f523523a2638c/f3efb/portal.webp 1536w,
+/static/576db6ab6ca35c290a2f523523a2638c/d5269/portal.webp 2560w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/576db6ab6ca35c290a2f523523a2638c/3b721/portal.png 192w,
+/static/576db6ab6ca35c290a2f523523a2638c/66595/portal.png 384w,
+/static/576db6ab6ca35c290a2f523523a2638c/fe486/portal.png 768w,
+/static/576db6ab6ca35c290a2f523523a2638c/d2d74/portal.png 1152w,
+/static/576db6ab6ca35c290a2f523523a2638c/e8464/portal.png 1536w,
+/static/576db6ab6ca35c290a2f523523a2638c/c7a69/portal.png 2560w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/576db6ab6ca35c290a2f523523a2638c/fe486/portal.png"
+            alt="portal"
+            title="portal"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><em>사진 출처: <a href="https://techhub.iodigital.com/articles/what-are-react-portals" target="_blank" rel="noreferrer noopener" aria-label="react-portal">wtechhub.iodigital.com</a></em></p>
 <p>툴팁 컴포넌트를 렌더링할 때 <a href="https://ko.react.dev/reference/react-dom/createPortal" target="_blank" rel="nofollow">createPortal API</a> 를 적용했어요. 툴팁 컴포넌트의 위치가 상위 컴포넌트 내부에 종속되지 않도록 하고 <code>body</code> 내부에 생성한 최상위 계층의 <code>div</code> 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트의 CSS 스타일 영향을 받지 않기 위해서예요.</p>
 <h3>3-4. 웹 접근성 고려</h3>
 <p>툴팁 라이브러리는 여러 웹 접근성을 고려해서 적용하고 있어서 추가 설정이 필요하지 않아요. 다만 현재처럼 Floating UI 라이브러리를 사용한 경우에는 직접 웹 접근성을 고려한 설정을 추가해야 해요.</p>
