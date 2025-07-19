@@ -34,8 +34,20 @@ declare module 'gatsby-plugin-image' {
     style?: React.CSSProperties;
   }
 
+  export interface StaticImageProps {
+    src: string;
+    alt: string;
+    placeholder?: 'dominantColor' | 'blurred' | 'none' | 'tracedSVG';
+    layout?: 'fixed' | 'fullWidth' | 'constrained';
+    width?: number;
+    height?: number;
+    quality?: number;
+    className?: string;
+    style?: React.CSSProperties;
+  }
+
   export const GatsbyImage: React.FC<GatsbyImageProps>;
-  export const StaticImage: React.FC<any>;
+  export const StaticImage: React.FC<StaticImageProps>;
 }
 
 declare module 'react-helmet' {
