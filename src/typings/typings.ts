@@ -1,106 +1,100 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-export type DescriptionProps = {
+export interface BaseFields {
+  slug: string;
+}
+
+export interface BaseNode<T = Record<string, unknown>> {
+  id: string;
+  fields: BaseFields;
+  timeToRead: number;
+  frontmatter: T;
+}
+
+export interface GraphQLEdges<T> {
+  edges: Array<{ node: T }>;
+}
+
+export interface GraphQLData<T> {
+  posts: GraphQLEdges<T>;
+}
+
+export interface DescriptionProps {
   title: string;
   date: string;
   category: string;
   time: number;
-};
+}
 
-export type ThumbnailProps = {
+export interface ThumbnailProps {
   thumbnail: {
     childImageSharp: {
       gatsbyImageData: IGatsbyImageData;
     };
     publicURL?: string;
   };
-};
+}
 
-export type FrontmatterProps = {
+export interface FrontmatterProps extends DescriptionProps, ThumbnailProps {
   summary: string;
-} & DescriptionProps &
-  ThumbnailProps;
+}
 
-export type ContentProps = {
-  node: {
-    id: string;
-    fields: {
-      slug: string;
-    };
-    timeToRead: number;
-    frontmatter: FrontmatterProps;
-  };
-};
+export type ContentNode = BaseNode<FrontmatterProps>;
 
-export type PostItemListProps = {
-  posts: ContentProps[];
-};
+export interface ContentItemNode extends BaseNode<FrontmatterProps> {
+  html: string;
+}
 
-export type PostItemProps = FrontmatterProps & { link: string };
+export interface PostItemListProps {
+  posts: Array<{ node: ContentNode }>;
+}
 
-export type ContentItemProps = {
-  node: {
-    fields: {
-      slug: string;
-    };
-    html: string;
-    timeToRead: number;
-    frontmatter: FrontmatterProps;
-  };
-};
+export interface PostItemProps extends FrontmatterProps {
+  link: string;
+}
 
-export type PostTemplateProps = {
-  data: {
-    posts: {
-      edges: ContentItemProps[];
-    };
-  };
-};
+export interface LatestPostsProps {
+  posts: GraphQLEdges<ContentNode>;
+}
 
-export type LatestPostsProps = {
-  posts: {
-    edges: ContentProps[];
-  };
-};
-
-export type CategoryItemProps = {
+export interface CategoryItem {
   fieldValue: string;
   totalCount: number;
-};
+}
 
-export type CategoryProps = {
-  categoryList: {
-    group: CategoryItemProps[];
-  };
-};
+export interface CategoryListData {
+  group: CategoryItem[];
+}
 
-export type CategoryTemplateProps = {
+export interface CategoryProps {
+  categoryList: CategoryListData;
+}
+
+export interface PostTemplateProps {
   data: {
-    posts: {
-      edges: ContentProps[];
-    };
+    posts: GraphQLEdges<ContentItemNode>;
   };
+}
+
+export interface CategoryTemplateProps {
+  data: GraphQLData<ContentNode>;
   pageContext: {
     category: string;
     count: number;
   };
-};
+}
 
-export type IndexProps = {
-  data: {
-    posts: {
-      edges: ContentProps[];
-    };
-  };
-};
+export interface IndexProps {
+  data: GraphQLData<ContentNode>;
+}
 
-export type MetaProps = {
+export interface MetaProps {
   title?: string;
   description?: string;
   cover?: string;
-};
+}
 
-export type SEOProps = {
+export interface SEOProps {
   site: {
     siteMetadata: {
       title: string;
@@ -110,4 +104,10 @@ export type SEOProps = {
   file: {
     publicURL: string;
   };
-};
+}
+
+export type ContentProps = { node: ContentNode };
+
+export type ContentItemProps = { node: ContentItemNode };
+
+export type CategoryItemProps = CategoryItem;

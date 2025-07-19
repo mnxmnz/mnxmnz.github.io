@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Category, CategoryListWrap } from './CategoryList.style';
 
 import useCategoryList from '@/hooks/useCategoryList';
-import { CategoryItemProps } from '@/typings/typings';
+import { CategoryItem } from '@/typings/typings';
+import { categoryUtils } from '@/utils/categoryUtils';
 
 function CategoryList() {
   const categoryList = useCategoryList();
 
   const categories = categoryList.group;
 
-  const total = categories
-    .map(category => category.totalCount)
-    .reduce((prev, curr) => prev + curr, 0);
+  const { total, sortedCategories } = useMemo(() => {
+    const totalCount = categoryUtils.total(categories);
+    const sorted = categoryUtils.sort(categories, 'count', 'desc');
+
+    return {
+      total: totalCount,
+      sortedCategories: sorted,
+    };
+  }, [categories]);
+
+  const categoryItems = useMemo(
+    () =>
+      sortedCategories.map((category: CategoryItem) => {
+        const categorySlug = categoryUtils.slug(category.fieldValue);
+        const categoryPath = categoryUtils.path(categorySlug);
+
+        return (
+          <Category key={category.fieldValue} to={categoryPath}>
+            <span>{category.fieldValue}</span>
+            {category.totalCount}
+          </Category>
+        );
+      }),
+    [sortedCategories],
+  );
 
   return (
     <CategoryListWrap>
@@ -20,18 +43,7 @@ function CategoryList() {
         <span>ALL</span>
         {total}
       </Category>
-      {categories.map((category: CategoryItemProps) => (
-        <Category
-          key={category.fieldValue}
-          to={`/${category.fieldValue
-            .toLowerCase()
-            .replace(/[ /]/gi, '-')
-            .replace(/\./g, '')}`}
-        >
-          <span>{category.fieldValue}</span>
-          {category.totalCount}
-        </Category>
-      ))}
+      {categoryItems}
     </CategoryListWrap>
   );
 }

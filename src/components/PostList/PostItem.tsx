@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import {
   CardDescription,
@@ -11,28 +11,38 @@ import ThumbnailImg from './Thumbnail';
 
 import { PostItemProps } from '@/typings/typings';
 
-function PostItem({
-  title,
-  date,
-  summary,
-  thumbnail: {
-    childImageSharp: { gatsbyImageData },
+const formatReadTime = (time: number): string => `${time} min read`;
+
+const formatPostMetadata = (date: string, time: number): string =>
+  `${date} \u00b7 ${formatReadTime(time)}`;
+
+const PostItem = memo<PostItemProps>(
+  ({
+    title,
+    date,
+    summary,
+    thumbnail: {
+      childImageSharp: { gatsbyImageData },
+    },
+    link,
+    time,
+  }) => {
+    const metadata = formatPostMetadata(date, time);
+
+    return (
+      <PostItemWrap to={link}>
+        <ThumbnailImg thumbnail={gatsbyImageData} />
+        <PostCard>
+          <CardTitle>{title}</CardTitle>
+          <CardSummary>{summary}</CardSummary>
+          <CardDescription>{metadata}</CardDescription>
+        </PostCard>
+      </PostItemWrap>
+    );
   },
-  link,
-  time,
-}: PostItemProps) {
-  return (
-    <PostItemWrap to={link}>
-      <ThumbnailImg thumbnail={gatsbyImageData} />
-      <PostCard>
-        <CardTitle>{title}</CardTitle>
-        <CardSummary>{summary}</CardSummary>
-        <CardDescription>
-          {date} &middot; {time} min read
-        </CardDescription>
-      </PostCard>
-    </PostItemWrap>
-  );
-}
+);
+
+PostItem.displayName = 'PostItem';
 
 export default PostItem;
+export { formatReadTime, formatPostMetadata };
