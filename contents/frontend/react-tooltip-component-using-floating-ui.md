@@ -16,7 +16,7 @@ thumbnail: './images/react-tooltip-component-using-floating-ui/thumbnail.png'
 
 <em>주간 인기 질문 및 주간 활동 TOP 10 영역</em>
 
-최근에 수강생과 멘토 간의 질의응답을 활성화하기 위한 커뮤니티 기능을 배포했어요. 신규 기능이라서 세부 정책에 대해 소개하기 위해 여러 페이지에서 툴팁 컴포넌트를 사용했어요. 이렇게 툴팁 컴포넌트를 적용하던 중 팀 내에서 불편함을 느끼고 각자 어떤 불편함이 있었는지 함께 얘기했어요.
+최근 수강생과 멘토 간의 질의응답을 활성화하기 위한 커뮤니티 기능을 배포했어요. 신규 기능이라 세부 정책을 소개하기 위해 여러 페이지에서 툴팁 컴포넌트를 사용했어요. 이렇게 툴팁 컴포넌트를 적용하던 중 팀 내에서 불편함을 느끼고 각자 어떤 불편함이 있었는지 함께 얘기했어요.
 
 ### 1-1. 기존 컴포넌트의 한계
 
@@ -97,13 +97,13 @@ Floating UI 라이브러리에서 제공하는 `useFloating`훅과 `autoUpdate`,
 
 <em>사진 출처: <a href="https://techhub.iodigital.com/articles/what-are-react-portals" target="_blank" rel="noreferrer noopener" aria-label="react-portal">wtechhub.iodigital.com</a></em>
 
-툴팁 컴포넌트를 렌더링할 때 [createPortal API](https://ko.react.dev/reference/react-dom/createPortal) 를 적용했어요. 툴팁 컴포넌트의 위치가 상위 컴포넌트 내부에 종속되지 않도록 하고 `body` 내부에 생성한 최상위 계층의 `div` 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트의 CSS 스타일 영향을 받지 않기 위해서예요. 
+툴팁 컴포넌트를 렌더링할 때 [createPortal API](https://ko.react.dev/reference/react-dom/createPortal) 를 적용했어요. 툴팁 컴포넌트의 위치가 상위 컴포넌트 내부에 종속되지 않도록 하고 `body` 내부에 생성한 최상위 계층의 `div` 엘리먼트로 옮기기 위해 사용했어요. 이렇게 물리적인 위치를 변경하는 이유는 부모 컴포넌트의 CSS 영향을 받지 않기 위해서예요. 
 
 ### 3-4. 웹 접근성 고려
 
-툴팁 라이브러리는 여러 웹 접근성을 고려해서 적용하고 있어서 추가 설정이 필요하지 않아요. 다만 현재처럼 Floating UI 라이브러리를 사용한 경우에는 직접 웹 접근성을 고려한 설정을 추가해야 해요.
+툴팁 라이브러리에서 제공하는 컴포넌트는 이미 여러 웹 접근성을 고려하고 있어서 추가 설정이 필요하지 않아요. 다만 현재처럼 Floating UI 라이브러리를 사용하는 경우에는 직접 웹 접근성을 고려한 설정을 추가해야 해요.
 
-- `role`: 스크린 리더에게 해당 요소가 툴팁이라는 것을 알릴 수 있도록 설정
+- `role`: 스크린 리더에게 해당 요소가 툴팁이라는 것을 알리도록 설정
 - `aria-describedby`: 툴팁의 내용이 어떤 요소를 설명하는지 연결
 - `aria-hidden`: 툴팁이 보이지 않을 때 스크린 리더가 해당 내용을 읽지 않도록 설정
 
