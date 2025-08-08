@@ -1,7 +1,7 @@
 ---
 title: '툴팁 컴포넌트 개선하기'
 date: '2025-05-03'
-category: 'Frontend'
+category: 'React'
 summary: '툴팁 컴포넌트의 포지션 설정 방식을 변경하여 모바일 대응성을 높이고 개발자 경험도 개선한 사례에 대해 정리했어요.'
 thumbnail: './images/react-tooltip-component-using-floating-ui/thumbnail.png'
 ---

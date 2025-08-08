@@ -3,7 +3,7 @@ title: 'useRef는 처음이라 :: 개념부터 활용 예시까지'
 date: '2021-05-14'
 category: 'React'
 summary: 'React useRef 개념과 대표적인 3가지 활용 방법을 예제와 함께 정리했습니다. 특정 DOM 선택하기, 컴포넌트 안의 변수 만들기, 리렌더링 방지하기'
-thumbnail: './images/what-is-use-ref.png'
+thumbnail: './images/what-is-use-ref/thumbnail.png'
 ---
 
 > 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
@@ -20,7 +20,7 @@ React의 Hook 함수 중 하나인 useRef에 대해 정리했습니다. useRef�
 
 ## 1. useRef가 무엇인가요?
 
-![react-use-ref-1](./images/react-use-ref-1.png)
+![react-use-ref-1](./images/what-is-use-ref/react-use-ref-1.png)
 
 <em>사진 출처: <a href="https://livebook.manning.com/book/react-hooks-in-action/chapter-6/v-3/35" target="_blank" rel="noreferrer noopener" aria-label="use-ref">livebook.manning.com</a></em>
 
@@ -32,7 +32,7 @@ React 공식 문서에 적혀 있는 useRef 정의입니다. useRef 사용 예�
 
 ### 2-1. 특정 DOM 선택하기
 
-![react-use-ref-2](./images/react-use-ref-2.png)
+![react-use-ref-2](./images/what-is-use-ref/react-use-ref-2.png)
 
 <em>사진 출처: <a href="https://learnjavascriptfast.com/chapter-7-the-javascript-document-object-model/2/" target="_blank" rel="noreferrer noopener" aria-label="document-object-model">learnjavascriptfast.com</a></em>
 
@@ -171,7 +171,7 @@ export default App;
 
 초기화 버튼을 클릭했을 때 이름 input에 포커스가 잡힙니다.
 
-![react-use-ref-3](./images/react-use-ref-3.png)
+![react-use-ref-3](./images/what-is-use-ref/react-use-ref-3.png)
 
 ## 4. useRef로 컴포넌트 안의 변수 만드는 방법 
 
@@ -304,7 +304,7 @@ export default App;
 
 `id`값으로 `nextId.current`를 사용합니다.
 
-![react-use-ref-4](./images/react-use-ref-4.gif)
+![react-use-ref-4](./images/what-is-use-ref/react-use-ref-4.gif)
 
 ## 5. 리렌더링 방지하는 방법
 
@@ -426,7 +426,7 @@ export default App;
 
 처음 컴포넌트를 불러왔을 때, 등록 버튼을 눌렀을 때 2번만 렌더링 되는 것을 확인할 수 있습니다.
 
-![react-use-ref-5](./images/react-use-ref-5.png)
+![react-use-ref-5](./images/what-is-use-ref/react-use-ref-5.png)
 
 ## 마치며
 

@@ -1,7 +1,7 @@
 ---
 title: 'Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (1)'
 date: '2022-11-14'
-category: 'Frontend'
+category: 'Deployment'
 summary: '블로그 변경 사항에 비해 배포에 드는 시간이 길다고 느껴 이를 개선해봤습니다. GitHub에서 제공하는 캐시(cache) 액션으로 워크플로우 실행 시간을 단축한 경험을 공유합니다.'
 thumbnail: './images/caching-dependencies-to-speed-up-workflows/thumbnail.png'
 ---

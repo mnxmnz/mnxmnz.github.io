@@ -1,7 +1,7 @@
 ---
 title: '웹팩은 처음이라 :: 개념부터 활용 예시까지'
 date: '2021-05-03'
-category: 'Frontend'
+category: 'Webpack'
 summary: '웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 로더에 대해 상세하게 정리했습니다.'
 thumbnail: './images/what-is-webpack/thumbnail.png'
 ---

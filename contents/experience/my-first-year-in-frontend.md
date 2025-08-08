@@ -1,9 +1,9 @@
 ---
 title: '프론트엔드 개발 일 년 차 회고'
 date: '2024-12-23'
-category: 'Etc'
+category: 'Experience'
 summary: '프론트엔드 개발자로서 첫 일 년 동안의 경험을 정리했어요. 작은 이슈부터 큰 에픽 단위 업무까지 진행하며 얻은 점과 아쉬운 점을 담았어요.'
-thumbnail: './images/my-first-year-in-frontend.png'
+thumbnail: './images/my-first-year-in-frontend/thumbnail.png'
 ---
 
 ## 들어가며
@@ -16,7 +16,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 1-1. 첫 담당 서비스
 
-![mylight-and-zerobase](./images/my-first-year-in-frontend-mylight-zerobase-service.png)
+![mylight-and-zerobase](./images/my-first-year-in-frontend/my-first-year-in-frontend-mylight-zerobase-service.png)
 
 <em>가벼운학습지와 제로베이스</em>
 
@@ -24,7 +24,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 1-2. 첫 PR
 
-![my-first-pr](./images/my-first-year-in-frontend-my-first-pr.png)
+![my-first-pr](./images/my-first-year-in-frontend/my-first-year-in-frontend-my-first-pr.png)
 
 <em>팀원 분들의 따뜻한 첫 PR 리뷰</em>
 
@@ -32,7 +32,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 1-3. 첫 운영 이슈
 
-![edit-email](./images/my-first-year-in-frontend-edit-email.png)
+![edit-email](./images/my-first-year-in-frontend/my-first-year-in-frontend-edit-email.png)
 
 <em>가벼운학습지 하단 Footer</em>
 
@@ -44,7 +44,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 1-5. 첫 핫픽스
 
-![fix-text-and-link](./images/my-first-year-in-frontend-text.png)
+![fix-text-and-link](./images/my-first-year-in-frontend/my-first-year-in-frontend-text.png)
 
 <em>제로베이스 상단 GNB</em>
 
@@ -66,7 +66,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 2-3. Vue 기반 프로젝트 Next.js 기반으로 이관
 
-![fastcampus](./images/my-first-year-in-frontend-fastcampus.png)
+![fastcampus](./images/my-first-year-in-frontend/my-first-year-in-frontend-fastcampus.png)
 
 <em>패스트캠퍼스</em>
 
@@ -76,7 +76,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 2-4. 캐시된 데이터 디버깅
 
-![exam-result](./images/my-first-year-in-frontend-exam-result.jpeg)
+![exam-result](./images/my-first-year-in-frontend/my-first-year-in-frontend-exam-result.jpeg)
 
 <em>패스트캠퍼스 LMS 시험 결과 페이지</em>
 
@@ -96,7 +96,7 @@ thumbnail: './images/my-first-year-in-frontend.png'
 
 ### 3-2. 카테고리 UI 개선
 
-![3depth-category](./images/my-first-year-in-frontend-3depth-category.png)
+![3depth-category](./images/my-first-year-in-frontend/my-first-year-in-frontend-3depth-category.png)
 
 <em>제로베이스 카테고리 목록</em>
 
@@ -112,7 +112,7 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ### 4-1. 메인 페이지 개편 및 강의 찜하기 기능 도입
 
-![best5](./images/my-first-year-in-frontend-best5.png)
+![best5](./images/my-first-year-in-frontend/my-first-year-in-frontend-best5.png)
 
 <em>실시간 BEST 인기 강의 영역</em>
 
@@ -144,7 +144,7 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ### 5-1. 자동화 서비스 도입
 
-![curriculum](./images/my-first-year-in-frontend-curriculum.png)
+![curriculum](./images/my-first-year-in-frontend/my-first-year-in-frontend-curriculum.png)
 
 <em>강의 상세페이지 커리큘럼</em>
 
@@ -166,7 +166,7 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ### 6-1. 커뮤니티 오픈
 
-![community](./images/my-first-year-in-frontend-community.jpeg)
+![community](./images/my-first-year-in-frontend/my-first-year-in-frontend-community.jpeg)
 
 <em>커뮤니티 기능 도입</em>
 

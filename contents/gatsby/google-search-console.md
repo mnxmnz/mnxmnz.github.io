@@ -3,7 +3,7 @@ title: 'Gastby 블로그 검색엔진 최적화 방법'
 date: '2021-12-31'
 category: 'Gatsby'
 summary: 'Gatsby 프로젝트의 Sitemap.xml, Robots.txt를 생성하고 Google Search Console에 등록하는 과정입니다.'
-thumbnail: './images/google-search-console.png'
+thumbnail: './images/google-search-console/thumbnail.png'
 ---
 
 ## 들어가며
@@ -14,7 +14,7 @@ Gatsby 블로그의 **Sitemap.xml, Robots.txt를 생성**하고 **Google Search 
 
 ### 0-1. Sitemap.xml
 
-![sitemap-vs-website](./images/sitemap-vs-website.png)
+![sitemap-vs-website](./images/google-search-console/sitemap-vs-website.png)
 
 <em>사진 출처: <a href="https://shantunparmar.in/how-to-create-an-dynamic-sitemap-for-wordpress-sites-do-your-own-seo" target="_blank" rel="noreferrer noopener" aria-label="sitemap-vs-website">shantunparmar.in</a></em>
 
@@ -78,9 +78,9 @@ module.exports = {
 
 이렇게 `gatsby-plugin-advanced-sitemap` 플러그인 설정을 완료하고 `gatsby build` 명령어를 실행하면 새로운 `sitemap.xml` 파일이 생성됩니다. 블로그를 배포한 후 `https://YOUR-URL.com/sitemap.xml`에 접속하면 advanced sitemap을 확인하실 수 있습니다.
 
-![advanced-sitemap](./images/advanced-sitemap.png)
+![advanced-sitemap](./images/google-search-console/advanced-sitemap.png)
 
-![advanced-sitemap-pages](./images/advanced-sitemap-pages.png)
+![advanced-sitemap-pages](./images/google-search-console/advanced-sitemap-pages.png)
 
 > `gatsby-config.js` 파일에서 `gatsby-plugin-sitemap` 또는 `gatsby-plugin-advanced-sitemap` 플러그인 둘 중 하나만 설정하는 것이 중요합니다. 만약 둘 다 설정하면 하나의 웹 사이트에 두 개의 sitemap이 설정되는 오류가 발생합니다.
 
@@ -122,7 +122,7 @@ module.exports = {
 
 이제 마지막 단계인 **Google Search Console에 URL 등록**입니다. [Google Search Console](https://search.google.com/search-console/about) 페이지에 접속해서 시작하기를 클릭합니다.
 
-![google-search-console-URL-page](./images/google-search-console-URL-page.png)
+![google-search-console-URL-page](./images/google-search-console/google-search-console-URL-page.png)
 
 URL을 입력하면 소유권을 확인하기 위한 창을 볼 수 있습니다. 소유권을 확인하는 방법 중 HTML 태그를 선택하면 사이트의 meta data를 관리하는 Head 태그에 해당 정보를 추가해서 소유권을 인증할 수 있습니다.
 
@@ -143,7 +143,7 @@ URL을 입력하면 소유권을 확인하기 위한 창을 볼 수 있습니다
 
 해당 정보를 작성하고 배포한 후 소유권 확인 버튼을 클릭해주시면 Google Search Console 상세 페이지로 이동하실 수 있습니다. 왼쪽 사이드바의 Sitemaps 페이지를 클릭하여 `https://YOUR-URL.com/sitemap.xml`을 제출해주세요. 3일 정도의 시간이 지나면 상태 항목의 "성공" 메시지를 확인하실 수 있습니다.
 
-![google-search-console-sitemap](./images/google-search-console-sitemap.png)
+![google-search-console-sitemap](./images/google-search-console/google-search-console-sitemap.png)
 
 만약 시간이 지나도 "성공" 메시지를 확인할 수 없다면 URL 검사 항목을 클릭해서 sitemap.xml의 색인을 생성한 후 다시 sitemap.xml을 제출하는 방법을 추천합니다.
 

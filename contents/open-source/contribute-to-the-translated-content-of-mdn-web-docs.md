@@ -1,14 +1,14 @@
 ---
 title: '오픈소스는 처음이라 :: MDN 문서 번역'
 date: '2023-02-21'
-category: 'Etc'
+category: 'Open Source'
 summary: 'MDN Web Docs 번역해서 오픈소스에 기여하는 방법입니다. 번역에 필요한 가이드 문서와 파일 생성 방법에 대해 소개합니다.'
-thumbnail: './images/contribute-to-the-translated-content-of-mdn-web-docs.png'
+thumbnail: './images/contribute-to-the-translated-content-of-mdn-web-docs/thumbnail.png'
 ---
 
 ## 들어가며
 
-![merged](./images/open-source-project-merged.png)
+![merged](./images/contribute-to-the-translated-content-of-mdn-web-docs/open-source-project-merged.png)
 
 CSS 상속을 공부하던 중 [MDN Style origin](https://developer.mozilla.org/en-US/docs/Glossary/Style_origin) 문서의 한국어 번역이 존재하지 않는 것을 확인하고 이를 한국어로 번역했습니다. 가이드 문서에 기여 방법이 자세히 설명되어 있지만, 처음이라 몇 가지 헷갈리는 부분이 있었습니다. 기여 과정을 정리해서 다음에는 더 효율적으로 번역하고 다른 분들에게도 도움이 되고자 번역 과정에 대해 작성했습니다.
 
@@ -26,7 +26,7 @@ CSS 상속을 공부하던 중 [MDN Style origin](https://developer.mozilla.org/
 
 예를 들어, Style origin 문서의 URL은 `https://developer.mozilla.org/en-US/docs/Glossary/Style_origin` 입니다. 그러면 files 폴더 안에서 en-US > glossary > style_origin 순서로 탐색합니다. 해당 폴더에서 원본 index.md 파일을 확인할 수 있습니다.
 
-![index-md](./images/open-source-project-index-md.png)
+![index-md](./images/contribute-to-the-translated-content-of-mdn-web-docs/open-source-project-index-md.png)
 
 ### 2-2. 공식 가이드 문서
 
@@ -50,7 +50,7 @@ Style origin 문서를 번역할 때 진행 중일 때도 참고하고 번역을
 
 최근에 [페이지 갱신 표시](https://github.com/mdn/translated-content/blob/main/docs/ko/guides/meta-data-guide.md) 항목이 추가됐습니다. en-US의 hash는 원본 index.md 파일의 커밋 히스토리에서 찾아볼 수 있습니다.
 
-![hash](./images/open-source-project-hash.png)
+![hash](./images/contribute-to-the-translated-content-of-mdn-web-docs/open-source-project-hash.png)
 
 hash 좌측의 버튼을 클릭해서 클립보드에 복사할 수 있습니다.
 
@@ -62,7 +62,7 @@ hash 좌측의 버튼을 클릭해서 클립보드에 복사할 수 있습니다
 
 MDN의 [translated-content](https://github.com/mdn/translated-content) 레포를 fork 합니다. 
 
-![fork](./images/open-source-project-fork.png)
+![fork](./images/contribute-to-the-translated-content-of-mdn-web-docs/open-source-project-fork.png)
 
 ### 3-2. 한국어 문서가 아예 존재하지 않는 페이지를 번역한 경우
 
@@ -80,7 +80,7 @@ MDN의 [translated-content](https://github.com/mdn/translated-content) 레포를
 
 번역을 마치고 파일 생성까지 완료했으면 이제 [translated-content](https://github.com/mdn/translated-content) 레포에 PR을 등록합니다.
 
-![approve](./images/open-source-project-approve.png)
+![approve](./images/contribute-to-the-translated-content-of-mdn-web-docs/open-source-project-approve.png)
 
 PR에서 approve를 받으면 기여에 필요한 모든 과정이 완료된 것입니다. 이제 MDN Web Docs에 배포된 한국어 번역 페이지를 확인하실 수 있습니다 🎉
 

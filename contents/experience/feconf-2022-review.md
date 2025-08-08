@@ -1,18 +1,18 @@
 ---
 title: 'FEConf 2022 후기'
 date: '2022-10-29'
-category: 'Etc'
+category: 'Experience'
 summary: '프론트엔드 개발 컨퍼런스인 FEConf 2022 참석 후기입니다. 운이 좋게 티켓팅에 성공하여 평소 가보고 싶었던 컨퍼런스에 오프라인으로 참석할 수  있었습니다.'
-thumbnail: './images/feconf-2022-review.png'
+thumbnail: './images/feconf-2022-review/thumbnail.png'
 ---
 
 ## 들어가며
 
-![feconf](./images/feconf-2022-photo.jpg)
+![feconf](./images/feconf-2022-review/feconf-2022-photo.jpg)
 
 프론트엔드 개발 컨퍼런스인 [FEConf 2022](https://2022.feconf.kr/) 참석 후기입니다. 운 좋게 티켓팅에 성공하여 평소 가보고 싶었던 컨퍼런스에 오프라인으로 참석할 수  있었습니다.
 
-![feconf-2022-track](./images/feconf-2022-track.jpg)
+![feconf-2022-track](./images/feconf-2022-review/feconf-2022-track.jpg)
 
 <em>사진 출처: <a href="https://2022.feconf.kr" target="_blank" rel="noreferrer noopener" aria-label="feconf">2022.feconf.kr</a></em>
 
@@ -26,7 +26,7 @@ FEConf 2022는 10월 8일 토요일에 잠실 롯데타워에서 진행되었습
 
 ### 1-1. ReScript?
 
-![feconf-2022-rescript-vs-javascript](./images/feconf-2022-rescript-vs-javascript.png)
+![feconf-2022-rescript-vs-javascript](./images/feconf-2022-review/feconf-2022-rescript-vs-javascript.png)
 
 ReScript는 JavaScript로 컴파일되는 강력한 타입 언어입니다. JavaScript 개발자에게 친숙한 구문을 제공하며 모든 JavaScript 라이브러리를 ReScript와 함께 사용할 수 있습니다.
 
@@ -46,13 +46,13 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 타입 어노테이션 없이 모든 표현식의 타입을 힌들리-밀너 타입 추론으로 확인합니다.
 
-![feconf-2022-hindley-milner](./images/feconf-2022-hindley-milner.png)
+![feconf-2022-hindley-milner](./images/feconf-2022-review/feconf-2022-hindley-milner.png)
 
 <em>사진 출처: <a href="https://youtu.be/208ZBisLuXw" target="_blank" rel="noreferrer noopener" aria-label="ReScript">ReScript 같이 해요</a></em>
 
 값의 형태가 맞는 레코드 타입 선언을 찾습니다. 예시를 통해 알아보겠습니다.
 
-![feconf-2022-record-type](./images/feconf-2022-record-type.png)
+![feconf-2022-record-type](./images/feconf-2022-review/feconf-2022-record-type.png)
 
 `int`타입인 `age`, `string`타입인 `name`을 필드로 갖는 `person`이라는 레코드 타입을 선언하고 `data`에 `age`필드만 작성하면 타입 에러가 발생합니다. `name`필드가 선언되지 않았다는 에러입니다. 즉, 어노테이션 없이도 `data`는 자동으로 `person`이라는 타입으로 추론이 된 것입니다.
 
@@ -64,7 +64,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 ### 2-1. 모노레포란?
 
-![feconf-2022-monorepo-polyrepo](./images/feconf-2022-monorepo-polyrepo.svg)
+![feconf-2022-monorepo-polyrepo](./images/feconf-2022-review/feconf-2022-monorepo-polyrepo.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="monorepo-polyrepo">monorepo.tools</a></em>
 
@@ -94,7 +94,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-1. Local computation caching
 
-![feconf-2022-local-computation-caching](./images/feconf-2022-local-computation-caching.svg)
+![feconf-2022-local-computation-caching](./images/feconf-2022-review/feconf-2022-local-computation-caching.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="local-computation-caching">monorepo.tools</a></em>
 
@@ -102,7 +102,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-2. Local task orchestration
 
-![feconf-2022-local-task-orchestration](./images/feconf-2022-local-task-orchestration.svg)
+![feconf-2022-local-task-orchestration](./images/feconf-2022-review/feconf-2022-local-task-orchestration.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="local-task-orchestration">monorepo.tools</a></em>
 
@@ -110,7 +110,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-3. Distributed computation caching
 
-![feconf-2022-distributed-computation-caching](./images/feconf-2022-distributed-computation-caching.svg)
+![feconf-2022-distributed-computation-caching](./images/feconf-2022-review/feconf-2022-distributed-computation-caching.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="distributed-computation-caching">monorepo.tools</a></em>
 
@@ -118,7 +118,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-4. Detecting affected projects / packages
 
-![feconf-2022-detecting-affected-projects-packages](./images/feconf-2022-detecting-affected-projects-packages.svg)
+![feconf-2022-detecting-affected-projects-packages](./images/feconf-2022-review/feconf-2022-detecting-affected-projects-packages.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="detecting-affected-projects-packages">monorepo.tools</a></em>
 
@@ -126,7 +126,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-5. Source code sharing
 
-![feconf-2022-source-code-sharing](./images/feconf-2022-source-code-sharing.svg)
+![feconf-2022-source-code-sharing](./images/feconf-2022-review/feconf-2022-source-code-sharing.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="source-code-sharing">monorepo.tools</a></em>
 
@@ -134,7 +134,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-6. Code generation
 
-![feconf-2022-code-generation](./images/feconf-2022-code-generation.svg)
+![feconf-2022-code-generation](./images/feconf-2022-review/feconf-2022-code-generation.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="code-generation">monorepo.tools</a></em>
 
@@ -142,7 +142,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 #### 2-3-7. Project constraints and visibility
 
-![feconf-2022-project-constrains-and-visibility](./images/feconf-2022-project-constrains-and-visibility.svg)
+![feconf-2022-project-constrains-and-visibility](./images/feconf-2022-review/feconf-2022-project-constrains-and-visibility.svg)
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="project-constrains-and-visibility">monorepo.tools</a></em>
 
@@ -154,7 +154,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 ### 3-1. UX 개발자
 
-![feconf-2022-ux-dev](./images/feconf-2022-ux-dev.png)
+![feconf-2022-ux-dev](./images/feconf-2022-review/feconf-2022-ux-dev.png)
 
 <em>사진 출처: <a href="https://youtu.be/GF_3kGzJpCA" target="_blank" rel="noreferrer noopener" aria-label="ux-dev">UX 개발자, 대형 서비스 빠르게 프로토타입하기</a></em>
 
@@ -166,7 +166,7 @@ UX 개발자의 역할은 다음과 같습니다.
 
 ### 3-2. 프로토타입
 
-![feconf-2022-about-prototype](./images/feconf-2022-about-prototype.png)
+![feconf-2022-about-prototype](./images/feconf-2022-review/feconf-2022-about-prototype.png)
 
 <em>사진 출처: <a href="https://youtu.be/GF_3kGzJpCA" target="_blank" rel="noreferrer noopener" aria-label="about-prototype">UX 개발자, 대형 서비스 빠르게 프로토타입하기</a></em>
 
@@ -180,7 +180,7 @@ UX 개발자의 역할은 다음과 같습니다.
 
 ### 3-3. UX 개발 프로토타입
 
-![feconf-2022-ux-prototype](./images/feconf-2022-ux-prototype.png)
+![feconf-2022-ux-prototype](./images/feconf-2022-review/feconf-2022-ux-prototype.png)
 
 <em>사진 출처: <a href="https://youtu.be/GF_3kGzJpCA" target="_blank" rel="noreferrer noopener" aria-label="ux-prototype">UX 개발자, 대형 서비스 빠르게 프로토타입하기</a></em>
 
