@@ -57,11 +57,12 @@ export const Copyright = styled.div`
 export const Menu = styled.div`
   display: flex;
 
-  & > div:nth-of-type(2) {
-    margin: 0 0 0 10rem;
+  & > div:nth-of-type(2),
+  & > div:nth-of-type(3) {
+    margin: 0 0 0 8rem;
 
     ${customMQ} {
-      margin: 0 0 0 7rem;
+      margin: 0 0 0 5rem;
     }
   }
 `;

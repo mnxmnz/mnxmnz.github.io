@@ -37,7 +37,7 @@ function Footer() {
             ))}
           </Nav>
           <Nav>
-            <NavTitle>More</NavTitle>
+            <NavTitle>Contact</NavTitle>
             <NavMoreItem>
               <a href="mailto:minzidev@gmail.com" aria-label="Email">
                 Email <GoLinkExternal />
@@ -63,6 +63,9 @@ function Footer() {
                 LinkedIn <GoLinkExternal />
               </a>
             </NavMoreItem>
+          </Nav>
+          <Nav>
+            <NavTitle>More</NavTitle>
             <NavMoreItem>
               <a
                 href="https://mnxmnz-books.vercel.app"
