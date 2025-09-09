@@ -65,6 +65,16 @@ function Footer() {
             </NavMoreItem>
             <NavMoreItem>
               <a
+                href="https://mnxmnz-books.vercel.app"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Books"
+              >
+                Books <GoLinkExternal />
+              </a>
+            </NavMoreItem>
+            <NavMoreItem>
+              <a
                 href="https://forms.gle/TVvPQHE5yJrZhtzF9"
                 target="_blank"
                 rel="noreferrer noopener"
