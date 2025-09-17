@@ -59,10 +59,10 @@ export const Menu = styled.div`
 
   & > div:nth-of-type(2),
   & > div:nth-of-type(3) {
-    margin: 0 0 0 8rem;
+    margin: 0 0 0 5rem;
 
     ${customMQ} {
-      margin: 0 0 0 5rem;
+      margin: 0 0 0 3rem;
     }
   }
 `;
