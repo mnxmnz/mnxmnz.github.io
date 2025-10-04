@@ -3,7 +3,7 @@ title: 'Vercel로 웹 프론트엔드 배포하고 도메인 설정하기'
 date: '2022-01-14'
 category: 'Deployment'
 summary: '웹 프론트엔드 프로젝트를 Vercel로 배포한 후 커스텀 도메인을 설정하는 과정입니다. Production Branch 등 세부 설정에 대한 내용도 포함하고 있습니다.'
-thumbnail: './images/deploy-web-frontend-project-to-vercel/thumbnail.png'
+thumbnail: './images/deploy-web-frontend-project-to-vercel/thumbnail.jpeg'
 ---
 
 ## 들어가며

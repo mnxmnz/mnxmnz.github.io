@@ -3,7 +3,7 @@ title: 'react-virtualized를 사용한 무한 스크롤 최적화'
 date: '2021-05-30'
 category: 'React'
 summary: 'react-virtualized 라이브러리를 사용한 무한 스크롤 최적화 방법입니다. windowing 기법과 개발자 도구를 활용한 성능 측정 방법도 포함하고 있습니다.'
-thumbnail: './images/infinity-scroll-react-virtualized/thumbnail.png'
+thumbnail: './images/infinity-scroll-react-virtualized/thumbnail.jpeg'
 ---
 
 > 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
@@ -14,7 +14,7 @@ React 공식 문서에서 소개하는 **react-virtualized 라이브러리를 �
 
 ## 1. react-virtualized 가 무엇인가요?
 
-![react-virtualized-1](./images/infinity-scroll-react-virtualized/react-virtualized-1.png)
+![react-virtualized-1](./images/infinity-scroll-react-virtualized/react-virtualized-1.jpeg)
 
 react-virtualized 란 React 공식 문서 [성능 최적화 페이지](https://ko.reactjs.org/docs/optimizing-performance.html)에서 소개하는 두 개의 라이브러리 중 하나입니다.
 
@@ -30,7 +30,7 @@ windowing 기법에 대해 조금 더 자세히 알아보겠습니다.
 
 ### 1-1. windowing 기법
 
-![react-virtualized-2](./images/infinity-scroll-react-virtualized/react-virtualized-2.png)
+![react-virtualized-2](./images/infinity-scroll-react-virtualized/react-virtualized-2.jpeg)
 
 <em>사진 출처: <a href="https://www.patterns.dev/posts/virtual-lists/" target="_blank" rel="noreferrer noopener" aria-label="sitemap-vs-website">patterns.dev</a></em>
 
@@ -44,7 +44,7 @@ windowing 기법에 대해 조금 더 자세히 알아보겠습니다.
 
 위에서 react-virtualized 에 대해 작성할 때 React 공식 문서에서 소개하는 두 개의 라이브러리 중 하나라고 했는데, 다른 하나는 react-window 라이브러리입니다. 이 포스팅에서 react-window 가 아닌 react-virtualized 를 다루는 이유는 다음과 같습니다.
 
-![react-virtualized-3](./images/infinity-scroll-react-virtualized/react-virtualized-3.png)
+![react-virtualized-3](./images/infinity-scroll-react-virtualized/react-virtualized-3.jpeg)
 
 > react-virtualized 사용자
 
@@ -64,7 +64,7 @@ react-window 는 컨테이너의 너비와 높이를 명시적으로 지정하�
 
 성능을 분석해야 할 때는 느려졌다는 느낌이 아니라 정확히 몇 초가 걸리는지 확인이 필요합니다. 크롬 개발자 도구의 **Performance 탭**으로 이를 측정할 수 있습니다.
 
-![react-virtualized-4](./images/infinity-scroll-react-virtualized/react-virtualized-4.png)
+![react-virtualized-4](./images/infinity-scroll-react-virtualized/react-virtualized-4.jpeg)
 
 녹화 버튼을 클릭한 후, 할 일 목록에 체크하고 화면에 변화가 반영되면 Stop 버튼을 누릅니다.
 
@@ -88,7 +88,7 @@ yarn add react-virtualized
 
 최적화를 수행하기 전에 필요한 작업은 각 항목의 실제 크기를 px 단위로 알아내는 것입니다. **크롬 개발자 도구**를 통해 이 크기를 쉽게 알아낼 수 있습니다.
 
-![react-virtualized-5](./images/infinity-scroll-react-virtualized/react-virtualized-5.png)
+![react-virtualized-5](./images/infinity-scroll-react-virtualized/react-virtualized-5.jpeg)
 
 각 항목의 크기는 가로 `495px`, 세로 `57px`입니다. 여기서 첫 번째 항목이 아니라 두 번째 항목을 확인하는 이유는 테두리가 포함된 값을 알아내기 위해서입니다.
 
@@ -194,7 +194,7 @@ export default React.memo(TodoList);
 
 ### 3-4. 최적화 이후 성능 비교
 
-![react-virtualized-6](./images/infinity-scroll-react-virtualized/react-virtualized-6.png)
+![react-virtualized-6](./images/infinity-scroll-react-virtualized/react-virtualized-6.jpeg)
 
 > 최적화 이전에는 1.4초가 걸렸지만, 최적화 이후 11ms(0.011초) 가 걸리는 것을 확인할 수 있습니다. 👍
 

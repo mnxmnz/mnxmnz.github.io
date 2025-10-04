@@ -3,7 +3,7 @@ title: 'Gatsby는 처음이라 :: 개념부터 프로젝트 시작까지'
 date: '2021-05-24'
 category: 'Gatsby'
 summary: 'Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아본 후 튜토리얼을 통해 Gatsby 개발을 시작하는 방법에 대해 정리했습니다.'
-thumbnail: './images/what-is-gatsby/thumbnail.png'
+thumbnail: './images/what-is-gatsby/thumbnail.jpeg'
 ---
 
 > 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
@@ -14,7 +14,7 @@ Gatsby에 대해 처음 공부하면서 새롭게 알게 된 점을 정리했습
 
 ## 0. 먼저 JAM Stack에 대해 알아보기
 
-![jamstack](./images/what-is-gatsby/jamstack.png)
+![jamstack](./images/what-is-gatsby/jamstack.jpeg)
 
 <em>사진 출처: <a href="https://velog.io/@kysung95/개발상식-JAM-스택이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack">velog.io</a></em>
 
@@ -32,7 +32,7 @@ JAM Stack은 어떻게 이런 이점을 가질 수 있는지 홈페이지에 있
 
 ### 0-1. JAM Stack 동작 원리
 
-![traditional-web-jamstack](./images/what-is-gatsby/traditional-web-jamstack.png)
+![traditional-web-jamstack](./images/what-is-gatsby/traditional-web-jamstack.jpeg)
 
 <em>사진 출처: <a href="https://jamstack.org" target="_blank" rel="noreferrer noopener" aria-label="traditional-web-jamstack">jamstack.org</a></em>
 
@@ -44,7 +44,7 @@ JAM Stack은 어떻게 이런 이점을 가질 수 있는지 홈페이지에 있
 
 > 1. 기존 방식보다 더 빠르게 웹 사이트를 제공할 수 있습니다.
 
-![jamstack-advantage-01](./images/what-is-gatsby/jamstack-advantage-01.png)
+![jamstack-advantage-01](./images/what-is-gatsby/jamstack-advantage-01.jpeg)
 
 <em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em>
 
@@ -52,7 +52,7 @@ JAM Stack은 렌더링할 화면들을 모두 Pre-Render 하여 제공해서 그
 
 > 2. 안전한 웹 사이트를 제공할 수 있습니다.
 
-![jamstack-advantage-02](./images/what-is-gatsby/jamstack-advantage-02.png)
+![jamstack-advantage-02](./images/what-is-gatsby/jamstack-advantage-02.jpeg)
 
 <em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em>
 
@@ -60,7 +60,7 @@ JAM Stack은 API를 통해 정적 사이트를 생성합니다. 여기서 사용
 
 > 3. 스케일링하기 쉬운 웹 사이트를 제공할 수 있습니다.
 
-![jamstack-advantage-03](./images/what-is-gatsby/jamstack-advantage-03.png)
+![jamstack-advantage-03](./images/what-is-gatsby/jamstack-advantage-03.jpeg)
 
 <em>사진 출처: <a href="https://www.bottlehs.com/etc/jamstack-이란" target="_blank" rel="noreferrer noopener" aria-label="jamstack-advantage">bottlehs.com</a></em>
 
@@ -70,7 +70,7 @@ JAM Stack은 API를 통해 정적 사이트를 생성합니다. 여기서 사용
 
 ### 1-1. 정적 사이트 생성
 
-![npm](./images/what-is-gatsby/npm.png)
+![npm](./images/what-is-gatsby/npm.jpeg)
 
 위 사진은 최근 1년간 대표적인 JAM Stack 기반 프레임워크 4가지의 다운로드 횟수를 나타낸 것입니다. Next.js 다운로드 수가 제일 많고, 다음으로 Gatsby 다운로드 수가 많은 것을 볼 수 있습니다.
 
@@ -90,7 +90,7 @@ JavaScript가 실행되면 빈 HTML 페이지 안에 마크업을 추가해주�
 
 ## 2. Gatsby 개념 소개
 
-![gatsby-data-sources-build-deploy](./images/what-is-gatsby/gatsby-data-sources-build-deploy.png)
+![gatsby-data-sources-build-deploy](./images/what-is-gatsby/gatsby-data-sources-build-deploy.jpeg)
 
 <em>사진 출처: <a href="https://dev.to/sakethkowtha/how-gatsby-works-580f" target="_blank" rel="noreferrer noopener" aria-label="gatsby-data-sources-build-deploy">dev.to</a></em>
 
@@ -140,7 +140,7 @@ yarn global add gatsby-cli
 
 - 추가적인 설정을 사용하지 않고 기본 설정만 체크했습니다.
 
-![gatsby-new](./images/what-is-gatsby/gatsby-new.png)
+![gatsby-new](./images/what-is-gatsby/gatsby-new.jpeg)
 
 Installing Gatsby... 가 끝나면 위에서 설정한 프로젝트 이름으로 폴더가 생성됩니다. Gatsby 서버를 실행하면 기본 템플릿 화면을 확인할 수 있습니다.
 
@@ -152,7 +152,7 @@ cd "[site-name]"
 yarn start
 ```
 
-![gatsby-template](./images/what-is-gatsby/gatsby-template.png)
+![gatsby-template](./images/what-is-gatsby/gatsby-template.jpeg)
 
 ### 3-2. Default Starter 설정
 
@@ -178,7 +178,7 @@ yarn develop or gatsby develop
 
 gatsby develop 명령어를 실행하면 프로젝트의 루트 디렉터리로 이동하여 개발 서버를 시작합니다.
 
-![gatsby-yarn-develop](./images/what-is-gatsby/gatsby-yarn-develop.png)
+![gatsby-yarn-develop](./images/what-is-gatsby/gatsby-yarn-develop.jpeg)
 
 ### 3-3. Blog starter 설정
 
@@ -198,7 +198,7 @@ yarn develop or gatsby develop
 
 > Gatsby 서버를 실행하면 Blog 템플릿 화면을 확인할 수 있습니다.
 
-![gatsby-starter-blog](./images/what-is-gatsby/gatsby-starter-blog.png)
+![gatsby-starter-blog](./images/what-is-gatsby/gatsby-starter-blog.jpeg)
 
 > http://localhost:8000/___graphql 에 접속하면 graphql 을 확인할 수 있습니다.
 

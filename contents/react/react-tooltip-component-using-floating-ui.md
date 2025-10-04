@@ -3,7 +3,7 @@ title: '툴팁 컴포넌트 개선하기'
 date: '2025-05-03'
 category: 'React'
 summary: '툴팁 컴포넌트의 포지션 설정 방식을 변경하여 모바일 대응성을 높이고 개발자 경험도 개선한 사례에 대해 정리했어요.'
-thumbnail: './images/react-tooltip-component-using-floating-ui/thumbnail.png'
+thumbnail: './images/react-tooltip-component-using-floating-ui/thumbnail.jpeg'
 ---
 
 ## 들어가며
@@ -12,7 +12,7 @@ thumbnail: './images/react-tooltip-component-using-floating-ui/thumbnail.png'
 
 ## 1. 문제 인식
 
-![community-ranking](./images/react-tooltip-component-using-floating-ui/community-ranking.png)
+![community-ranking](./images/react-tooltip-component-using-floating-ui/community-ranking.jpeg)
 
 <em>주간 인기 질문 및 주간 활동 TOP 10 영역</em>
 
@@ -41,7 +41,7 @@ const tooltipY = isMobileSize ? 41 : 0;
 
 ### 2-1. 외부 라이브러리 조사
 
-![react-tooltip](./images/react-tooltip-component-using-floating-ui/react-tooltip.png)
+![react-tooltip](./images/react-tooltip-component-using-floating-ui/react-tooltip.jpeg)
 
 <em><a href="https://react-tooltip.com" target="_blank" rel="noreferrer noopener" aria-label="react-tooltip">React Tooltip</a></em>
 
@@ -55,7 +55,7 @@ const tooltipY = isMobileSize ? 41 : 0;
 
 ### 2-2. Floating UI 도입 결정
 
-![floating-ui](./images/react-tooltip-component-using-floating-ui/floating-ui.png)
+![floating-ui](./images/react-tooltip-component-using-floating-ui/floating-ui.jpeg)
 
 <em><a href="https://floating-ui.com" target="_blank" rel="noreferrer noopener" aria-label="floating-ui">Floating UI</a></em>
 
@@ -69,13 +69,13 @@ Floating UI 라이브러리의 공식 문서를 살펴봤을 때 어렵지 않�
 
 ### 3-1. 포지셔닝 정책 수립
 
-![positioning](./images/react-tooltip-component-using-floating-ui/positioning.png)
+![positioning](./images/react-tooltip-component-using-floating-ui/positioning.jpeg)
 
 <em>React Tooltip 라이브러리의 툴팁 포지셔닝 정책 예시</a></em>
 
 React Tooltip 라이브러리에서는 12개의 포지션을 미리 설정한 후 사용하고 있어요. 같은 방식을 채택해서 툴팁 컴포넌트마다 개별적으로 포지션을 설정하지 않는 방향으로 개선했어요.
 
-![slack](./images/react-tooltip-component-using-floating-ui/slack.png)
+![slack](./images/react-tooltip-component-using-floating-ui/slack.jpeg)
 
 <em>툴팁 포지셔닝 정책 논의</a></em>
 
@@ -93,7 +93,7 @@ Floating UI 라이브러리에서 제공하는 `useFloating`훅과 `autoUpdate`,
 
 ### 3-3. createPortal API 적용
 
-![portal](./images/react-tooltip-component-using-floating-ui/portal.png)
+![portal](./images/react-tooltip-component-using-floating-ui/portal.jpeg)
 
 <em>사진 출처: <a href="https://techhub.iodigital.com/articles/what-are-react-portals" target="_blank" rel="noreferrer noopener" aria-label="react-portal">wtechhub.iodigital.com</a></em>
 
@@ -183,7 +183,7 @@ function Tooltip({ children, content, placement = TOOLTIP_PLACEMENTS.BOTTOM }: T
 
 ## 5. 개선 효과
 
-![github](./images/react-tooltip-component-using-floating-ui/github.png)
+![github](./images/react-tooltip-component-using-floating-ui/github.jpeg)
 
 <em>새로운 툴팁 컴포넌트 적용 PR</a></em>
 
