@@ -6,7 +6,7 @@ summary: 'react-virtualized 라이브러리를 사용한 무한 스크롤 최적
 thumbnail: './images/infinity-scroll-react-virtualized/thumbnail.jpeg'
 ---
 
-> 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
+> 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
 
 ## 들어가며
 

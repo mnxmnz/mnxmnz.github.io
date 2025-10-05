@@ -6,7 +6,7 @@ summary: 'React useRef 개념과 대표적인 3가지 활용 방법을 예제와
 thumbnail: './images/what-is-use-ref/thumbnail.jpeg'
 ---
 
-> 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
+> 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
 
 ## 들어가며
 

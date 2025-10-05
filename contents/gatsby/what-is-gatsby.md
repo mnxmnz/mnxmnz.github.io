@@ -6,7 +6,7 @@ summary: 'Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개
 thumbnail: './images/what-is-gatsby/thumbnail.jpeg'
 ---
 
-> 다른 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
+> 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
 
 ## 들어가며
 
