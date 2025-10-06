@@ -219,7 +219,7 @@ jobs:
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [Overview of the Gatsby Build Process | Gatsby](https://www.gatsbyjs.com/docs/conceptual/overview-of-the-gatsby-build-process)
 - [Build Caching | Gatsby](https://www.gatsbyjs.com/docs/build-caching)

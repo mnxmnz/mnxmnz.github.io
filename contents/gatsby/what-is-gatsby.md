@@ -208,7 +208,7 @@ Gatsby의 개념과 프로젝트를 시작하는 방법에 대해 알아봤습�
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [Welcome to the Gatsby Way of Building | Gatsby](https://www.gatsbyjs.com/docs)
 - [[무료] React 기반 Gatsby로 기술 블로그 개발하기 - 인프런 | 강의](https://www.inflearn.com/course/gatsby-기술블로그)

@@ -214,7 +214,7 @@ GitHub Actions의 hashFiles 내장 함수를 이용하여 yarn.lock 파일의 SH
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [Caching dependencies to speed up workflows - GitHub Docs](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [Contexts - GitHub Docs](https://docs.github.com/en/actions/learn-github-actions/contexts)

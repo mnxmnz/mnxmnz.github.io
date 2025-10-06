@@ -153,7 +153,7 @@ URL을 입력하면 소유권을 확인하기 위한 창을 볼 수 있습니다
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [사이트맵이란 무엇인가요? | Google 검색 센터 | 문서 | Google Developers](https://developers.google.com/search/docs/advanced/sitemaps/overview)
 - [robots.txt 소개 및 가이드 | Google 검색 센터 | 문서 | Google Developers](https://developers.google.com/search/docs/advanced/robots/intro?hl=ko)

@@ -440,7 +440,7 @@ useRef 개념에 대해 알아본 후 대표적인 3가지 활용 방법을 예�
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [Hooks API Reference – React](https://ko.reactjs.org/docs/hooks-reference.html##useref)
 - [10. useRef 로 특정 DOM 선택하기 · GitBook](https://react.vlpt.us/basic/10-useRef.html)

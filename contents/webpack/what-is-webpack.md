@@ -532,7 +532,7 @@ npm run build
 
 ---
 
-참고 자료 📩
+참고 자료
 
 - [Webpack](https://opentutorials.org/module/4566)
 - [프론트엔드 개발환경의 이해: 웹팩(기본) | 김정환 블로그](https://jeonghwan-kim.github.io/series/2019/12/10/frontend-dev-env-webpack-basic.html)
