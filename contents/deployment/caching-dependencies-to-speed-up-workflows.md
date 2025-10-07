@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # 2. Node.js 18버전을 사용합니다.
+      # 2. Node.js 18 버전을 사용합니다.
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -66,13 +66,13 @@ jobs:
 
 이렇게 의존성에 변경 사항이 없을 때 이전에 설치한 패키지를 재사용할 수만 있다면 워크플로우 소요 시간을 많이 단축할 수 있지 않을까요?
 
-GitHub 가 제공하는 캐시 액션을 사용하면 워크플로우에서 필요한 파일 중 변경 사항이 자주 발생하지 않는 파일을 GitHub 의 캐시에 올려놓고 CI 서버로 내려받아서 사용할 수 있습니다.
+> GitHub 가 제공하는 **캐시 액션**을 사용하면 워크플로우에서 필요한 파일 중 **변경 사항이 자주 발생하지 않는 파일을 GitHub 의 캐시에 올려놓고 CI 서버로 내려받아서 사용**할 수 있습니다.
 
 GitHub Actions 에서 지원하는 캐싱으로 패키지 설치 시간을 단축해보겠습니다.
 
 ## 2. checkout 액션의 캐시 사용하기
 
-2022년 8월에 업데이트된 내용에 따라 GitHub Setup Node 의 v2 부터 cache 옵션을 사용할 수 있습니다. cache 옵션으로 npm, yarn, pnpm 과 같은 패키지 매니저를 넘길 수 있습니다. [공식 README](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data) 에서 해당 내용을 확인하실 수 있습니다.
+2022년 8월에 업데이트된 내용에 따라 GitHub Setup Node 의 v2 부터 **cache 옵션**을 사용할 수 있습니다. cache 옵션으로 npm, yarn, pnpm 과 같은 패키지 매니저를 넘길 수 있습니다. [공식 README](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data) 에서 해당 내용을 확인하실 수 있습니다.
 
 ![caching-packages-data](./images/caching-dependencies-to-speed-up-workflows/caching-packages-data.jpeg)
 
@@ -127,15 +127,19 @@ jobs:
 
 ![10-21](./images/caching-dependencies-to-speed-up-workflows/10-21.jpeg)
 
-캐싱된 데이터를 사용해서 패키지 설치 시간이 44초에서 21초로 절반 정도 단축된 것을 확인하실 수 있습니다. 처음보다는 많이 단축된 시간이지만 그래도 조금의 아쉬움이 남았습니다. 패키지 설치에 드는 21초의 시간이 불필요하게 느껴졌습니다.
+캐싱된 데이터를 사용해서 패키지 설치 시간이 **44초**에서 **21초**로 절반 정도 단축된 것을 확인하실 수 있습니다. 처음보다는 많이 단축된 시간이지만 그래도 조금의 아쉬움이 남았습니다. 패키지 설치에 드는 21초의 시간이 불필요하게 느껴졌습니다.
 
 조금 더 최적화하기 위해 찾아보던 중 캐시 히트에 대해 알게 되었습니다. 이를 사용한 최적화 방법을 소개합니다.
 
 ## 3. 캐시 히트로 최적화하기
 
-GitHub 의 캐시 액션은 고유한 키를 이용해서 캐시를 식별하고 가져옵니다. 키는 캐시를 검색하거나 저장할 때 사용됩니다. 키에 맞는 캐시가 있으면 데이터를 복원하고 없으면 해당 작업의 종료 시점에 CI 서버상의 파일을 캐시에 저장합니다.
+> GitHub 의 **캐시 액션**은 **고유한 키를 이용해서 캐시를 식별하고 가져옵니다**.
 
-cache-hit 는 캐시 히트 여부에 대한 boolean 값을 제공합니다. 키에 맞는 캐시된 데이터가 존재하면 캐시 히트 값은 true, 그렇지 않다면 false 가 됩니다. 캐시 액션을 사용한 다음에 나오는 작업에서 캐시 히트 여부를 읽고 활용할 수 있습니다.
+키는 캐시를 검색하거나 저장할 때 사용됩니다. 키에 맞는 캐시가 있으면 데이터를 복원하고 없으면 해당 작업의 종료 시점에 CI 서버상의 파일을 캐시에 저장합니다.
+
+> **cache-hit** 는 **캐시 히트 여부에 대한 boolean 값을 제공**합니다.
+
+키에 맞는 캐시된 데이터가 존재하면 캐시 히트 값은 true, 그렇지 않다면 false 가 됩니다. 캐시 액션을 사용한 다음에 나오는 작업에서 캐시 히트 여부를 읽고 활용할 수 있습니다.
 
 ```yml
 name: Deploy Gatsby Blog with GitHub Actions
@@ -207,16 +211,14 @@ GitHub Actions 의 hashFiles 내장 함수를 이용하여 yarn.lock 파일의 S
 2. GitHub 에서 제공하는 checkout 액션의 v2 부터 cache 옵션으로 패키지 매니저를 넘길 수 있게 되었고, 이를 이용하여 패키지 설치 시간을 단축할 수 있었습니다.
 3. GitHub 의 캐시 액션에서는 고유한 키를 이용하여 캐시를 식별합니다. 캐시 히트 여부에 따라 캐시된 데이터를 복원하거나 저장할 수 있습니다. 캐시 키 생성 시 의존성에 변경이 생기면 키도 함께 변경되도록 하는 것이 중요합니다.
 
-> 블로그 배포 속도 개선 관련 글은 1편과 2편으로 이루어져 있습니다.
+> **블로그 배포 속도 개선 관련 글은 1편과 2편으로 이루어져 있습니다.**
+> 
+> - [Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (1)](https://mnxmnz.github.io/frontend/caching-dependencies-to-speed-up-workflows)
+> - [Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (2)](https://mnxmnz.github.io/frontend/caching-build-outputs-to-speed-up-workflows)
 
-- [Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (1)](https://mnxmnz.github.io/frontend/caching-dependencies-to-speed-up-workflows)
-- [Gatsby 블로그 배포 속도 개선으로 생산성 높이기 (2)](https://mnxmnz.github.io/frontend/caching-build-outputs-to-speed-up-workflows)
-
----
-
-참고 자료
-
-- [Caching dependencies to speed up workflows - GitHub Docs](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
-- [Contexts - GitHub Docs](https://docs.github.com/en/actions/learn-github-actions/contexts)
-- [뱅크샐러드 Web chapter에서 GitHub Action 기반의 CI 속도를 개선한 방법 | 뱅크샐러드](https://blog.banksalad.com/tech/github-action-npm-cache/)
-- [GitHub Actions의 캐시(Cache) 액션으로 패키지 설치 최적화하기 | Engineering Blog by Dale Seo](https://www.daleseo.com/github-actions-cache/)
+> **참고 자료**
+> 
+> - [Caching dependencies to speed up workflows - GitHub Docs](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
+> - [Contexts - GitHub Docs](https://docs.github.com/en/actions/learn-github-actions/contexts)
+> - [뱅크샐러드 Web chapter에서 GitHub Action 기반의 CI 속도를 개선한 방법 | 뱅크샐러드](https://blog.banksalad.com/tech/github-action-npm-cache/)
+> - [GitHub Actions의 캐시(Cache) 액션으로 패키지 설치 최적화하기 | Engineering Blog by Dale Seo](https://www.daleseo.com/github-actions-cache/)

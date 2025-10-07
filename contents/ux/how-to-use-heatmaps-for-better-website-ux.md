@@ -92,9 +92,7 @@ thumbnail: './images/how-to-use-heatmaps-for-better-website-ux/thumbnail.jpeg'
 
 온라인 강의를 제공하는 서비스인 만큼 사용자가 구매한 강의 목록을 확인할 수 있는 마이페이지의 중요도가 높다고 판단해서 데이터를 기반으로 개선 작업을 진행했어요. 사소한 수정 사항이지만 사용자에게 예측할 수 있는 UX를 제공해서 서비스에 대한 신뢰도를 높일 수 있었어요. 앞으로도 기존에 당연하게 여겼던 사항을 검토해서 더 좋은 경험을 제공하기 위해 고민하려 해요.
 
----
-
-참고 자료
-
-- [What Are Heatmaps? 101 Guide | Amplitude](https://amplitude.com/explore/analytics/heatmaps)
-- [10 Usability Heuristics for User Interface Design - NN/G](https://www.nngroup.com/articles/ten-usability-heuristics)
+> **참고 자료**
+> 
+> - [What Are Heatmaps? 101 Guide | Amplitude](https://amplitude.com/explore/analytics/heatmaps)
+> - [10 Usability Heuristics for User Interface Design - NN/G](https://www.nngroup.com/articles/ten-usability-heuristics)

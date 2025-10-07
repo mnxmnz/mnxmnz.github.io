@@ -22,21 +22,23 @@ FEConf 2022는 10월 8일 토요일에 잠실 롯데타워에서 진행되었습
 
 ## 1. ReScript
 
-첫 세션으로 ["ReScript 같이 해요"](https://youtu.be/208ZBisLuXw)를 들었습니다. 함수형 프로그래밍 언어에 관심이 있기도 하고 ReScript를 사용해 본 경험이 없어서 새로운 언어에 대해 알아가고 싶은 마음으로 해당 세션을 선택했습니다.
+첫 세션으로 ["ReScript 같이 해요"](https://youtu.be/208ZBisLuXw)를 들었습니다. 함수형 프로그래밍 언어에 관심이 있기도 하고 ReScript 를 사용해 본 경험이 없어서 새로운 언어에 대해 알아가고 싶은 마음으로 해당 세션을 선택했습니다.
 
 ### 1-1. ReScript?
 
 ![feconf-2022-rescript-vs-javascript](./images/feconf-2022-review/feconf-2022-rescript-vs-javascript.jpeg)
 
-ReScript는 JavaScript로 컴파일되는 강력한 타입 언어입니다. JavaScript 개발자에게 친숙한 구문을 제공하며 모든 JavaScript 라이브러리를 ReScript와 함께 사용할 수 있습니다.
+ReScript 는 **JavaScript 로 컴파일되는 강력한 타입 언어**입니다.
+
+JavaScript 개발자에게 친숙한 구문을 제공하며 모든 JavaScript 라이브러리를 ReScript 와 함께 사용할 수 있습니다.
 
 ### 1-2. JavaScript vs ReScript
 
-JavaScript와 ReScript의 차이점은 다음과 같습니다.
+JavaScript 와 ReScript 의 차이점은 다음과 같습니다.
 
 | 차이점 | 설명 |
 | :---: | :---: |
-| let만 있음 | const와 비슷한 불변 변수 선언 |
+| let 만 있음 | const 와 비슷한 불변 변수 선언 |
 | 화살표 사용 | (->) 파이프 연산자 |
 | return 없음 | 마지막 라인은 암묵적 반환 |
 | import, export 없음 | 모든 모듈을 내보냄 |
@@ -44,7 +46,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 ### 1-3. ReScript 장점
 
-타입 어노테이션 없이 모든 표현식의 타입을 힌들리-밀너 타입 추론으로 확인합니다.
+타입 어노테이션 없이 모든 표현식의 타입을 **힌들리-밀너 타입 추론**으로 확인합니다.
 
 ![feconf-2022-hindley-milner](./images/feconf-2022-review/feconf-2022-hindley-milner.jpeg)
 
@@ -68,7 +70,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="monorepo-polyrepo">monorepo.tools</a></em>
 
-모노레포란 잘 정의된 관계를 가진, 여러 개의 독립적인 프로젝트들이 있는 하나의 레포지토리입니다.
+> 모노레포란 **잘 정의된 관계를 가진, 여러 개의 독립적인 프로젝트들이 있는 하나의 레포지토리**입니다.
 
 ### 2-2. 모노레포를 사용하는 이유
 
@@ -98,7 +100,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="local-computation-caching">monorepo.tools</a></em>
 
-하나의 시스템에서 같은 것을 두 번 빌드하거나 테스트하지 않습니다.
+하나의 시스템에서 같은 것을 **두 번 빌드하거나 테스트하지 않습니다**.
 
 #### 2-3-2. Local task orchestration
 
@@ -106,7 +108,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="local-task-orchestration">monorepo.tools</a></em>
 
-여러 작업을 병렬로 실행합니다.
+여러 작업을 **병렬로 실행**합니다.
 
 #### 2-3-3. Distributed computation caching
 
@@ -114,7 +116,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="distributed-computation-caching">monorepo.tools</a></em>
 
-서로 다른 환경에서도 캐시를 공유합니다.
+서로 다른 환경에서도 **캐시를 공유**합니다.
 
 #### 2-3-4. Detecting affected projects / packages
 
@@ -122,7 +124,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="detecting-affected-projects-packages">monorepo.tools</a></em>
 
-변경 사항의 영향을 받을 수 있는 항목을 결정하여 영향을 받는 프로젝트만 빌드하거나 테스트합니다.
+변경 사항의 영향을 받을 수 있는 항목을 결정하여 **영향을 받는 프로젝트만 빌드하거나 테스트**합니다.
 
 #### 2-3-5. Source code sharing
 
@@ -130,7 +132,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="source-code-sharing">monorepo.tools</a></em>
 
-개별 소스 코드를 쉽게 공유할 수 있습니다.
+**개별 소스 코드를 쉽게 공유**할 수 있습니다.
 
 #### 2-3-6. Code generation
 
@@ -138,7 +140,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="code-generation">monorepo.tools</a></em>
 
-코드 생성을 위한 기본적인 지원을 합니다.
+**코드 생성을 위한 기본적인 지원**을 합니다.
 
 #### 2-3-7. Project constraints and visibility
 
@@ -146,7 +148,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://monorepo.tools" target="_blank" rel="noreferrer noopener" aria-label="project-constrains-and-visibility">monorepo.tools</a></em>
 
-레포지토리 내에서 종속성 관계를 제한하는 규칙을 정의합니다. 일부 프로젝트를 팀 전용으로 표시하여 다른 프로젝트에 의존하지 않도록 설정할 수 있습니다. 사용된 기술(예: React 또는 Nest.js)을 기반으로 프로젝트를 표시하고 백엔드 프로젝트가 프론트엔드 프로젝트를 가져오지 않도록 설정할 수 있습니다.
+레포지토리 내에서 **종속성 관계를 제한하는 규칙을 정의**합니다. 일부 프로젝트를 팀 전용으로 표시하여 다른 프로젝트에 의존하지 않도록 설정할 수 있습니다. 사용된 기술(예: React 또는 Nest.js)을 기반으로 프로젝트를 표시하고 백엔드 프로젝트가 프론트엔드 프로젝트를 가져오지 않도록 설정할 수 있습니다.
 
 ## 3. UX 개발자, 대형 서비스 빠르게 프로토타입하기
 
@@ -170,7 +172,7 @@ UX 개발자의 역할은 다음과 같습니다.
 
 <em>사진 출처: <a href="https://youtu.be/GF_3kGzJpCA" target="_blank" rel="noreferrer noopener" aria-label="about-prototype">UX 개발자, 대형 서비스 빠르게 프로토타입하기</a></em>
 
-프로토타입은 새로운 컴퓨터 시스템이나 소프트웨어의 설계 또는 성능, 구현 가능성, 운용 가능성을 평가하거나 요구 사항을 좀 더 잘 이해하고 결정하기 위하여 전체적인 기능을 간략한 형태로 구현한 시제품입니다.
+프로토타입은 **새로운 컴퓨터 시스템이나 소프트웨어의 설계 또는 성능, 구현 가능성, 운용 가능성을 평가하거나 요구 사항을 좀 더 잘 이해하고 결정하기 위하여 전체적인 기능을 간략한 형태로 구현한 시제품**입니다.
 
 개발자가 프로토타이핑하는 이유는 다음과 같습니다.
 
@@ -214,7 +216,7 @@ UX 개발 프로토타입의 목업 환경, 컴포넌트 환경, 실제 환경�
 
 #### 3-3-3. 실제의 환경
 
-구글 크롬 익스텐션을 활용하면 프로토타입을 실제 환경에 빠르게 적용하여 테스트할 수 있습니다. 또한, 설치한 사용자를 대상으로 새로운 프로토타입을 공유하는 채널 역할도 할 수 있습니다. 익스텐션은 기술 자체가 획기적인 것은 아니지만 프로토타이핑에 이용했을 때 다른 방법과 차별되는 독특한 강점을 갖는 프로토타이핑 방식입니다.
+구글 크롬 익스텐션을 활용하면 프로토타입을 실제 환경에 빠르게 적용하여 테스트할 수 있습니다. 또한, 설치한 사용자를 대상으로 새로운 프로토타입을 공유하는 채널 역할도 할 수 있습니다. **익스텐션**은 기술 자체가 획기적인 것은 아니지만 프로토타이핑에 이용했을 때 **다른 방법과 차별되는 독특한 강점을 갖는 프로토타이핑 방식**입니다.
 
 실제 환경을 이용한 프로토타이핑은 여러 장점이 있습니다.
 

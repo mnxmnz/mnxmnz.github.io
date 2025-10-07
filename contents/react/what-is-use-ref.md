@@ -8,7 +8,7 @@ thumbnail: './images/what-is-use-ref/thumbnail.jpeg'
 
 ## 들어가며
 
-React의 Hook 함수 중 하나인 useRef에 대해 정리했습니다. useRef의 개념과 대표적인 3가지 활용 방법을 예시 코드를 통해 살펴보겠습니다. 3가지 활용 방법은 다음과 같습니다.
+React 의 Hook 함수 중 하나인 useRef 에 대해 정리했습니다. useRef 의 개념과 대표적인 3가지 활용 방법을 예시 코드를 통해 살펴보겠습니다. 3가지 활용 방법은 다음과 같습니다.
 
 1. 특정 DOM 선택하기
 
@@ -22,7 +22,7 @@ React의 Hook 함수 중 하나인 useRef에 대해 정리했습니다. useRef�
 
 <em>사진 출처: <a href="https://livebook.manning.com/book/react-hooks-in-action/chapter-6/v-3/35" target="_blank" rel="noreferrer noopener" aria-label="use-ref">livebook.manning.com</a></em>
 
-> useRef는 `.current` 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 `ref` 객체를 반환합니다. 반환된 객체는 컴포넌트의 전 생애주기를 통해 유지될 것입니다. 본질적으로 useRef는 **`.current` 프로퍼티에 변경 가능한 값을 담고 있는 상자**와 같습니다.
+> useRef 는 `.current` 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 `ref` 객체를 반환합니다. 반환된 객체는 컴포넌트의 전 생애주기를 통해 유지됩니다. 본질적으로 useRef 는 **`.current` 프로퍼티에 변경 가능한 값을 담고 있는 상자**와 같습니다.
 
 React 공식 문서에 적혀 있는 useRef 정의입니다. useRef 사용 예제를 통해 위 정의에 대해 자세히 알아보겠습니다.
 
@@ -34,17 +34,17 @@ React 공식 문서에 적혀 있는 useRef 정의입니다. useRef 사용 예�
 
 <em>사진 출처: <a href="https://learnjavascriptfast.com/chapter-7-the-javascript-document-object-model/2/" target="_blank" rel="noreferrer noopener" aria-label="document-object-model">learnjavascriptfast.com</a></em>
 
-JavaScript를 사용할 때는, 특정 DOM을 선택해야 하는 상황에 `getElementById`, `querySelector` 같은 DOM Selector 함수를 사용해서 DOM을 선택합니다.
+JavaScript 를 사용할 때는, 특정 DOM 을 선택해야 하는 상황에 `getElementById`, `querySelector` 같은 DOM Selector 함수를 사용해서 DOM 을 선택합니다.
 
-> 리액트에서는 DOM을 선택할 때 `ref` 를 사용합니다. **함수형 컴포넌트**에서 ref를 사용할 때는 **useRef Hook 함수**를 사용하고 **클래스형 컴포넌트에서**는 **콜백 함수를 사용하거나 React.createRef 함수**를 사용합니다.
+> 리액트에서는 DOM 을 선택할 때 `ref` 를 사용합니다. **함수형 컴포넌트**에서 ref 를 사용할 때는 **useRef Hook 함수**를 사용하고 **클래스형 컴포넌트**에서는 **콜백 함수**를 사용하거나 **React.createRef 함수**를 사용합니다.
 
-이 글에서는 함수형 컴포넌트의 useRef를 사용합니다.
+이 글에서는 함수형 컴포넌트의 useRef 를 사용합니다.
 
 ### 2-2. 컴포넌트 안의 변수 만들기
 
 컴포넌트 안에서 조회 및 수정할 수 있는 변수를 관리할 수 있습니다.
 
-> useRef로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않습니다. 리액트 컴포넌트에서의 상태는 상태를 바꾸는 함수를 호출하고 다음 렌더링 이후 업데이트된 상태를 조회할 수 있지만, **useRef로 관리하는 변수는 설정 후 바로 조회**할 수 있습니다.
+> useRef 로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않습니다. 리액트 컴포넌트에서의 상태는 상태를 바꾸는 함수를 호출하고 다음 렌더링 이후 업데이트된 상태를 조회할 수 있지만, **useRef 로 관리하는 변수는 설정 후 바로 조회**할 수 있습니다.
 
 이 변수를 사용하여 `scroll` 위치와 같은 값을 관리할 수 있습니다.
 
@@ -52,17 +52,17 @@ JavaScript를 사용할 때는, 특정 DOM을 선택해야 하는 상황에 `get
 
 컴포넌트가 렌더링 된다는 것은 함수(컴포넌트)를 호출하여 실행되는 것을 말합니다. 함수가 실행될 때마다 내부에 선언되어 있던 표현식(변수나 또 다른 함수 등)도 매번 다시 선언되어 사용합니다. 컴포넌트는 자신의 **`state` 가 변경**되거나, 부모에게서 받는 **`props` 가 변경**되었을 때마다 리렌더링 됩니다.
 
-> useRef로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않으므로 **리렌더링 방지**에 활용할 수 있습니다.
+> useRef 로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않으므로 **리렌더링 방지**에 활용할 수 있습니다.
 
 ## 3. useRef로 DOM 선택하는 방법
 
-> useRef()를 사용하여 `Ref` 객체를 만들고, 이 객체를 선택하고 싶은 DOM에 `ref` 값으로 설정합니다. 그러면, `Ref` 객체의 `.current` 값은 DOM을 가리키게 됩니다.
+> useRef()를 사용하여 `Ref` 객체를 만들고, 이 객체를 선택하고 싶은 DOM 에 `ref` 값으로 설정합니다. 그러면, `Ref` 객체의 `.current` 값은 DOM을 가리키게 됩니다.
 
-이 포스팅에서 다룰 예제에서는 `onReset` 함수에서 `input` 에 포커스를 하는 focus() DOM API를 호출했습니다. 초기화 버튼을 클릭했을 때 이름 `input` 에 포커스가 잡히도록 useRef를 사용하여 기능을 구현했습니다.
+이 포스팅에서 다룰 예제에서는 `onReset` 함수에서 `input` 에 포커스를 하는 focus() DOM API 를 호출했습니다. 초기화 버튼을 클릭했을 때 이름 `input` 에 포커스가 잡히도록 useRef 를 사용하여 기능을 구현했습니다.
 
 ### 3-1. 객체 생성하기
 
-useRef를 통해 `nameInput` 이라는 객체를 생성했습니다.
+useRef 를 통해 `nameInput` 이라는 객체를 생성했습니다.
 
 ```js
 const nameInput = useRef();
@@ -70,7 +70,7 @@ const nameInput = useRef();
 
 ### 3-2. DOM API 사용
 
-`current` 가 DOM을 가리키고 있으므로 DOM API 중 하나인 `focus` 를 사용했습니다.
+`current` 가 DOM 을 가리키고 있으므로 DOM API 중 하나인 `focus` 를 사용했습니다.
 
 ```js
 nameInput.current.focus();
@@ -92,7 +92,7 @@ nameInput.current.focus();
 
 ### 3-4. 예제 전체 코드
 
-### InputSample.js Code
+> **InputSample.js**
 
 ```js
 import React, { useState, useRef } from 'react';
@@ -152,7 +152,7 @@ function InputSample() {
 export default InputSample;
 ```
 
-### App.js Code
+> **App.js**
 
 ```js
 import React from 'react';
@@ -167,7 +167,7 @@ export default App;
 
 ### 3-5. 실행 결과
 
-초기화 버튼을 클릭했을 때 이름 input에 포커스가 잡힙니다.
+초기화 버튼을 클릭했을 때 이름 input 에 포커스가 잡힙니다.
 
 ![react-use-ref-3](./images/what-is-use-ref/react-use-ref-3.jpeg)
 
@@ -185,7 +185,7 @@ const nextId = useRef(4);
 
 ### 4-2. 예제 전체 코드
 
-### UserList.js Code
+> **UserList.js**
 
 ```js
 import React from 'react';
@@ -211,7 +211,7 @@ function UserList({ users }) {
 export default UserList;
 ```
 
-### App.js Code
+> **App.js**
 
 ```js
 import React, { useRef, useState } from 'react';
@@ -324,7 +324,7 @@ export default App;
 
 ### 5-2. 예제 전체 코드
 
-### UserList.js Code
+> **UserList.js**
 
 ```js
 import React from 'react';
@@ -350,7 +350,7 @@ function UserList({ users }) {
 export default UserList;
 ```
 
-### App.js Code
+> **App.js**
 
 ```js
 import React, { useRef, useState } from 'react';
@@ -436,13 +436,11 @@ useRef 개념에 대해 알아본 후 대표적인 3가지 활용 방법을 예�
 
 3. 리렌더링 방지하기
 
+> **참고 자료**
+> 
+> - [Hooks API Reference – React](https://ko.reactjs.org/docs/hooks-reference.html##useref)
+> - [10. useRef 로 특정 DOM 선택하기 · GitBook](https://react.vlpt.us/basic/10-useRef.html)
+> - [12. useRef 로 useRef 로 컴포넌트 안의 변수 만들기 · GitBook](https://react.vlpt.us/basic/12-variable-with-useRef.html)
+> - [13. 배열에 항목 추가하기 · GitBook](https://react.vlpt.us/basic/13-array-insert.html)
+
 > 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
-
----
-
-참고 자료
-
-- [Hooks API Reference – React](https://ko.reactjs.org/docs/hooks-reference.html##useref)
-- [10. useRef 로 특정 DOM 선택하기 · GitBook](https://react.vlpt.us/basic/10-useRef.html)
-- [12. useRef 로 useRef 로 컴포넌트 안의 변수 만들기 · GitBook](https://react.vlpt.us/basic/12-variable-with-useRef.html)
-- [13. 배열에 항목 추가하기 · GitBook](https://react.vlpt.us/basic/13-array-insert.html)
