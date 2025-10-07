@@ -30,13 +30,13 @@ Google Search Console에 블로그 URL을 등록하기 위해서는 **sitemap**�
 
 ## 1. Sitemap.xml 생성하기
 
-`gatsby`에서는 플러그인을 통해 Sitemap.xml을 생성할 수 있습니다.
+`gatsby` 에서는 플러그인을 통해 Sitemap.xml을 생성할 수 있습니다.
 
 ```shell
 npm i gatsby-plugin-sitemap
 ```
 
-플러그인을 설치한 후 `gatsby-config.js`에 추가 설정이 필요합니다.
+플러그인을 설치한 후 `gatsby-config.js` 에 추가 설정이 필요합니다.
 
 ```js
 module.exports = {
@@ -61,7 +61,7 @@ module.exports = {
 npm i gatsby-plugin-advanced-sitemap
 ```
 
-위에서 알아본 `gatsby-plugin-sitemap` 플러그인처럼 설치 후 `gatsby-config.js`에 추가 설정합니다.
+위에서 알아본 `gatsby-plugin-sitemap` 플러그인처럼 설치 후 `gatsby-config.js` 에 추가 설정합니다.
 
 ```js
 module.exports = {
@@ -76,7 +76,7 @@ module.exports = {
 };
 ```
 
-이렇게 `gatsby-plugin-advanced-sitemap` 플러그인 설정을 완료하고 `gatsby build` 명령어를 실행하면 새로운 `sitemap.xml` 파일이 생성됩니다. 블로그를 배포한 후 `https://YOUR-URL.com/sitemap.xml`에 접속하면 advanced sitemap을 확인하실 수 있습니다.
+이렇게 `gatsby-plugin-advanced-sitemap` 플러그인 설정을 완료하고 `gatsby build` 명령어를 실행하면 새로운 `sitemap.xml` 파일이 생성됩니다. 블로그를 배포한 후 `https://YOUR-URL.com/sitemap.xml` 에 접속하면 advanced sitemap을 확인하실 수 있습니다.
 
 ![advanced-sitemap](./images/google-search-console/advanced-sitemap.jpeg)
 
@@ -86,7 +86,7 @@ module.exports = {
 
 ## 2. Robots.txt 파일 설정하기
 
-위에서 생성한 `Sitemap.xml`을 바탕으로 `Robots.txt` 파일을 설정하겠습니다.
+위에서 생성한 `Sitemap.xml` 을 바탕으로 `Robots.txt` 파일을 설정하겠습니다.
 
 `Robots.txt` 파일을 설정하기 위해 플러그인을 설치해주세요.
 
@@ -126,7 +126,7 @@ module.exports = {
 
 URL을 입력하면 소유권을 확인하기 위한 창을 볼 수 있습니다. 소유권을 확인하는 방법 중 HTML 태그를 선택하면 사이트의 meta data를 관리하는 Head 태그에 해당 정보를 추가해서 소유권을 인증할 수 있습니다.
 
-해당 포스트에서는 `react-helmet`을 사용해서 meta data를 관리하고 있어서 다음과 같이 작성했습니다.
+해당 포스트에서는 `react-helmet` 을 사용해서 meta data를 관리하고 있어서 다음과 같이 작성했습니다.
 
 ```ts
 <Helmet
@@ -141,7 +141,7 @@ URL을 입력하면 소유권을 확인하기 위한 창을 볼 수 있습니다
 />
 ```
 
-해당 정보를 작성하고 배포한 후 소유권 확인 버튼을 클릭해주시면 Google Search Console 상세 페이지로 이동하실 수 있습니다. 왼쪽 사이드바의 Sitemaps 페이지를 클릭하여 `https://YOUR-URL.com/sitemap.xml`을 제출해주세요. 3일 정도의 시간이 지나면 상태 항목의 "성공" 메시지를 확인하실 수 있습니다.
+해당 정보를 작성하고 배포한 후 소유권 확인 버튼을 클릭해주시면 Google Search Console 상세 페이지로 이동하실 수 있습니다. 왼쪽 사이드바의 Sitemaps 페이지를 클릭하여 `https://YOUR-URL.com/sitemap.xml` 을 제출해주세요. 3일 정도의 시간이 지나면 상태 항목의 "성공" 메시지를 확인하실 수 있습니다.
 
 ![google-search-console-sitemap](./images/google-search-console/google-search-console-sitemap.jpeg)
 

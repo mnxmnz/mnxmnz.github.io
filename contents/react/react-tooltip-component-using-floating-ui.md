@@ -83,7 +83,7 @@ React Tooltip 라이브러리에서는 12개의 포지션을 미리 설정한 �
 
 ### 3-2. Floating UI 훅 및 미들웨어
 
-Floating UI 라이브러리에서 제공하는 `useFloating`훅과 `autoUpdate`, `offset`, `flip`, `shift`미들웨어를 적용했어요.
+Floating UI 라이브러리에서 제공하는 `useFloating` 훅과 `autoUpdate`, `offset`, `flip`, `shift` 미들웨어를 적용했어요.
 
 - useFloating: 타겟 요소와 툴팁 요소의 위치 계산
 - autoUpdate: 스크롤이나 리사이즈 등으로 위치가 바뀔 때 툴팁 위치를 자동으로 다시 계산

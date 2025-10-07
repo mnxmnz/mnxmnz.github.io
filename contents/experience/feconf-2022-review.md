@@ -54,7 +54,7 @@ JavaScript와 ReScript의 차이점은 다음과 같습니다.
 
 ![feconf-2022-record-type](./images/feconf-2022-review/feconf-2022-record-type.jpeg)
 
-`int`타입인 `age`, `string`타입인 `name`을 필드로 갖는 `person`이라는 레코드 타입을 선언하고 `data`에 `age`필드만 작성하면 타입 에러가 발생합니다. `name`필드가 선언되지 않았다는 에러입니다. 즉, 어노테이션 없이도 `data`는 자동으로 `person`이라는 타입으로 추론이 된 것입니다.
+`int` 타입인 `age`, `string` 타입인 `name` 을 필드로 갖는 `person` 이라는 레코드 타입을 선언하고 `data` 에 `age` 필드만 작성하면 타입 에러가 발생합니다. `name` 필드가 선언되지 않았다는 에러입니다. 즉, 어노테이션 없이도 `data` 는 자동으로 `person` 이라는 타입으로 추론이 된 것입니다.
 
 타입 검사를 통과하면 런타임에 잘못 처리되는 값이 없다는 점이 보장됩니다.
 

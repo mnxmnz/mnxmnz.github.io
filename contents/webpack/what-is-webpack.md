@@ -247,17 +247,17 @@ initApp();
 
 ### 4-4. 실습해보기 💻
 
-`mode`, `entry`, `ouput`설정 실습을 이어서 진행하겠습니다.
+`mode`, `entry`, `ouput` 설정 실습을 이어서 진행하겠습니다.
 
 ```shell
 node_modules/.bin/webpack --mode development --entry ./src/app.js --output-path ./dist/main.js
 ```
 
-명령어를 실행한 후 `dist`폴더의 `main.js`파일을 살펴보면 `src`에서 작성한 두 개의 `js`파일이 하나로 합쳐진 것을 볼 수 있습니다.
+명령어를 실행한 후 `dist` 폴더의 `main.js` 파일을 살펴보면 `src` 에서 작성한 두 개의 `js` 파일이 하나로 합쳐진 것을 볼 수 있습니다.
 
 ![webpack-4](./images/what-is-webpack/webpack-4.jpeg)
 
-`index.html`파일을 수정해서 `dist/main.js`파일을 사용하겠습니다. 웹팩을 사용하여 모듈을 지원하지 않는 브라우저에서도 사용할 수 있어서 `script`에서 `module`을 제외하고 작성했습니다.
+`index.html` 파일을 수정해서 `dist/main.js` 파일을 사용하겠습니다. 웹팩을 사용하여 모듈을 지원하지 않는 브라우저에서도 사용할 수 있어서 `script` 에서 `module` 을 제외하고 작성했습니다.
 
 > index.html
 
@@ -273,7 +273,7 @@ node_modules/.bin/webpack --mode development --entry ./src/app.js --output-path 
 </html>
 ```
 
-현재 웹팩 설정을 터미널이 아닌 `webpack.config.js`파일로 해보겠습니다.
+현재 웹팩 설정을 터미널이 아닌 `webpack.config.js` 파일로 해보겠습니다.
 
 > webpack.config.js
 
@@ -294,7 +294,7 @@ module.exports = {
 };
 ```
 
-`output`에서 os 마다 경로가 다르므로 `.resolve`를 이용해서 절대 경로를 작성했습니다. 그리고 명령어를 통해 쉽게 build 하기 위해 `package.json`의 `scripts`코드를 수정했습니다.
+`output` 에서 os 마다 경로가 다르므로 `.resolve` 를 이용해서 절대 경로를 작성했습니다. 그리고 명령어를 통해 쉽게 build 하기 위해 `package.json` 의 `scripts` 코드를 수정했습니다.
 
 > package.json
 
@@ -329,11 +329,11 @@ npm run build
 
 ### 5-1. module을 사용할 수 있게 한 loader 😎
 
-3번 항목의 `entry`와 `output`중 `module`에 대해 설명할 때 작성했던 내용입니다.
+3번 항목의 `entry` 와 `output` 중 `module` 에 대해 설명할 때 작성했던 내용입니다.
 
 > 웹팩은 JS 파일과 IMG 파일 등 모두 **모듈**로 인식합니다.
 
-이것이 가능한 이유는 웹팩의 **로더** 덕분입니다. 로더는 TS 같은 다른 언어를 JS 문법으로 변환해 주거나 이미지를 `data URL`형식의 문자열로 변환합니다. 또한, CSS 파일을 JS 에서 직접 로딩할 수 있도록 해줍니다.
+이것이 가능한 이유는 웹팩의 **로더** 덕분입니다. 로더는 TS 같은 다른 언어를 JS 문법으로 변환해 주거나 이미지를 `data URL` 형식의 문자열로 변환합니다. 또한, CSS 파일을 JS 에서 직접 로딩할 수 있도록 해줍니다.
 
 ### 5-2. loader 동작 원리 🚀
 
@@ -381,15 +381,15 @@ module.exports = {
 
 **test** 에는 로딩에 적용할 파일을 지정했습니다. 파일명뿐만 아니라 파일 패턴을 정규표현식으로 지정할 수 있는데 위 코드는 .js 확장자를 갖는 모든 파일을 처리하겠다는 의미입니다.
 
-**use** 에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분입니다. 방금 만든 `myloader`함수의 경로를 지정했습니다.
+**use** 에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분입니다. 방금 만든 `myloader` 함수의 경로를 지정했습니다.
 
 ```shell
 npm run build
 ```
 
-명령어를 실행한 후 `console`결과를 확인하면 `myloader`가 동작함 글자를 확인할 수 있습니다.
+명령어를 실행한 후 `console` 결과를 확인하면 `myloader` 가 동작함 글자를 확인할 수 있습니다.
 
-결과가 두 번 실행이 된 이유는 **.js 확장자를 갖는 모든 파일을 처리하겠다고 설정**해서 `app.js`와 `math.js`를 모두 실행했기 때문입니다.
+결과가 두 번 실행이 된 이유는 **.js 확장자를 갖는 모든 파일을 처리하겠다고 설정**해서 `app.js` 와 `math.js` 를 모두 실행했기 때문입니다.
 
 ```shell
 myloader가 동작함
@@ -404,7 +404,7 @@ webpack 5.36.2 compiled successfully in 103 ms
 
 ### 5-3 자주 사용하는 css-loader 알아보기 🐰
 
-loader 를 직접 만들어 동작 원리에 대해 알아봤으니 이번에는 자주 사용하는 `loader`중 하나인 **css-loader** 에 대해 알아보겠습니다. css-loader 를 알아보기 위해 `style.css`파일을 생성했습니다.
+loader 를 직접 만들어 동작 원리에 대해 알아봤으니 이번에는 자주 사용하는 `loader` 중 하나인 **css-loader** 에 대해 알아보겠습니다. css-loader 를 알아보기 위해 `style.css` 파일을 생성했습니다.
 
 > src/style.css
 
@@ -421,7 +421,7 @@ css-loader 를 설치했습니다.
 npm install -D css-loader
 ```
 
-`webpack.config.js` 의 `module`설정을 변경했습니다.
+`webpack.config.js` 의 `module` 설정을 변경했습니다.
 
 > webpack.config.js
 
@@ -528,7 +528,7 @@ npm run build
 2. 웹팩을 사용하면 페이지 로딩 속도 저하와 JS 모듈화 이슈를 해결할 수 있습니다.
 3. 로더는 웹팩이 애플리케이션을 해석할 때 JS 파일이 아닌 HTML, CSS, IMG 등을 변환할 수 있도록 도와주는 속성입니다.
 4. 플러그인은 웹팩의 기본적인 동작에 추가적인 기능을 제공합니다.
-5. 웹팩을 실행할 때 필수 옵션으로 `mode`, `entry`, `output`이 있습니다.
+5. 웹팩을 실행할 때 필수 옵션으로 `mode`, `entry`, `output` 이 있습니다.
 
 ---
 
