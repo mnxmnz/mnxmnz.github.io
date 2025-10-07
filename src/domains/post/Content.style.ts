@@ -5,11 +5,11 @@ export const StContent = styled.div`
   -webkit-text-size-adjust: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding: 2.4rem 0;
   word-wrap: break-word;
 
   line-height: 175%;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-weight: 400;
   color: ${props => props.theme.colors.text_1000};
 
@@ -19,28 +19,30 @@ export const StContent = styled.div`
   h4 {
     font-weight: 600;
     line-height: 130%;
+    padding: 0 0 0.8rem 0;
+    border-bottom: 0.1rem solid ${props => props.theme.colors.darkgray_100};
   }
 
   h1,
   h2,
   h3 {
-    margin: 0 0 3rem 0;
+    margin: 0 0 3.2rem 0;
   }
 
   h4 {
-    margin: 0 0 2rem 0;
+    margin: 0 0 2.2rem 0;
   }
 
   h1 {
-    font-size: 3.1rem;
+    font-size: 3.2rem;
   }
 
   h2 {
-    font-size: 2.7rem;
+    font-size: 2.8rem;
   }
 
   h3 {
-    font-size: 2.3rem;
+    font-size: 2.4rem;
   }
 
   h4 {
@@ -52,11 +54,11 @@ export const StContent = styled.div`
   }
 
   * + h2 {
-    margin-top: 5.5rem;
+    margin-top: 5.6rem;
   }
 
   * + h3 {
-    margin-top: 4.5rem;
+    margin-top: 4.6rem;
   }
 
   * + h4 {
@@ -71,12 +73,12 @@ export const StContent = styled.div`
   }
 
   p {
-    margin: 2rem 0;
+    margin: 1.8rem 0;
   }
 
   blockquote {
-    margin: 2.7rem 0;
-    padding: 0.5rem 1.5rem;
+    margin: 2.4rem 0;
+    padding: 0.4rem 1.4rem;
     border-left: 0.4rem solid ${props => props.theme.colors.primary_1000};
     background-color: ${props => props.theme.colors.lightgray_500};
 
@@ -85,7 +87,7 @@ export const StContent = styled.div`
     }
 
     p {
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
     }
   }
 
@@ -93,10 +95,10 @@ export const StContent = styled.div`
   ul {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 0 0 0 3rem;
+    padding: 0 0 0 4rem;
 
     p {
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
     }
   }
 
@@ -119,8 +121,8 @@ export const StContent = styled.div`
   details {
     border: 0.1rem solid ${props => props.theme.colors.primary_1000};
     border-radius: 1rem;
-    margin: 2rem 0;
-    padding: 1.5rem;
+    margin: 1.8rem 0;
+    padding: 1.4rem;
     background-color: ${props => props.theme.colors.lightprimary_500};
 
     summary {
@@ -132,18 +134,18 @@ export const StContent = styled.div`
     }
 
     p {
-      margin: 1rem 0;
+      margin: 0.8rem 0;
     }
 
     blockquote {
-      margin: 1.5rem 0 0;
+      margin: 1.4rem 0 0;
       background-color: inherit;
     }
   }
 
   hr {
     border: 0.1rem solid ${props => props.theme.colors.darkgray_100};
-    margin: 5rem 0;
+    margin: 4rem 0;
   }
 
   a {
@@ -171,20 +173,20 @@ export const StContent = styled.div`
     font-style: italic;
     display: block;
     text-align: center;
-    margin: -1.5rem auto 0;
+    margin: -1.6rem auto 0;
   }
 
   table {
     display: table;
     border: 0.2rem solid ${props => props.theme.colors.darkgray_300};
     border-collapse: collapse;
-    margin: 1rem 0;
+    margin: 0.8rem 0;
   }
 
   thead {
     display: table-header-group;
     font-weight: 600;
-    border-bottom: 0.5rem solid ${props => props.theme.colors.darkgray_300};
+    border-bottom: 0.4rem solid ${props => props.theme.colors.darkgray_300};
   }
 
   tr {
@@ -194,20 +196,19 @@ export const StContent = styled.div`
   th,
   td {
     display: table-cell;
-    padding: 1rem;
+    padding: 0.8rem;
     border: 0.2rem solid ${props => props.theme.colors.darkgray_300};
   }
 
   .deckgo-highlight-code-carbon {
-    margin: 1.5rem 0 2.5rem 0;
+    margin: 1.4rem 0 2.2rem 0;
     border-radius: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   code {
-    margin: 0 0.3rem 0 0;
     padding: 0.2rem 0.6rem;
-    border-radius: 0.3rem;
+    border-radius: 0.4rem;
     background: #e9ecef;
     font-size: 85%;
   }
