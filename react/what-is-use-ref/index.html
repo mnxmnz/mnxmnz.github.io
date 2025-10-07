@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.9"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" name="description" content="React useRef 개념과 대표적인 3가지 활용 방법을 예제와 함께 정리했습니다. 특정 DOM 선택하기, 컴포넌트 안의 변수 만들기, 리렌더링 방지하기"/><meta data-react-helmet="true" name="keywords" content="HTML, CSS, JavaScript, TypeScript, React, FrontEnd"/><meta data-react-helmet="true" name="author" content="김민지"/><meta data-react-helmet="true" property="og:title" content="useRef는 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그"/><meta data-react-helmet="true" property="og:description" content="React useRef 개념과 대표적인 3가지 활용 방법을 예제와 함께 정리했습니다. 특정 DOM 선택하기, 컴포넌트 안의 변수 만들기, 리렌더링 방지하기"/><meta data-react-helmet="true" property="og:image" content="/static/76721355b7e89b6ad735ea3d322de2b2/thumbnail.jpeg"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:site_name" content="김민지 블로그"/><meta data-react-helmet="true" name="twitter:title" content="useRef는 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그"/><meta data-react-helmet="true" name="twitter:description" content="React useRef 개념과 대표적인 3가지 활용 방법을 예제와 함께 정리했습니다. 특정 DOM 선택하기, 컴포넌트 안의 변수 만들기, 리렌더링 방지하기"/><meta data-react-helmet="true" name="twitter:image" content="/static/76721355b7e89b6ad735ea3d322de2b2/thumbnail.jpeg"/><meta data-react-helmet="true" property="email" content="minzidev@gmail.com"/><meta data-react-helmet="true" name="theme-color" content="#6868AC"/><meta data-react-helmet="true" name="naver-site-verification" content="2cc40621eb11418be5791db057b14a2d2cc2800c"/><title data-react-helmet="true">useRef는 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그</title><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="canonical" href="https://mnxmnz.github.io/react/what-is-use-ref/" data-baseprotocol="https:" data-basehost="mnxmnz.github.io"/><link rel="icon" href="/favicon-32x32.png?v=01c7c687f610ddafdede6679f9a905fd" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=01c7c687f610ddafdede6679f9a905fd"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1tb6sot">.css-1tb6sot{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin:0 auto;}</style><div class="css-1tb6sot e1bwmqn31"><style data-emotion="css-global 1g0qqo6">@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}*,*::after,*::before{box-sizing:border-box;margin:0;border:0;padding:0;}html,body,#___gatsby,#gatsby-focus-wrapper{width:100%;height:100%;color:rgb(41 40 45 / 100%);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;font-size:62.5%;font-weight:400;}@media all and (min-width: 250px) and (max-width: 800px){html,body,#___gatsby,#gatsby-focus-wrapper{font-size:55%;}}a{-webkit-text-decoration:none;text-decoration:none;color:inherit;}input,button{outline:none;border:none;background-color:transparent;}img{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;}::-webkit-scrollbar{width:10px;}::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:10px;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:rgb(98 92 96 / 70%);}::-webkit-scrollbar-track{border-radius:10px;box-shadow:inset 0 0 5px white;background-color:rgb(241 237 233 / 50%);}::selection{background-color:rgb(104 104 172 / 80%);color:rgb(255 255 255 / 100%);}</style><style data-emotion="css 1jmd4tu">.css-1jmd4tu{position:fixed;top:0;z-index:1000;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;background:rgba(255, 255, 255, 0.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-transition:box-shadow 0.5s;transition:box-shadow 0.5s;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><header class="css-1jmd4tu e1592gzh5"><style data-emotion="css mpd2yu">.css-mpd2yu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;height:6rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-mpd2yu{width:100%;padding:0 2rem 0 1.5rem;}}</style><nav class="css-mpd2yu e1592gzh4"><style data-emotion="css 1d3w5wq">.css-1d3w5wq{width:100%;}</style><a class="css-1d3w5wq e1592gzh3" href="/"><style data-emotion="css e9xe8s">.css-e9xe8s{width:12rem;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1592gzh2"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB60lEQVQoz3XSvW/TQBzG8Z9t/gNKi8REQYihUhcGkFo6gJTKL7me7Z4u4i5nrDPmsoMQGwsTCLGyMMKG8kJiJZhkcNwQOYrSvwhd5UyI4Vk/y/eBTufSVGpjpekakmRlSllZcbyEKFoYQpQW54XB+RxarRlQOrUI+W0GwQSCYGxhnFkIjcDzBqbr9i3b7gJ0Opeg1AZqEKSsoAZBiBI4L6DdLrcgEJJr7GoYZ1CD4Lp92IIPlNoEabo+SpLVqZTVeRwvT6Jo8VCIsslY4XE+36F0dpvSaUpI/jwMf93w/fEZxlmM0GjH8wZnrtt/ZtvdXQ0GSm3epOmaJ8nqnZTVpzhevo6ixRMhyg+MFS84L+61WrMGpdOckPxbGE6Og2D8EePsM0Kj3dPTH+A4PeY4vUdb8H2arl8lyepYyqoVx3+eRtGiIUTpMFa81SCls0NKp31C8q9hODny/fF3jLMvCA0fN5s/Dx2n99K2uyca3FdqI9N07SXJ6qaUlYjjZUOIi2vt9hwYKw44n1+ndHaL0qkiJD8Pw8me74/vYJzdRWi473mDA9ft37ft7t5/owhxoWNYjBWgK+sg2yhhOAHf30YZ/hPFqG9j1qC+jakra4wxfZsCKL2qbBKSmzVoYJwZCA0NzxsYjtMzNPgXIWYB0z/xGCoAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/d560a/logo.webp 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/c2999/logo.webp 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/5b8e5/logo.webp 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png" data-srcset="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/a9d86/logo.png 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/989fe/logo.png 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/d560a/logo.webp 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/c2999/logo.webp 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/5b8e5/logo.webp 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png" srcSet="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/a9d86/logo.png 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/989fe/logo.png 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></a><style data-emotion="css 2ct79s">.css-2ct79s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-2ct79s{display:none;}}</style><div class="css-2ct79s e1592gzh1"><style data-emotion="css 1io7q0s">.css-1io7q0s{margin:0 0 0 2rem;font-weight:500;}.css-1io7q0s:hover{color:rgba(104, 104, 172, 1);}.css-1io7q0s:nth-of-type(1){margin:0;}</style><a aria-label="Home" class="css-1io7q0s e1592gzh0" href="/">Home</a><a aria-label="Category" class="css-1io7q0s e1592gzh0" href="/category">Category</a><a aria-label="Archive" class="css-1io7q0s e1592gzh0" href="/archive">Archive</a></div></nav></header><style data-emotion="css y212p3">.css-y212p3{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex:1;-ms-flex:1;flex:1;width:76.8rem;margin:0 auto;padding:6rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-y212p3{width:100%;padding:6rem 1.2rem 0;}}</style><main class="css-y212p3 e1bwmqn30"><style data-emotion="css 8ui95l">.css-8ui95l{display:-webkit-box;-webkit-box-orient:vertical;padding:5rem 0 1rem;font-size:3.3rem;font-weight:600;line-height:130%;word-break:keep-all;}</style><h1 class="css-8ui95l eesot1s4">useRef는 처음이라 :: 개념부터 활용 예시까지</h1><style data-emotion="css 1r6j4yd">.css-1r6j4yd{width:100%;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><div class="css-1r6j4yd eesot1s0"></div><style data-emotion="css 9st8wv">.css-9st8wv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:2rem 0 4rem;}</style><div class="css-9st8wv eesot1s3"><style data-emotion="css x3lgmq">.css-x3lgmq{padding:0.4rem;border-radius:0.3rem;background:rgba(41, 40, 45, 1);color:rgba(255, 255, 255, 1);font-size:1.3rem;font-weight:500;}.css-x3lgmq:hover{background:rgba(104, 104, 172, 1);}</style><a class="css-x3lgmq eesot1s1" href="/react">React</a><style data-emotion="css 1ksu8mr">.css-1ksu8mr{font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-1ksu8mr{display:none;}}</style><span class="css-1ksu8mr eesot1s2">2021-05-14<!-- --> · <!-- -->7<!-- --> min read</span></div><style data-emotion="css 1dkqy02">.css-1dkqy02{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;width:100%;margin:0 auto;padding:2.4rem 0;word-wrap:break-word;line-height:175%;font-size:1.6rem;font-weight:400;color:rgba(41, 40, 45, 1);}.css-1dkqy02 h1,.css-1dkqy02 h2,.css-1dkqy02 h3,.css-1dkqy02 h4{font-weight:600;line-height:130%;padding:0 0 0.8rem 0;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}.css-1dkqy02 h1,.css-1dkqy02 h2,.css-1dkqy02 h3{margin:0 0 2.4rem 0;}.css-1dkqy02 h4{margin:0 0 2rem 0;}.css-1dkqy02 h1{font-size:3.2rem;}.css-1dkqy02 h2{font-size:2.8rem;}.css-1dkqy02 h3{font-size:2.4rem;}.css-1dkqy02 h4{font-size:2rem;}.css-1dkqy02 *+h1{margin-top:6.2rem;}.css-1dkqy02 *+h2{margin-top:5.8rem;}.css-1dkqy02 *+h3{margin-top:5.2rem;}.css-1dkqy02 *+h4{margin-top:4.8rem;}.css-1dkqy02 h2+h3{margin-top:2.4rem;}.css-1dkqy02 h3+h4{margin-top:2rem;}.css-1dkqy02 hr+h1,.css-1dkqy02 hr+h2,.css-1dkqy02 hr+h3,.css-1dkqy02 hr+h4{margin-top:0;}.css-1dkqy02 p{margin:1.8rem 0;}.css-1dkqy02 blockquote{margin:2rem 0;padding:0.4rem 1.4rem;border-left:0.4rem solid rgba(104, 104, 172, 1);background-color:rgba(241, 237, 233, 0.5);}.css-1dkqy02 blockquote strong{font-weight:600;}.css-1dkqy02 blockquote p{margin:0.4rem 0;}.css-1dkqy02 ol,.css-1dkqy02 ul{margin-top:0;margin-bottom:0;padding:0 0 0 4rem;}.css-1dkqy02 ol p,.css-1dkqy02 ul p{margin:0.4rem 0;}.css-1dkqy02 ul{list-style-type:disc;}.css-1dkqy02 ul ul{list-style-type:circle;}.css-1dkqy02 ul ul ul{list-style-type:square;}.css-1dkqy02 ol{list-style-type:decimal;}.css-1dkqy02 details{border:0.1rem solid rgba(104, 104, 172, 1);border-radius:1rem;margin:1.8rem 0;padding:1.4rem;background-color:rgba(231, 231, 250, 0.5);}.css-1dkqy02 details summary{cursor:pointer;}.css-1dkqy02 details summary::marker{color:rgba(104, 104, 172, 1);}.css-1dkqy02 details p{margin:0.8rem 0;}.css-1dkqy02 details blockquote{margin:1.4rem 0 0;background-color:inherit;}.css-1dkqy02 hr{border:0.1rem solid rgba(98, 92, 96, 0.1);margin:4rem 0;}.css-1dkqy02 a{color:rgba(104, 104, 172, 1);}.css-1dkqy02 a:active,.css-1dkqy02 a:hover{outline-width:0;-webkit-text-decoration:underline;text-decoration:underline;}.css-1dkqy02 strong{font-weight:600;}.css-1dkqy02 img{width:100%;border-style:none;border-radius:1rem;}.css-1dkqy02 em{font-size:1.2rem;font-style:italic;display:block;text-align:center;margin:-1.6rem auto 0;}.css-1dkqy02 table{display:table;border:0.2rem solid rgba(98, 92, 96, 0.3);border-collapse:collapse;margin:0.8rem 0;}.css-1dkqy02 thead{display:table-header-group;font-weight:600;border-bottom:0.4rem solid rgba(98, 92, 96, 0.3);}.css-1dkqy02 tr{display:table-row;}.css-1dkqy02 th,.css-1dkqy02 td{display:table-cell;padding:0.8rem;border:0.2rem solid rgba(98, 92, 96, 0.3);}.css-1dkqy02 .deckgo-highlight-code-carbon{margin:1.4rem 0 2.2rem 0;border-radius:1rem;font-size:1.4rem;}.css-1dkqy02 code{padding:0.2rem 0.6rem;border-radius:0.4rem;background:#e9ecef;font-size:85%;}</style><div class="css-1dkqy02 eh9rs160"><h2>들어가며</h2>
-<p>React의 Hook 함수 중 하나인 useRef에 대해 정리했습니다. useRef의 개념과 대표적인 3가지 활용 방법을 예시 코드를 통해 살펴보겠습니다. 3가지 활용 방법은 다음과 같습니다.</p>
+<p>React 의 Hook 함수 중 하나인 useRef 에 대해 정리했습니다. useRef 의 개념과 대표적인 3가지 활용 방법을 예시 코드를 통해 살펴보겠습니다. 3가지 활용 방법은 다음과 같습니다.</p>
 <ol>
 <li>
 <p>특정 DOM 선택하기</p>
@@ -58,7 +58,7 @@
     </span></p>
 <p><em>사진 출처: <a href="https://livebook.manning.com/book/react-hooks-in-action/chapter-6/v-3/35" target="_blank" rel="noreferrer noopener" aria-label="use-ref">livebook.manning.com</a></em></p>
 <blockquote>
-<p>useRef는 <code>.current</code> 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 <code>ref</code> 객체를 반환합니다. 반환된 객체는 컴포넌트의 전 생애주기를 통해 유지될 것입니다. 본질적으로 useRef는 <strong><code>.current</code> 프로퍼티에 변경 가능한 값을 담고 있는 상자</strong>와 같습니다.</p>
+<p>useRef 는 <code>.current</code> 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 <code>ref</code> 객체를 반환합니다. 반환된 객체는 컴포넌트의 전 생애주기를 통해 유지됩니다. 본질적으로 useRef 는 <strong><code>.current</code> 프로퍼티에 변경 가능한 값을 담고 있는 상자</strong>와 같습니다.</p>
 </blockquote>
 <p>React 공식 문서에 적혀 있는 useRef 정의입니다. useRef 사용 예제를 통해 위 정의에 대해 자세히 알아보겠습니다.</p>
 <h2>2. useRef를 언제 사용하나요?</h2>
@@ -106,34 +106,34 @@
   </a>
     </span></p>
 <p><em>사진 출처: <a href="https://learnjavascriptfast.com/chapter-7-the-javascript-document-object-model/2/" target="_blank" rel="noreferrer noopener" aria-label="document-object-model">learnjavascriptfast.com</a></em></p>
-<p>JavaScript를 사용할 때는, 특정 DOM을 선택해야 하는 상황에 <code>getElementById</code>, <code>querySelector</code> 같은 DOM Selector 함수를 사용해서 DOM을 선택합니다.</p>
+<p>JavaScript 를 사용할 때는, 특정 DOM 을 선택해야 하는 상황에 <code>getElementById</code>, <code>querySelector</code> 같은 DOM Selector 함수를 사용해서 DOM 을 선택합니다.</p>
 <blockquote>
-<p>리액트에서는 DOM을 선택할 때 <code>ref</code> 를 사용합니다. <strong>함수형 컴포넌트</strong>에서 ref를 사용할 때는 <strong>useRef Hook 함수</strong>를 사용하고 <strong>클래스형 컴포넌트에서</strong>는 <strong>콜백 함수를 사용하거나 React.createRef 함수</strong>를 사용합니다.</p>
+<p>리액트에서는 DOM 을 선택할 때 <code>ref</code> 를 사용합니다. <strong>함수형 컴포넌트</strong>에서 ref 를 사용할 때는 <strong>useRef Hook 함수</strong>를 사용하고 <strong>클래스형 컴포넌트</strong>에서는 <strong>콜백 함수</strong>를 사용하거나 <strong>React.createRef 함수</strong>를 사용합니다.</p>
 </blockquote>
-<p>이 글에서는 함수형 컴포넌트의 useRef를 사용합니다.</p>
+<p>이 글에서는 함수형 컴포넌트의 useRef 를 사용합니다.</p>
 <h3>2-2. 컴포넌트 안의 변수 만들기</h3>
 <p>컴포넌트 안에서 조회 및 수정할 수 있는 변수를 관리할 수 있습니다.</p>
 <blockquote>
-<p>useRef로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않습니다. 리액트 컴포넌트에서의 상태는 상태를 바꾸는 함수를 호출하고 다음 렌더링 이후 업데이트된 상태를 조회할 수 있지만, <strong>useRef로 관리하는 변수는 설정 후 바로 조회</strong>할 수 있습니다.</p>
+<p>useRef 로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않습니다. 리액트 컴포넌트에서의 상태는 상태를 바꾸는 함수를 호출하고 다음 렌더링 이후 업데이트된 상태를 조회할 수 있지만, <strong>useRef 로 관리하는 변수는 설정 후 바로 조회</strong>할 수 있습니다.</p>
 </blockquote>
 <p>이 변수를 사용하여 <code>scroll</code> 위치와 같은 값을 관리할 수 있습니다.</p>
 <h3>2-3. 리렌더링 방지하기</h3>
 <p>컴포넌트가 렌더링 된다는 것은 함수(컴포넌트)를 호출하여 실행되는 것을 말합니다. 함수가 실행될 때마다 내부에 선언되어 있던 표현식(변수나 또 다른 함수 등)도 매번 다시 선언되어 사용합니다. 컴포넌트는 자신의 <strong><code>state</code> 가 변경</strong>되거나, 부모에게서 받는 <strong><code>props</code> 가 변경</strong>되었을 때마다 리렌더링 됩니다.</p>
 <blockquote>
-<p>useRef로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않으므로 <strong>리렌더링 방지</strong>에 활용할 수 있습니다.</p>
+<p>useRef 로 관리하는 변수는 값이 바뀐다고 해서 컴포넌트가 리렌더링되지 않으므로 <strong>리렌더링 방지</strong>에 활용할 수 있습니다.</p>
 </blockquote>
 <h2>3. useRef로 DOM 선택하는 방법</h2>
 <blockquote>
-<p>useRef()를 사용하여 <code>Ref</code> 객체를 만들고, 이 객체를 선택하고 싶은 DOM에 <code>ref</code> 값으로 설정합니다. 그러면, <code>Ref</code> 객체의 <code>.current</code> 값은 DOM을 가리키게 됩니다.</p>
+<p>useRef()를 사용하여 <code>Ref</code> 객체를 만들고, 이 객체를 선택하고 싶은 DOM 에 <code>ref</code> 값으로 설정합니다. 그러면, <code>Ref</code> 객체의 <code>.current</code> 값은 DOM을 가리키게 됩니다.</p>
 </blockquote>
-<p>이 포스팅에서 다룰 예제에서는 <code>onReset</code> 함수에서 <code>input</code> 에 포커스를 하는 focus() DOM API를 호출했습니다. 초기화 버튼을 클릭했을 때 이름 <code>input</code> 에 포커스가 잡히도록 useRef를 사용하여 기능을 구현했습니다.</p>
+<p>이 포스팅에서 다룰 예제에서는 <code>onReset</code> 함수에서 <code>input</code> 에 포커스를 하는 focus() DOM API 를 호출했습니다. 초기화 버튼을 클릭했을 때 이름 <code>input</code> 에 포커스가 잡히도록 useRef 를 사용하여 기능을 구현했습니다.</p>
 <h3>3-1. 객체 생성하기</h3>
-<p>useRef를 통해 <code>nameInput</code> 이라는 객체를 생성했습니다.</p>
+<p>useRef 를 통해 <code>nameInput</code> 이라는 객체를 생성했습니다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">const nameInput = useRef();</code>
         </deckgo-highlight-code>
 <h3>3-2. DOM API 사용</h3>
-<p><code>current</code> 가 DOM을 가리키고 있으므로 DOM API 중 하나인 <code>focus</code> 를 사용했습니다.</p>
+<p><code>current</code> 가 DOM 을 가리키고 있으므로 DOM API 중 하나인 <code>focus</code> 를 사용했습니다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">nameInput.current.focus();</code>
         </deckgo-highlight-code>
@@ -149,7 +149,9 @@
 /&gt;</code>
         </deckgo-highlight-code>
 <h3>3-4. 예제 전체 코드</h3>
-<h4>InputSample.js Code</h4>
+<blockquote>
+<p><strong>InputSample.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React, { useState, useRef } from &#39;react&#39;;
 
@@ -207,7 +209,9 @@ function InputSample() {
 
 export default InputSample;</code>
         </deckgo-highlight-code>
-<h4>App.js Code</h4>
+<blockquote>
+<p><strong>App.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React from &#39;react&#39;;
 import InputSample from &#39;./InputSample&#39;;
@@ -219,7 +223,7 @@ function App() {
 export default App;</code>
         </deckgo-highlight-code>
 <h3>3-5. 실행 결과</h3>
-<p>초기화 버튼을 클릭했을 때 이름 input에 포커스가 잡힙니다.</p>
+<p>초기화 버튼을 클릭했을 때 이름 input 에 포커스가 잡힙니다.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 424px; "
@@ -270,7 +274,9 @@ export default App;</code>
           <code slot="code">const nextId = useRef(4);</code>
         </deckgo-highlight-code>
 <h3>4-2. 예제 전체 코드</h3>
-<h4>UserList.js Code</h4>
+<blockquote>
+<p><strong>UserList.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React from &#39;react&#39;;
 
@@ -294,7 +300,9 @@ function UserList({ users }) {
 
 export default UserList;</code>
         </deckgo-highlight-code>
-<h4>App.js Code</h4>
+<blockquote>
+<p><strong>App.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React, { useRef, useState } from &#39;react&#39;;
 import UserList from &#39;./UserList&#39;;
@@ -397,7 +405,9 @@ export default App;</code>
 &lt;/div&gt;</code>
         </deckgo-highlight-code>
 <h3>5-2. 예제 전체 코드</h3>
-<h4>UserList.js Code</h4>
+<blockquote>
+<p><strong>UserList.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React from &#39;react&#39;;
 
@@ -421,7 +431,9 @@ function UserList({ users }) {
 
 export default UserList;</code>
         </deckgo-highlight-code>
-<h4>App.js Code</h4>
+<blockquote>
+<p><strong>App.js</strong></p>
+</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import React, { useRef, useState } from &#39;react&#39;;
 import UserList from &#39;./UserList&#39;;
