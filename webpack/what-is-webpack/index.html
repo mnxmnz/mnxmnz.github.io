@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.9"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" name="description" content="웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 로더에 대해 상세하게 정리했습니다."/><meta data-react-helmet="true" name="keywords" content="HTML, CSS, JavaScript, TypeScript, React, FrontEnd"/><meta data-react-helmet="true" name="author" content="김민지"/><meta data-react-helmet="true" property="og:title" content="웹팩은 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그"/><meta data-react-helmet="true" property="og:description" content="웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 로더에 대해 상세하게 정리했습니다."/><meta data-react-helmet="true" property="og:image" content="/static/c37fdc050e9dfa0812a30d495f379370/thumbnail.jpeg"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:site_name" content="김민지 블로그"/><meta data-react-helmet="true" name="twitter:title" content="웹팩은 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그"/><meta data-react-helmet="true" name="twitter:description" content="웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 로더에 대해 상세하게 정리했습니다."/><meta data-react-helmet="true" name="twitter:image" content="/static/c37fdc050e9dfa0812a30d495f379370/thumbnail.jpeg"/><meta data-react-helmet="true" property="email" content="minzidev@gmail.com"/><meta data-react-helmet="true" name="theme-color" content="#6868AC"/><meta data-react-helmet="true" name="naver-site-verification" content="2cc40621eb11418be5791db057b14a2d2cc2800c"/><title data-react-helmet="true">웹팩은 처음이라 :: 개념부터 활용 예시까지 - 김민지 블로그</title><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="canonical" href="https://mnxmnz.github.io/webpack/what-is-webpack/" data-baseprotocol="https:" data-basehost="mnxmnz.github.io"/><link rel="icon" href="/favicon-32x32.png?v=01c7c687f610ddafdede6679f9a905fd" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=01c7c687f610ddafdede6679f9a905fd"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=01c7c687f610ddafdede6679f9a905fd"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1tb6sot">.css-1tb6sot{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin:0 auto;}</style><div class="css-1tb6sot e1bwmqn31"><style data-emotion="css-global 1g0qqo6">@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-collapse:collapse;border-spacing:0;}*,*::after,*::before{box-sizing:border-box;margin:0;border:0;padding:0;}html,body,#___gatsby,#gatsby-focus-wrapper{width:100%;height:100%;color:rgb(41 40 45 / 100%);font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;font-size:62.5%;font-weight:400;}@media all and (min-width: 250px) and (max-width: 800px){html,body,#___gatsby,#gatsby-focus-wrapper{font-size:55%;}}a{-webkit-text-decoration:none;text-decoration:none;color:inherit;}input,button{outline:none;border:none;background-color:transparent;}img{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-drag:none;}::-webkit-scrollbar{width:10px;}::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:10px;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:rgb(98 92 96 / 70%);}::-webkit-scrollbar-track{border-radius:10px;box-shadow:inset 0 0 5px white;background-color:rgb(241 237 233 / 50%);}::selection{background-color:rgb(104 104 172 / 80%);color:rgb(255 255 255 / 100%);}</style><style data-emotion="css 1jmd4tu">.css-1jmd4tu{position:fixed;top:0;z-index:1000;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;background:rgba(255, 255, 255, 0.7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-transition:box-shadow 0.5s;transition:box-shadow 0.5s;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><header class="css-1jmd4tu e1592gzh5"><style data-emotion="css mpd2yu">.css-mpd2yu{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:120rem;height:6rem;}@media all and (min-width: 250px) and (max-width: 1240px){.css-mpd2yu{width:100%;padding:0 2rem 0 1.5rem;}}</style><nav class="css-mpd2yu e1592gzh4"><style data-emotion="css 1d3w5wq">.css-1d3w5wq{width:100%;}</style><a class="css-1d3w5wq e1592gzh3" href="/"><style data-emotion="css e9xe8s">.css-e9xe8s{width:12rem;object-fit:cover;isolation:isolate;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-e9xe8s e1592gzh2"><div style="max-width:220px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;88&#x27; width=&#x27;220&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB60lEQVQoz3XSvW/TQBzG8Z9t/gNKi8REQYihUhcGkFo6gJTKL7me7Z4u4i5nrDPmsoMQGwsTCLGyMMKG8kJiJZhkcNwQOYrSvwhd5UyI4Vk/y/eBTufSVGpjpekakmRlSllZcbyEKFoYQpQW54XB+RxarRlQOrUI+W0GwQSCYGxhnFkIjcDzBqbr9i3b7gJ0Opeg1AZqEKSsoAZBiBI4L6DdLrcgEJJr7GoYZ1CD4Lp92IIPlNoEabo+SpLVqZTVeRwvT6Jo8VCIsslY4XE+36F0dpvSaUpI/jwMf93w/fEZxlmM0GjH8wZnrtt/ZtvdXQ0GSm3epOmaJ8nqnZTVpzhevo6ixRMhyg+MFS84L+61WrMGpdOckPxbGE6Og2D8EePsM0Kj3dPTH+A4PeY4vUdb8H2arl8lyepYyqoVx3+eRtGiIUTpMFa81SCls0NKp31C8q9hODny/fF3jLMvCA0fN5s/Dx2n99K2uyca3FdqI9N07SXJ6qaUlYjjZUOIi2vt9hwYKw44n1+ndHaL0qkiJD8Pw8me74/vYJzdRWi473mDA9ft37ft7t5/owhxoWNYjBWgK+sg2yhhOAHf30YZ/hPFqG9j1qC+jakra4wxfZsCKL2qbBKSmzVoYJwZCA0NzxsYjtMzNPgXIWYB0z/xGCoAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/d560a/logo.webp 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/c2999/logo.webp 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/5b8e5/logo.webp 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" data-src="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png" data-srcset="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/a9d86/logo.png 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/989fe/logo.png 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/48200/logo.png 440w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/d560a/logo.webp 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/c2999/logo.webp 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/5b8e5/logo.webp 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/e3435/logo.webp 440w" sizes="(min-width: 220px) 220px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 220px) 220px, 100vw" decoding="async" loading="lazy" src="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png" srcSet="/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/a9d86/logo.png 55w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/989fe/logo.png 110w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/ff035/logo.png 220w,/static/3caac1eea30f6a15dd3ca2fdfdc9bee9/48200/logo.png 440w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></a><style data-emotion="css 2ct79s">.css-2ct79s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-2ct79s{display:none;}}</style><div class="css-2ct79s e1592gzh1"><style data-emotion="css 1io7q0s">.css-1io7q0s{margin:0 0 0 2rem;font-weight:500;}.css-1io7q0s:hover{color:rgba(104, 104, 172, 1);}.css-1io7q0s:nth-of-type(1){margin:0;}</style><a aria-label="Home" class="css-1io7q0s e1592gzh0" href="/">Home</a><a aria-label="Category" class="css-1io7q0s e1592gzh0" href="/category">Category</a><a aria-label="Archive" class="css-1io7q0s e1592gzh0" href="/archive">Archive</a></div></nav></header><style data-emotion="css y212p3">.css-y212p3{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex:1;-ms-flex:1;flex:1;width:76.8rem;margin:0 auto;padding:6rem 0 0;}@media all and (min-width: 250px) and (max-width: 800px){.css-y212p3{width:100%;padding:6rem 1.2rem 0;}}</style><main class="css-y212p3 e1bwmqn30"><style data-emotion="css 8ui95l">.css-8ui95l{display:-webkit-box;-webkit-box-orient:vertical;padding:5rem 0 1rem;font-size:3.3rem;font-weight:600;line-height:130%;word-break:keep-all;}</style><h1 class="css-8ui95l eesot1s4">웹팩은 처음이라 :: 개념부터 활용 예시까지</h1><style data-emotion="css 1r6j4yd">.css-1r6j4yd{width:100%;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}</style><div class="css-1r6j4yd eesot1s0"></div><style data-emotion="css 9st8wv">.css-9st8wv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:2rem 0 4rem;}</style><div class="css-9st8wv eesot1s3"><style data-emotion="css x3lgmq">.css-x3lgmq{padding:0.4rem;border-radius:0.3rem;background:rgba(41, 40, 45, 1);color:rgba(255, 255, 255, 1);font-size:1.3rem;font-weight:500;}.css-x3lgmq:hover{background:rgba(104, 104, 172, 1);}</style><a class="css-x3lgmq eesot1s1" href="/webpack">Webpack</a><style data-emotion="css 1ksu8mr">.css-1ksu8mr{font-size:1.5rem;}@media all and (min-width: 250px) and (max-width: 330px){.css-1ksu8mr{display:none;}}</style><span class="css-1ksu8mr eesot1s2">2021-05-03<!-- --> · <!-- -->10<!-- --> min read</span></div><style data-emotion="css 1dkqy02">.css-1dkqy02{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;width:100%;margin:0 auto;padding:2.4rem 0;word-wrap:break-word;line-height:175%;font-size:1.6rem;font-weight:400;color:rgba(41, 40, 45, 1);}.css-1dkqy02 h1,.css-1dkqy02 h2,.css-1dkqy02 h3,.css-1dkqy02 h4{font-weight:600;line-height:130%;padding:0 0 0.8rem 0;border-bottom:0.1rem solid rgba(98, 92, 96, 0.1);}.css-1dkqy02 h1,.css-1dkqy02 h2,.css-1dkqy02 h3{margin:0 0 2.4rem 0;}.css-1dkqy02 h4{margin:0 0 2rem 0;}.css-1dkqy02 h1{font-size:3.2rem;}.css-1dkqy02 h2{font-size:2.8rem;}.css-1dkqy02 h3{font-size:2.4rem;}.css-1dkqy02 h4{font-size:2rem;}.css-1dkqy02 *+h1{margin-top:6.2rem;}.css-1dkqy02 *+h2{margin-top:5.8rem;}.css-1dkqy02 *+h3{margin-top:5.2rem;}.css-1dkqy02 *+h4{margin-top:4.8rem;}.css-1dkqy02 h2+h3{margin-top:2.4rem;}.css-1dkqy02 h3+h4{margin-top:2rem;}.css-1dkqy02 hr+h1,.css-1dkqy02 hr+h2,.css-1dkqy02 hr+h3,.css-1dkqy02 hr+h4{margin-top:0;}.css-1dkqy02 p{margin:1.8rem 0;}.css-1dkqy02 blockquote{margin:2rem 0;padding:0.4rem 1.4rem;border-left:0.4rem solid rgba(104, 104, 172, 1);background-color:rgba(241, 237, 233, 0.5);}.css-1dkqy02 blockquote strong{font-weight:600;}.css-1dkqy02 blockquote p{margin:0.4rem 0;}.css-1dkqy02 ol,.css-1dkqy02 ul{margin-top:0;margin-bottom:0;padding:0 0 0 4rem;}.css-1dkqy02 ol p,.css-1dkqy02 ul p{margin:0.4rem 0;}.css-1dkqy02 ul{list-style-type:disc;}.css-1dkqy02 ul ul{list-style-type:circle;}.css-1dkqy02 ul ul ul{list-style-type:square;}.css-1dkqy02 ol{list-style-type:decimal;}.css-1dkqy02 details{border:0.1rem solid rgba(104, 104, 172, 1);border-radius:1rem;margin:1.8rem 0;padding:1.4rem;background-color:rgba(231, 231, 250, 0.5);}.css-1dkqy02 details summary{cursor:pointer;}.css-1dkqy02 details summary::marker{color:rgba(104, 104, 172, 1);}.css-1dkqy02 details p{margin:0.8rem 0;}.css-1dkqy02 details blockquote{margin:1.4rem 0 0;background-color:inherit;}.css-1dkqy02 hr{border:0.1rem solid rgba(98, 92, 96, 0.1);margin:4rem 0;}.css-1dkqy02 a{color:rgba(104, 104, 172, 1);}.css-1dkqy02 a:active,.css-1dkqy02 a:hover{outline-width:0;-webkit-text-decoration:underline;text-decoration:underline;}.css-1dkqy02 strong{font-weight:600;}.css-1dkqy02 img{width:100%;border-style:none;border-radius:1rem;}.css-1dkqy02 em{font-size:1.2rem;font-style:italic;display:block;text-align:center;margin:-1.6rem auto 0;}.css-1dkqy02 table{display:table;border:0.2rem solid rgba(98, 92, 96, 0.3);border-collapse:collapse;margin:0.8rem 0;}.css-1dkqy02 thead{display:table-header-group;font-weight:600;border-bottom:0.4rem solid rgba(98, 92, 96, 0.3);}.css-1dkqy02 tr{display:table-row;}.css-1dkqy02 th,.css-1dkqy02 td{display:table-cell;padding:0.8rem;border:0.2rem solid rgba(98, 92, 96, 0.3);}.css-1dkqy02 .deckgo-highlight-code-carbon{margin:1.4rem 0 2.2rem 0;border-radius:1rem;font-size:1.4rem;}.css-1dkqy02 code{padding:0.2rem 0.6rem;border-radius:0.4rem;background:#e9ecef;font-size:85%;}</style><div class="css-1dkqy02 eh9rs160"><h2>들어가며</h2>
-<p>웹팩에 대해 들어본 적은 있지만 제대로 공부한 적은 없어서 이번에 개념부터 차근차근 공부했습니다. 웹팩이란 무엇인지, 어떠한 장점이 있는지 <strong>전반적인 개념</strong>에 대해 알아보고 웹팩 구성 요소 중 <strong>로더</strong>에 대해 상세하게 정리했습니다.</p>
+<p>웹팩에 대해 들어본 적은 있지만 제대로 공부한 적은 없어서 이번에 개념부터 차근차근 공부했습니다. 웹팩이란 무엇인지, 어떠한 장점이 있는지 전반적인 개념에 대해 알아보고 웹팩 구성 요소 중 <strong>로더</strong>에 대해 상세하게 정리했습니다.</p>
 <h2>1. 웹팩 등장 배경</h2>
 <h3>1-1. 페이지 로딩 속도 저하</h3>
 <p><span
@@ -63,7 +63,7 @@
 <h3>1-3. Bundler 등장</h3>
 <p>위와 같은 두 문제를 해결하기 위해 등장한 도구가 바로 번들러입니다.</p>
 <blockquote>
-<p>번들러란 필요한 의존성을 추적하여 해당하는 의존성들을 그룹핑 해주는 도구입니다.</p>
+<p><strong>번들러</strong>란 필요한 의존성을 추적하여 해당하는 의존성들을 그룹핑 해주는 도구입니다.</p>
 </blockquote>
 <p>이러한 번들러 중 가장 많이 사용되는 도구가 바로 <strong>웹팩</strong>입니다.</p>
 <h3>1-4. Bundler의 장점</h3>
@@ -117,34 +117,32 @@
     </span></p>
 <p><em>사진 출처: <a href="https://webpack.js.org/" target="_blank" rel="noreferrer noopener" aria-label="webpack">webpack.js.org</a></em></p>
 <p>이렇게 애플리케이션을 구성하는 몇십, 몇백 개의 자원들을 하나의 파일로 병합 및 압축해 주는 동작을 <strong>모듈 번들링</strong>이라고 합니다.</p>
-<blockquote>
 <p>이처럼 번들러를 사용하면 여러 개의 파일을 하나로 묶어주기 때문에 네트워크 접속의 부담을 줄여 <strong>더 빠른 서비스를 제공</strong>할 수 있습니다. 또한, Module 을 사용하여 매우 복잡하고 긴 코드를 작성할 때 사용 용도에 따라 파일 단위로 구분한 뒤, 다른 파일에서 해당 클래스나 함수가 필요할 때 가져와서 사용할 수 있도록 해줍니다. 외부 라이브러리의 의존성도 쉽게 관리할 수 있습니다.</p>
-</blockquote>
 <h2>2. 웹팩의 4가지 주요 속성</h2>
 <h3>2-1. entry</h3>
 <blockquote>
-<p>entry 속성은 웹팩에서 웹 자원을 변환하는 데 필요한 진입점이자 자바스크립트 파일 경로입니다.</p>
+<p><strong>entry 속성</strong>은 웹팩에서 웹 자원을 변환하는 데 필요한 진입점이자 자바스크립트 파일 경로입니다.</p>
 </blockquote>
 <p>entry 속성에서 번들링하고 싶은 파일들을 선언합니다. 여기에 지정된 파일은 웹 애플리케이션의 전반적인 구조와 내용이 담겨 있어야 합니다. 왜냐하면 웹팩이 entry 속성에 지정된 파일을 가지고 웹 애플리케이션에서 사용되는 모듈들의 연관 관계를 이해하고 분석하기 때문입니다. 웹팩은 엔트리를 통해서 필요한 모듈들을 로딩하고, 하나의 파일로 묶는 과정을 진행합니다.</p>
 <h3>2-2. output</h3>
 <blockquote>
-<p>output 속성은 웹팩을 돌리고 난 결과물의 파일 경로를 의미합니다.</p>
+<p><strong>output 속성</strong>은 웹팩을 돌리고 난 결과물의 파일 경로를 의미합니다.</p>
 </blockquote>
-<p>번들된 결과물을 처리할 위치를 output에 기록합니다.</p>
+<p>번들된 결과물을 처리할 위치를 output 에 기록합니다.</p>
 <h3>2-3. loader</h3>
 <blockquote>
-<p>웹팩이 웹 애플리케이션을 해석할 때 JS 파일이 아닌 HTML, CSS, IMG, 폰트 등을 변환할 수 있도록 도와주는 속성입니다.</p>
+<p>웹팩이 웹 애플리케이션을 해석할 때 JS 파일이 아닌 <strong>HTML, CSS, IMG, 폰트 등을 변환할 수 있도록 도와주는 속성</strong>입니다.</p>
 </blockquote>
 <p>웹팩은 모든 파일을 모듈로 관리하지만 JS 만 알고 있어서 다른 파일들을 웹팩이 이해할 수 있도록 변경해주는 것이 로더의 역할입니다.</p>
 <h3>2-4. plugin</h3>
 <blockquote>
-<p>웹팩의 기본적인 동작에 추가적인 기능을 제공하는 속성입니다.</p>
+<p>웹팩의 기본적인 동작에 <strong>추가적인 기능을 제공하는 속성</strong>입니다.</p>
 </blockquote>
 <p>로더랑 비교하면 로더는 파일을 해석하고 변환하는 과정에 해당하고 플러그인은 해당 결과물의 형태를 바꾸는 과정에 해당합니다.</p>
 <h2>3. entry와 output</h2>
 <h3>3-1. module</h3>
 <blockquote>
-<p>웹팩은 JS 파일과 IMG 파일 등 모두 모듈로 인식합니다.</p>
+<p>웹팩은 JS 파일과 IMG 파일 등 모두 <strong>모듈로 인식</strong>합니다.</p>
 </blockquote>
 <p>그래서 JS 코드에서 import 구문을 사용해서 IMG 와 CSS 파일을 가져올 수 있는 것입니다. 모듈을 지원하지 않는 브라우저에서도 웹팩을 사용하면 모듈을 적용할 수 있습니다.</p>
 <p><span
@@ -195,11 +193,11 @@
         </picture>
   </a>
     </span></p>
-<p>위에서 본 사진을 기준으로 <strong>왼쪽 위 .js 파일을 entry</strong> 라고 합니다. entry를 기준으로 모든 모듈을 찾은 후 하나의 코드로 만들어 줍니다.따라서 오른쪽 그림을 보면 하나의 .js 파일이 생성된 것을 볼 수 있습니다. 이렇게 만들어진 <strong>결과물을 output</strong> 이라고 합니다.</p>
+<p>위에서 본 사진을 기준으로 <strong>왼쪽 위 .js 파일</strong>을 <strong>entry</strong> 라고 합니다. entry 를 기준으로 모든 모듈을 찾은 후 하나의 코드로 만들어 줍니다. 따라서 오른쪽 그림을 보면 하나의 .js 파일이 생성된 것을 볼 수 있습니다. 이렇게 만들어진 <strong>결과물</strong>을 <strong>output</strong> 이라고 합니다.</p>
 <h3>3-2. 실습해보기</h3>
 <p>간단한 html 파일과 js 파일을 작성한 후 실습을 진행하겠습니다.</p>
 <blockquote>
-<p>파일 구조</p>
+<p><strong>파일 구조</strong></p>
 </blockquote>
 <deckgo-highlight-code  terminal="carbon" theme="seti"  >
           <code slot="code">node_modules
@@ -211,7 +209,7 @@ package-lock.json
 package.json</code>
         </deckgo-highlight-code>
 <blockquote>
-<p>app.js</p>
+<p><strong>app.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">import { sum } from &#39;./math.js&#39;;
@@ -219,7 +217,7 @@ package.json</code>
 console.log(sum(1, 2));</code>
         </deckgo-highlight-code>
 <blockquote>
-<p>math.js</p>
+<p><strong>math.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">export function sum(a, b) {
@@ -227,7 +225,7 @@ console.log(sum(1, 2));</code>
 }</code>
         </deckgo-highlight-code>
 <blockquote>
-<p>index.html</p>
+<p><strong>index.html</strong></p>
 </blockquote>
 <deckgo-highlight-code language="html" terminal="carbon" theme="seti"  >
           <code slot="code">&lt;!DOCTYPE html&gt;
@@ -252,7 +250,7 @@ console.log(sum(1, 2));</code>
 <p>기본값으로 줘야 하는 3가지 옵션에 대해 살펴보겠습니다.</p>
 <h3>4-1. mode</h3>
 <blockquote>
-<p>mode 옵션은 웹팩에 내장된 최적화 방법 중 어느 것을 사용할지 웹팩에게 알려주는 역할을 합니다.</p>
+<p>mode 옵션은 웹팩에 내장된 <strong>최적화 방법 중 어느 것을 사용할지 웹팩에게 알려주는 역할</strong>을 합니다.</p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">module.exports = {
@@ -279,9 +277,7 @@ console.log(sum(1, 2));</code>
 </ul>
 </li>
 </ul>
-<blockquote>
 <p>mode 에 따라 웹팩 설정을 다르게 실행하고 싶다면 객체 대신 아래 예시처럼 함수를 반환해야 합니다.</p>
-</blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">var config = {
   entry = &#39;./app.js&#39;
@@ -303,9 +299,9 @@ module.exports = (env, argv) =&gt; {
         </deckgo-highlight-code>
 <h3>4-2. entry</h3>
 <blockquote>
-<p>entry 옵션은 애플리케이션 번들링을 시작할 지점을 의미합니다. 만약 배열을 값으로 전달하면, 배열에 담긴 모든 요소가 번들링됩니다.</p>
+<p>entry 옵션은 <strong>애플리케이션 번들링을 시작할 지점을 의미</strong>합니다. 만약 배열을 값으로 전달하면, 배열에 담긴 모든 요소가 번들링됩니다.</p>
 </blockquote>
-<p>HTML 페이지마다 하나의 포인트를 가집니다. 그래서 SPA(Single Page Application)은 하나의 포인트를 가지게 되고, MPA(Multiple Page Application)은 페이지별로 하나의 포인트를 가지게 됩니다.</p>
+<p>HTML 페이지마다 하나의 포인트를 가집니다. 그래서 SPA(Single Page Application)는 하나의 포인트를 가지게 되고, MPA(Multiple Page Application)는 페이지별로 하나의 포인트를 가지게 됩니다.</p>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">module.exports = {
   // SPA
@@ -384,7 +380,7 @@ initApp();</code>
     </span></p>
 <p><em>사진 출처: <a href="https://joshua1988.github.io/webpack-guide/concepts/entry.html" target="_blank" rel="noreferrer noopener" aria-label="webpack-entry">joshua1988.github.io</a></em></p>
 <blockquote>
-<p>위와 같이 모듈 간의 의존 관계가 생기는 구조를 디펜던시 그래프(Dependency Graph)라고 합니다.</p>
+<p>위와 같이 모듈 간의 의존 관계가 생기는 구조를 **디펜던시 그래프(Dependency Graph)**라고 합니다.</p>
 </blockquote>
 <h3>4-3. output</h3>
 <blockquote>
@@ -447,7 +443,7 @@ initApp();</code>
     </span></p>
 <p><code>index.html</code> 파일을 수정해서 <code>dist/main.js</code> 파일을 사용하겠습니다. 웹팩을 사용하여 모듈을 지원하지 않는 브라우저에서도 사용할 수 있어서 <code>script</code> 에서 <code>module</code> 을 제외하고 작성했습니다.</p>
 <blockquote>
-<p>index.html</p>
+<p><strong>index.html</strong></p>
 </blockquote>
 <deckgo-highlight-code language="html" terminal="carbon" theme="seti"  >
           <code slot="code">&lt;!DOCTYPE html&gt;
@@ -462,7 +458,7 @@ initApp();</code>
         </deckgo-highlight-code>
 <p>현재 웹팩 설정을 터미널이 아닌 <code>webpack.config.js</code> 파일로 해보겠습니다.</p>
 <blockquote>
-<p>webpack.config.js</p>
+<p><strong>webpack.config.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">const path = require(&#39;path&#39;);
@@ -482,7 +478,7 @@ module.exports = {
         </deckgo-highlight-code>
 <p><code>output</code> 에서 os 마다 경로가 다르므로 <code>.resolve</code> 를 이용해서 절대 경로를 작성했습니다. 그리고 명령어를 통해 쉽게 build 하기 위해 <code>package.json</code> 의 <code>scripts</code> 코드를 수정했습니다.</p>
 <blockquote>
-<p>package.json</p>
+<p><strong>package.json</strong></p>
 </blockquote>
 <deckgo-highlight-code language="json" terminal="carbon" theme="seti"  >
           <code slot="code">{
@@ -518,7 +514,7 @@ module.exports = {
 <h3>5-2. loader 동작 원리</h3>
 <p>로더를 직접 만들어보면서 동작 원리에 대해 알아보겠습니다.</p>
 <blockquote>
-<p>myloader.js</p>
+<p><strong>myloader.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">module.exports = function myloader(content) {
@@ -529,7 +525,7 @@ module.exports = {
         </deckgo-highlight-code>
 <p>로더를 사용하기 위해 웹팩 설정 파일에서 <code>module</code>객체를 수정했습니다.</p>
 <blockquote>
-<p>webpack.config.js</p>
+<p><strong>webpack.config.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">const path = require(&#39;path&#39;);
@@ -576,7 +572,7 @@ webpack 5.36.2 compiled successfully in 103 ms</code>
 <h3>5-3 자주 사용하는 css-loader 알아보기</h3>
 <p>loader 를 직접 만들어 동작 원리에 대해 알아봤으니 이번에는 자주 사용하는 <code>loader</code> 중 하나인 <strong>css-loader</strong> 에 대해 알아보겠습니다. css-loader 를 알아보기 위해 <code>style.css</code> 파일을 생성했습니다.</p>
 <blockquote>
-<p>src/style.css</p>
+<p><strong>src/style.css</strong></p>
 </blockquote>
 <deckgo-highlight-code language="css" terminal="carbon" theme="seti"  >
           <code slot="code">body {
@@ -590,7 +586,7 @@ webpack 5.36.2 compiled successfully in 103 ms</code>
         </deckgo-highlight-code>
 <p><code>webpack.config.js</code> 의 <code>module</code> 설정을 변경했습니다.</p>
 <blockquote>
-<p>webpack.config.js</p>
+<p><strong>webpack.config.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">const path = require(&#39;path&#39;);
@@ -611,7 +607,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/, // .css 확장자로 끝나는 모든 파일
-        use: [&#39;css-loader&#39;], // css-loader를 적용
+        use: [&#39;css-loader&#39;], // css-loader 를 적용
       },
     ],
   },
@@ -631,7 +627,7 @@ module.exports = {
         </deckgo-highlight-code>
 <p>웹팩 설정을 추가했습니다.</p>
 <blockquote>
-<p>webpack.config.js</p>
+<p><strong>webpack.config.js</strong></p>
 </blockquote>
 <deckgo-highlight-code language="js" terminal="carbon" theme="seti"  >
           <code slot="code">const path = require(&#39;path&#39;);
@@ -652,7 +648,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [&#39;style-loader&#39;, &#39;css-loader&#39;], // style-loader를 앞에 추가
+        use: [&#39;style-loader&#39;, &#39;css-loader&#39;], // style-loader 를 앞에 추가
       },
     ],
   },
@@ -660,7 +656,7 @@ module.exports = {
         </deckgo-highlight-code>
 <p>css 적용 결과를 확인하기 위해 html 코드를 수정했습니다.</p>
 <blockquote>
-<p>index.html</p>
+<p><strong>index.html</strong></p>
 </blockquote>
 <deckgo-highlight-code language="html" terminal="carbon" theme="seti"  >
           <code slot="code">&lt;!DOCTYPE html&gt;
