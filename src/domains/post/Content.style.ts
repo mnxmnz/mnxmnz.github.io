@@ -142,8 +142,8 @@ export const StContent = styled.div`
   }
 
   hr {
-    border: 0.1rem solid ${props => props.theme.colors.darkgray_300};
-    margin: 5.5rem 0;
+    border: 0.1rem solid ${props => props.theme.colors.darkgray_100};
+    margin: 5rem 0;
   }
 
   a {

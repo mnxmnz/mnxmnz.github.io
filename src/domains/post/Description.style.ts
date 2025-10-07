@@ -43,5 +43,5 @@ export const ContentCategory = styled(Link)`
 
 export const Line = styled.div`
   width: 100%;
-  border-bottom: 0.3rem solid ${props => props.theme.colors.lightgray_500};
+  border-bottom: 0.1rem solid ${props => props.theme.colors.darkgray_100};
 `;
