@@ -65,6 +65,14 @@ export const StContent = styled.div`
     margin-top: 4.8rem;
   }
 
+  h2 + h3 {
+    margin-top: 2.4rem;
+  }
+
+  h3 + h4 {
+    margin-top: 2rem;
+  }
+
   hr + h1,
   hr + h2,
   hr + h3,
@@ -77,7 +85,7 @@ export const StContent = styled.div`
   }
 
   blockquote {
-    margin: 2.4rem 0;
+    margin: 2rem 0;
     padding: 0.4rem 1.4rem;
     border-left: 0.4rem solid ${props => props.theme.colors.primary_1000};
     background-color: ${props => props.theme.colors.lightgray_500};
@@ -95,7 +103,7 @@ export const StContent = styled.div`
   ul {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 0 0 0 4rem;
+    padding: 0 0 0 3.2rem;
 
     p {
       margin: 0.4rem 0;
