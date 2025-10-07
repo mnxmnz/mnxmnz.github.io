@@ -26,11 +26,11 @@ export const StContent = styled.div`
   h1,
   h2,
   h3 {
-    margin: 0 0 3.2rem 0;
+    margin: 0 0 2.4rem 0;
   }
 
   h4 {
-    margin: 0 0 2.2rem 0;
+    margin: 0 0 2rem 0;
   }
 
   h1 {
@@ -50,19 +50,19 @@ export const StContent = styled.div`
   }
 
   * + h1 {
-    margin-top: 6rem;
+    margin-top: 6.2rem;
   }
 
   * + h2 {
-    margin-top: 5.6rem;
+    margin-top: 5.8rem;
   }
 
   * + h3 {
-    margin-top: 4.6rem;
+    margin-top: 5.2rem;
   }
 
   * + h4 {
-    margin-top: 4rem;
+    margin-top: 4.8rem;
   }
 
   hr + h1,

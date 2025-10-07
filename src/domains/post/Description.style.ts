@@ -17,7 +17,7 @@ export const ContentDetails = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem 0 5rem;
+  padding: 2rem 0 4rem;
 `;
 
 export const ContentDate = styled.span`

@@ -6,8 +6,6 @@ summary: 'Gatsby란 무엇인지, 어떠한 장점이 있는지 전반적인 개
 thumbnail: './images/what-is-gatsby/thumbnail.jpeg'
 ---
 
-> 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
-
 ## 들어가며
 
 Gatsby에 대해 처음 공부하면서 새롭게 알게 된 점을 정리했습니다. Gatsby란 무엇인지, 어떠한 장점이 있는지 **전반적인 개념**에 대해 알아본 후 튜토리얼을 통해 **Gatsby 개발을 시작하는 방법**에 대해 정리했습니다.
@@ -205,6 +203,8 @@ yarn develop or gatsby develop
 ## 마치며
 
 Gatsby의 개념과 프로젝트를 시작하는 방법에 대해 알아봤습니다. https://github.com/gatsbyjs/gatsby-starter-blog 이외에도 다양한 starter가 있어서 적절한 starter를 사용하면 편리하게 개발할 수 있을 거 같습니다 🤔
+
+> 타 사이트에서 블로그를 운영할 때 작성한 글을 이전했습니다. 🙂
 
 ---
 
