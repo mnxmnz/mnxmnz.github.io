@@ -148,6 +148,8 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 
 ![skeleton](./images/my-first-year-in-frontend/my-first-year-in-frontend-skeleton.jpeg)
 
+<em>스켈레톤 UI</em>
+
 메인 페이지를 개편하면서 실시간 BEST 인기 강의와 같은 여러 새로운 섹션에 스켈레톤 UI 를 도입했어요. 이외에도 로딩 시간이 긴 영역에 대해 스켈레톤 UI 를 적용하면서 CLS 지표도 함께 개선할 수 있었어요.
 
 ## 5. 2024.08 ~ 2024.10
@@ -165,6 +167,8 @@ Next.js 스터디를 마친 후에는 [MDN HTTP 문서](https://developer.mozill
 ### 5-2. 강의 미리보기 도입
 
 ![preview](./images/my-first-year-in-frontend/my-first-year-in-frontend-preview.jpeg)
+
+<em>강의 미리보기</em>
 
 상세 페이지에서 강의를 구매하기 전에 일부를 먼저 확인할 수 있는 미리보기 기능도 도입했어요.
 
