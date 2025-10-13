@@ -19,6 +19,6 @@ export const Main = styled.main`
 
   ${customMQ} {
     width: 100%;
-    padding: 6rem 1.2rem 0;
+    padding: 6rem 1.4rem 0;
   }
 `;
