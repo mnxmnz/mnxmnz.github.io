@@ -43,9 +43,27 @@ const style = css`
 
   input,
   button {
-    outline: none;
     border: none;
     background-color: transparent;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid rgb(104 104 172 / 100%);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible),
+  input:focus:not(:focus-visible),
+  textarea:focus:not(:focus-visible),
+  select:focus:not(:focus-visible) {
+    outline: none;
   }
 
   img {
@@ -58,7 +76,6 @@ const style = css`
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-    user-drag: none;
   }
 
   ::-webkit-scrollbar {
