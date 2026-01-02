@@ -19,7 +19,10 @@ function Header() {
     <HeaderWrap>
       <Nav>
         <LogoWrap to="/">
-          <Logo image={logo.childImageSharp.gatsbyImageData} alt="logo" />
+          <Logo
+            image={logo.childImageSharp.gatsbyImageData}
+            alt="홈으로 이동"
+          />
         </LogoWrap>
         <NavItem>
           {NAV_LINK_ITEMS.map(item => (

@@ -24,7 +24,10 @@ function Footer() {
     <FooterWrap>
       <Contents>
         <LogoWrap>
-          <Logo image={logo.childImageSharp.gatsbyImageData} alt="logo" />
+          <Logo
+            image={logo.childImageSharp.gatsbyImageData}
+            alt="김민지 블로그"
+          />
           <Copyright>{COPYRIGHT}</Copyright>
         </LogoWrap>
         <Menu>

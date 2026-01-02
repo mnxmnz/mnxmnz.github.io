@@ -23,7 +23,7 @@ function PostItem({
 }: PostItemProps) {
   return (
     <PostItemWrap to={link}>
-      <ThumbnailImg thumbnail={gatsbyImageData} />
+      <ThumbnailImg thumbnail={gatsbyImageData} alt={title} />
       <PostCard>
         <CardTitle>{title}</CardTitle>
         <CardSummary>{summary}</CardSummary>

@@ -3,10 +3,16 @@ import React from 'react';
 
 import { Img, ImgWrap } from './Thumbnail.style';
 
-function Thumbnail({ thumbnail }: { thumbnail: IGatsbyImageData }) {
+function Thumbnail({
+  thumbnail,
+  alt,
+}: {
+  thumbnail: IGatsbyImageData;
+  alt: string;
+}) {
   return (
     <ImgWrap>
-      <Img image={thumbnail} alt="thumbnail" />
+      <Img image={thumbnail} alt={alt} />
     </ImgWrap>
   );
 }
