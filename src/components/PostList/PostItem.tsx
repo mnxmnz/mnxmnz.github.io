@@ -22,7 +22,10 @@ function PostItem({
   time,
 }: PostItemProps) {
   return (
-    <PostItemWrap to={link}>
+    <PostItemWrap
+      to={link}
+      aria-label={`${title} 포스트 읽기, ${date}, 읽는 시간 ${time}분`}
+    >
       <ThumbnailImg thumbnail={gatsbyImageData} alt={title} />
       <PostCard>
         <CardTitle>{title}</CardTitle>

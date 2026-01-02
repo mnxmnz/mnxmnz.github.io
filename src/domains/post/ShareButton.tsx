@@ -13,8 +13,11 @@ type ShareButtonProps = {
 function ShareButton({ title, slug }: ShareButtonProps) {
   return (
     <ButtonWrap>
-      <Button onClick={() => shareAPI({ title, slug })}>
-        <BiShareAlt />
+      <Button
+        onClick={() => shareAPI({ title, slug })}
+        aria-label={`${title} 포스트 공유하기`}
+      >
+        <BiShareAlt aria-hidden="true" />
         공유하기
       </Button>
     </ButtonWrap>
