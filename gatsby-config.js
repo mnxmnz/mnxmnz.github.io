@@ -10,9 +10,33 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-plugin-advanced-sitemap',
+      resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/404', '/page/*'],
+        excludes: ['/404', '/404.html'],
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.filter(page => !page.path.includes('/404'));
+        },
+        serialize: ({ path }) => {
+          return {
+            url: path,
+            changefreq: 'daily',
+            priority: path === '/' ? 1.0 : 0.7,
+          };
+        },
       },
     },
     {

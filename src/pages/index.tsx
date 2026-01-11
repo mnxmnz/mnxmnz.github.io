@@ -23,7 +23,7 @@ function IndexPage({
 export const indexQuery = graphql`
   {
     posts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

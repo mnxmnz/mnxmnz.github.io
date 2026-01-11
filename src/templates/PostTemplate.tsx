@@ -49,7 +49,7 @@ function PostTemplate({
 export const profileQuery = graphql`
   query Post($slug: String) {
     posts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
       filter: { fields: { slug: { eq: $slug } } }
     ) {
       edges {

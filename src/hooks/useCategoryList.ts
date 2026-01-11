@@ -7,7 +7,7 @@ function useCategoryList() {
     graphql`
       query {
         categoryList: allMarkdownRemark(limit: 100) {
-          group(field: frontmatter___category) {
+          group(field: { frontmatter: { category: SELECT } }) {
             fieldValue
             totalCount
           }

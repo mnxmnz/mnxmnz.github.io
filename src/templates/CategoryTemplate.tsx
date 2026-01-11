@@ -26,7 +26,7 @@ function CategoryTemplate({
 export const categoryListQuery = graphql`
   query Category($category: String) {
     posts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { category: { in: [$category] } } }
     ) {
       edges {
