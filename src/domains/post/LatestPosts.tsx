@@ -3,15 +3,21 @@ import React from 'react';
 import { LatestPostsLabel } from './LatestPosts.style';
 
 import PostItemList from '@/components/PostList/PostItemList';
-import useLatestPosts from '@/hooks/useLatestPosts';
+import { PostItemListProps } from '@/typings/typings';
 
-function LatestPosts() {
-  const posts = useLatestPosts();
+type LatestPostsProps = PostItemListProps & {
+  category?: string;
+};
+
+function LatestPosts({ posts, category }: LatestPostsProps) {
+  const label = category
+    ? `${category} 카테고리 최신글 보러가기`
+    : '최신글 보러가기';
 
   return (
     <>
-      <LatestPostsLabel>최신글 보러가기</LatestPostsLabel>
-      <PostItemList posts={posts.edges} />
+      <LatestPostsLabel>{label}</LatestPostsLabel>
+      <PostItemList posts={posts} />
     </>
   );
 }

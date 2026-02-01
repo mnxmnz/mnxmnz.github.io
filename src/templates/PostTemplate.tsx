@@ -12,6 +12,8 @@ import { PostTemplateProps } from '@/typings/typings';
 function PostTemplate({
   data: {
     posts: { edges },
+    relatedPosts,
+    latestPosts,
   },
 }: PostTemplateProps) {
   const {
@@ -29,6 +31,9 @@ function PostTemplate({
     },
   } = edges[0];
 
+  const hasRelatedPosts = relatedPosts.edges.length > 0;
+  const posts = hasRelatedPosts ? relatedPosts.edges : latestPosts.edges;
+
   return (
     <>
       <SEO title={title} description={summary} cover={publicURL} />
@@ -41,13 +46,16 @@ function PostTemplate({
       <Markdown html={html} />
       <ShareButton title={title} slug={slug} />
       <Profile padding="8rem 0 8rem 0" />
-      <LatestPosts />
+      <LatestPosts
+        posts={posts}
+        category={hasRelatedPosts ? category : undefined}
+      />
     </>
   );
 }
 
 export const profileQuery = graphql`
-  query Post($slug: String) {
+  query Post($slug: String, $category: String) {
     posts: allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       filter: { fields: { slug: { eq: $slug } } }
@@ -66,6 +74,59 @@ export const profileQuery = graphql`
             category
             thumbnail {
               publicURL
+            }
+          }
+        }
+      }
+    }
+    relatedPosts: allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: {
+        frontmatter: { category: { eq: $category } }
+        fields: { slug: { ne: $slug } }
+      }
+      limit: 3
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          timeToRead
+          frontmatter {
+            title
+            summary
+            date(formatString: "YYYY-MM-DD")
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(width: 820)
+              }
+            }
+          }
+        }
+      }
+    }
+    latestPosts: allMarkdownRemark(
+      sort: { frontmatter: { date: DESC } }
+      filter: { fields: { slug: { ne: $slug } } }
+      limit: 3
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          timeToRead
+          frontmatter {
+            title
+            summary
+            date(formatString: "YYYY-MM-DD")
+            thumbnail {
+              childImageSharp {
+                gatsbyImageData(width: 820)
+              }
             }
           }
         }

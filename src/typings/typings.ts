@@ -54,6 +54,12 @@ export type PostTemplateProps = {
     posts: {
       edges: ContentItemProps[];
     };
+    relatedPosts: {
+      edges: ContentProps[];
+    };
+    latestPosts: {
+      edges: ContentProps[];
+    };
   };
 };
 

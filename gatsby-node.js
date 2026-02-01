@@ -47,6 +47,9 @@ exports.createPages = ({ actions, graphql }) => {
             fields {
               slug
             }
+            frontmatter {
+              category
+            }
           }
         }
       }
@@ -68,12 +71,13 @@ exports.createPages = ({ actions, graphql }) => {
       ({
         node: {
           fields: { slug },
+          frontmatter: { category },
         },
       }) => {
         createPage({
           path: slug,
           component: postTemplate,
-          context: { slug },
+          context: { slug, category },
         });
       },
     );
