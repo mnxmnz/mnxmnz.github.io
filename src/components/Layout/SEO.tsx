@@ -4,6 +4,8 @@ import Helmet from 'react-helmet';
 import useSEO from '@/hooks/useSEO';
 import { MetaProps } from '@/typings/typings';
 
+const Head = Helmet as unknown as React.ElementType;
+
 const SEO = ({ title, description, cover }: MetaProps) => {
   const { site, file } = useSEO();
 
@@ -13,9 +15,19 @@ const SEO = ({ title, description, cover }: MetaProps) => {
   const SEODescription: string = description || site.siteMetadata.description;
   const SEOImg: string = cover || file.publicURL;
 
+  const rssHref = `${site.siteMetadata.siteUrl}/rss.xml`;
+
   return (
-    <Helmet
+    <Head
       title={SEOTitle}
+      link={[
+        {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          title: '김민지 블로그 RSS',
+          href: rssHref,
+        },
+      ]}
       meta={[
         {
           name: 'viewport',

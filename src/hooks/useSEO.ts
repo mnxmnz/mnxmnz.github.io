@@ -10,6 +10,7 @@ function useSEO() {
           siteMetadata {
             title
             description
+            siteUrl
           }
         }
         file(name: { eq: "cover" }) {

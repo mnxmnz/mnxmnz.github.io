@@ -105,6 +105,7 @@ export type SEOProps = {
     siteMetadata: {
       title: string;
       description: string;
+      siteUrl: string;
     };
   };
   file: {

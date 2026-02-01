@@ -75,6 +75,65 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            title: '김민지 블로그',
+            output: '/rss.xml',
+            site_url: 'https://mnxmnz.github.io',
+            language: 'ko',
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { frontmatter: { date: DESC } }
+                ) {
+                  edges {
+                    node {
+                      fields {
+                        slug
+                      }
+                      html
+                      frontmatter {
+                        title
+                        summary
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              const { siteUrl } = site.siteMetadata;
+              return allMarkdownRemark.edges.map(({ node }) => {
+                const url = siteUrl + node.fields.slug;
+                return {
+                  title: node.frontmatter.title,
+                  description: node.frontmatter.summary || node.frontmatter.title,
+                  url,
+                  guid: url,
+                  pubDate: new Date(node.frontmatter.date).toUTCString(),
+                  custom_elements: [{ 'content:encoded': node.html }],
+                };
+              });
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'contents',

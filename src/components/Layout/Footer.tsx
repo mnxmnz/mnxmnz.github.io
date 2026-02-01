@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoLinkExternal } from 'react-icons/go';
+import { GoLinkExternal, GoRss } from 'react-icons/go';
 
 import {
   Contents,
@@ -14,7 +14,7 @@ import {
   NavTitle,
 } from './Footer.style';
 
-import { COPYRIGHT, NAV_LINK_ITEMS } from '@/constants/constants';
+import { COPYRIGHT, NAV_LINK_ITEMS, RSS_URL } from '@/constants/constants';
 import useLogoImage from '@/hooks/useLogoImage';
 
 function Footer() {
@@ -69,6 +69,11 @@ function Footer() {
           </Nav>
           <Nav>
             <NavTitle>More</NavTitle>
+            <NavMoreItem>
+              <a href={RSS_URL} aria-label="RSS 구독">
+                RSS <GoRss />
+              </a>
+            </NavMoreItem>
             <NavMoreItem>
               <a
                 href="https://mnxmnz-books.vercel.app"

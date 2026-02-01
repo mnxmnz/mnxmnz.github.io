@@ -14,3 +14,5 @@ export const NAV_LINK_ITEMS = [
 ];
 
 export const COPYRIGHT = `© 2021-${new Date().getFullYear()} 김민지 All Rights Reserved.`;
+
+export const RSS_URL = '/rss.xml';
