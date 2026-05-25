@@ -2,16 +2,18 @@ import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
 import Profile from '@/components/Profile/Profile';
-import ArchiveList from '@/domains/archive/ArchiveList';
+import AboutIntro from '@/domains/career/AboutIntro';
+import CareerList from '@/domains/career/CareerList';
 
-function ArchivePage() {
+function AboutPage() {
   return (
     <>
-      <SEO title="Archive" />
+      <SEO title="About" />
       <Profile padding="6rem 0" />
-      <ArchiveList />
+      <AboutIntro />
+      <CareerList />
     </>
   );
 }
 
-export default ArchivePage;
+export default AboutPage;
