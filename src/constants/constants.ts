@@ -8,7 +8,7 @@ export const NAV_LINK_ITEMS = [
     url: '/category',
   },
   {
-    title: 'Archive',
+    title: 'About',
     url: '/archive',
   },
 ];
