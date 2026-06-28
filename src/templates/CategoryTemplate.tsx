@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { HeadFC, graphql } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
@@ -16,12 +16,22 @@ function CategoryTemplate({
 
   return (
     <>
-      <SEO title={category} />
       <SelectedCategory category={category} count={count} />
       <PostItemList posts={edges} />
     </>
   );
 }
+
+export const Head: HeadFC<
+  CategoryTemplateProps['data'],
+  CategoryTemplateProps['pageContext']
+> = ({ pageContext, location }) => (
+  <SEO
+    title={pageContext.category}
+    description={`${pageContext.category} 카테고리의 글 목록입니다.`}
+    pathname={location.pathname}
+  />
+);
 
 export const categoryListQuery = graphql`
   query Category($category: String) {

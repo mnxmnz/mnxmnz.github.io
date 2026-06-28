@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { HeadFC, graphql } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
@@ -20,13 +20,7 @@ function PostTemplate({
       fields: { slug },
       html,
       timeToRead,
-      frontmatter: {
-        title,
-        summary,
-        date,
-        category,
-        thumbnail: { publicURL },
-      },
+      frontmatter: { title, date, category },
     },
   } = edges[0];
 
@@ -35,7 +29,6 @@ function PostTemplate({
 
   return (
     <>
-      <SEO title={title} description={summary} cover={publicURL} />
       <DescriptionData
         title={title}
         date={date}
@@ -51,6 +44,22 @@ function PostTemplate({
     </>
   );
 }
+
+export const Head: HeadFC<PostTemplateProps['data']> = ({ data, location }) => {
+  const { frontmatter } = data.posts.edges[0].node;
+
+  return (
+    <SEO
+      title={frontmatter.title}
+      description={frontmatter.summary}
+      image={frontmatter.thumbnail.publicURL}
+      pathname={location.pathname}
+      article
+      date={frontmatter.date}
+      category={frontmatter.category}
+    />
+  );
+};
 
 export const profileQuery = graphql`
   query Post($slug: String, $category: String) {

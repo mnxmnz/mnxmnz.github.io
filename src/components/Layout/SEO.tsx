@@ -1,110 +1,103 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 
 import useSEO from '@/hooks/useSEO';
 import { MetaProps } from '@/typings/typings';
 
-const Head = Helmet as unknown as React.ElementType;
+function SEO({
+  title,
+  description,
+  image,
+  pathname,
+  article = false,
+  date,
+  category,
+  children,
+}: MetaProps) {
+  const {
+    title: siteTitle,
+    description: siteDescription,
+    siteUrl,
+    author,
+    defaultImage,
+  } = useSEO();
 
-const SEO = ({ title, description, cover }: MetaProps) => {
-  const { site, file } = useSEO();
+  const seoTitle = title ? `${title} - ${siteTitle}` : siteTitle;
+  const seoDescription = description || siteDescription;
 
-  const SEOTitle: string = title
-    ? `${title} - ${site.siteMetadata.title}`
-    : site.siteMetadata.title;
-  const SEODescription: string = description || site.siteMetadata.description;
-  const SEOImg: string = cover || file.publicURL;
+  const toAbsolute = (path: string) =>
+    path.startsWith('http') ? path : `${siteUrl}${path}`;
 
-  const rssHref = `${site.siteMetadata.siteUrl}/rss.xml`;
+  const url = `${siteUrl}${pathname || '/'}`;
+  const imageUrl = toAbsolute(image || defaultImage);
+
+  const schema = article
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        url,
+        headline: title,
+        description: seoDescription,
+        image: imageUrl,
+        datePublished: date,
+        dateModified: date,
+        author: { '@type': 'Person', name: author, url: siteUrl },
+        publisher: {
+          '@type': 'Organization',
+          name: siteTitle,
+          logo: { '@type': 'ImageObject', url: toAbsolute(defaultImage) },
+        },
+        ...(category && { articleSection: category }),
+        inLanguage: 'ko-KR',
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: siteTitle,
+        description: seoDescription,
+        url: siteUrl,
+        inLanguage: 'ko-KR',
+        author: { '@type': 'Person', name: author, url: siteUrl },
+      };
 
   return (
-    <Head
-      title={SEOTitle}
-      link={[
-        {
-          rel: 'alternate',
-          type: 'application/rss+xml',
-          title: '김민지 블로그 RSS',
-          href: rssHref,
-        },
-      ]}
-      meta={[
-        {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1.0',
-        },
-        {
-          httpEquiv: 'Content-Type',
-          content: 'text/html; charset=UTF-8',
-        },
-        {
-          httpEquiv: 'title',
-          content: SEOTitle,
-        },
-        {
-          name: 'description',
-          content: SEODescription,
-        },
-        {
-          name: 'keywords',
-          content: 'HTML, CSS, JavaScript, TypeScript, React, FrontEnd',
-        },
-        {
-          name: 'author',
-          content: '김민지',
-        },
-        {
-          property: 'og:title',
-          content: SEOTitle,
-        },
-        {
-          property: 'og:description',
-          content: SEODescription,
-        },
-        {
-          property: 'og:image',
-          content: SEOImg,
-        },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
-        {
-          property: 'og:site_name',
-          content: '김민지 블로그',
-        },
-        {
-          name: 'twitter:title',
-          content: SEOTitle,
-        },
-        {
-          name: 'twitter:description',
-          content: SEODescription,
-        },
-        {
-          name: 'twitter:image',
-          content: SEOImg,
-        },
-        {
-          property: 'email',
-          content: 'minzidev@gmail.com',
-        },
-        {
-          httpEquiv: 'copyright',
-          content: '김민지',
-        },
-        {
-          name: 'theme-color',
-          content: '#6868AC',
-        },
-        {
-          name: 'naver-site-verification',
-          content: '2cc40621eb11418be5791db057b14a2d2cc2800c',
-        },
-      ]}
-      htmlAttributes={{ lang: 'ko' }}
-    />
+    <>
+      <title>{seoTitle}</title>
+      <meta name="description" content={seoDescription} />
+      <meta
+        name="keywords"
+        content="HTML, CSS, JavaScript, TypeScript, React, FrontEnd"
+      />
+      <meta name="author" content={author} />
+
+      <meta property="og:title" content={seoTitle} />
+      <meta property="og:description" content={seoDescription} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content={article ? 'article' : 'website'} />
+      <meta property="og:site_name" content={siteTitle} />
+      <meta property="og:locale" content="ko_KR" />
+
+      {article && date && (
+        <meta property="article:published_time" content={date} />
+      )}
+      {article && <meta property="article:author" content={author} />}
+      {article && category && (
+        <meta property="article:section" content={category} />
+      )}
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={seoTitle} />
+      <meta name="twitter:description" content={seoDescription} />
+      <meta name="twitter:image" content={imageUrl} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      {children}
+    </>
   );
-};
+}
 
 export default SEO;

@@ -1,3 +1,4 @@
+import { HeadFC } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
@@ -9,12 +10,19 @@ import { theme } from '@/styles/theme';
 function AboutPage() {
   return (
     <>
-      <SEO title="About" />
       <Profile padding={`${theme.space[64]} 0`} />
       <AboutIntro />
       <CareerList />
     </>
   );
 }
+
+export const Head: HeadFC = ({ location }) => (
+  <SEO
+    title="About"
+    description="안녕하세요 개발자 김민지입니다."
+    pathname={location.pathname}
+  />
+);
 
 export default AboutPage;

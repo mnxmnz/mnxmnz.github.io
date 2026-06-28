@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { HeadFC, graphql } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
@@ -13,12 +13,15 @@ function IndexPage({
 }: IndexProps) {
   return (
     <>
-      <SEO />
       <PageTitle title="전체 글" />
       <PostItemList posts={edges} />
     </>
   );
 }
+
+export const Head: HeadFC = ({ location }) => (
+  <SEO pathname={location.pathname} />
+);
 
 export const indexQuery = graphql`
   {

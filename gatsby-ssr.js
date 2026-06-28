@@ -13,7 +13,22 @@ export const wrapRootElement = ({ element }) => (
 
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>;
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({
+  setHtmlAttributes,
+  setHeadComponents,
+  setPreBodyComponents,
+}) => {
+  setHtmlAttributes({ lang: 'ko' });
+
+  setHeadComponents([
+    <meta key="theme-color" name="theme-color" content="#6868AC" />,
+    <meta
+      key="naver-site-verification"
+      name="naver-site-verification"
+      content="2cc40621eb11418be5791db057b14a2d2cc2800c"
+    />,
+  ]);
+
   setPreBodyComponents([
     <script
       key="theme-init"
