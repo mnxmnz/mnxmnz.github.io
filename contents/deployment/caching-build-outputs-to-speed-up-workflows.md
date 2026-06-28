@@ -125,7 +125,7 @@ jobs:
 
 4번과 5번 단계에서 `.cache` 와 `public` 을 캐싱했습니다.
 
-### 3. 배포 속도 개선으로 생산성 높이기
+## 3. 배포 속도 개선으로 생산성 높이기
 
 1편의 [Gatsby 블로그 배포 속도 개선으로 생산성 높이기](https://mnxmnz.github.io/frontend/caching-dependencies-to-speed-up-workflows) 의 의존성 캐싱과 2편의 빌드 결과물 캐싱 과정을 모두 실행하는 최종 `yml` 파일은 다음과 같습니다.
 
