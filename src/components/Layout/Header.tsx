@@ -9,6 +9,7 @@ import {
   NavItem,
 } from './Header.style';
 
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import { NAV_LINK_ITEMS } from '@/constants/constants';
 import useLogoImage from '@/hooks/useLogoImage';
 
@@ -30,6 +31,7 @@ function Header() {
               {item.title}
             </NavContents>
           ))}
+          <ThemeToggle />
         </NavItem>
       </Nav>
     </HeaderWrap>

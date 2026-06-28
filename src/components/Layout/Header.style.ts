@@ -41,6 +41,7 @@ export const Logo = styled(GatsbyImage)`
 
 export const NavItem = styled.div`
   display: flex;
+  align-items: center;
   font-size: ${props => props.theme.fontSize.md};
 
   ${media.compact} {
