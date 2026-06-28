@@ -1,60 +1,60 @@
 import styled from '@emotion/styled';
 
-import { customMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const CareerSection = styled.section``;
 
 export const SectionHeading = styled.h2`
-  font-size: 1.5rem;
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 500;
-  color: ${props => props.theme.colors.darkgray_800};
-  margin-bottom: 2rem;
+  color: ${props => props.theme.colors.text.secondary};
+  margin-bottom: ${props => props.theme.space[20]};
 `;
 
 export const CareerItems = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
+  gap: ${props => props.theme.space[32]};
 `;
 
 export const CareerItem = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: start;
-  column-gap: 2rem;
+  column-gap: ${props => props.theme.space[20]};
 
-  ${customMQ} {
+  ${media.mobile} {
     grid-template-columns: 1fr;
-    gap: 0.2rem;
+    gap: ${props => props.theme.space[4]};
   }
 `;
 
 export const CareerCompany = styled.p`
-  font-size: 1.6rem;
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 600;
-  color: ${props => props.theme.colors.text_1000};
+  color: ${props => props.theme.colors.text.primary};
   line-height: 140%;
 `;
 
 export const CareerRole = styled.p`
-  font-size: 1.4rem;
+  font-size: ${props => props.theme.fontSize.sm};
   font-weight: 400;
-  color: ${props => props.theme.colors.darkgray_800};
+  color: ${props => props.theme.colors.text.secondary};
   line-height: 140%;
   grid-column: 1;
-  margin-top: 0.3rem;
+  margin-top: ${props => props.theme.space[4]};
 `;
 
 export const CareerPeriod = styled.p`
-  font-size: 1.4rem;
+  font-size: ${props => props.theme.fontSize.sm};
   font-weight: 400;
-  color: ${props => props.theme.colors.darkgray_800};
+  color: ${props => props.theme.colors.text.secondary};
   white-space: nowrap;
   line-height: 140%;
   grid-row: 1;
   grid-column: 2;
 
-  ${customMQ} {
+  ${media.mobile} {
     grid-row: auto;
     grid-column: 1;
   }

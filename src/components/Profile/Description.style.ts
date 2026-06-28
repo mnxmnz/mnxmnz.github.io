@@ -1,37 +1,33 @@
 import styled from '@emotion/styled';
 
-import { customMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const DescriptionWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 0 0 1.8rem;
-
-  ${customMQ} {
-    margin: 1.5rem 0 0;
-  }
 `;
 
 export const Name = styled.p`
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: ${props => props.theme.fontSize.h1};
+  font-weight: 600;
+  letter-spacing: -0.02em;
 `;
 
 export const Introduce = styled.p`
-  margin: 1.3rem 0 0.9rem;
-  font-size: 1.5rem;
+  margin: ${props => props.theme.space[8]} 0;
+  font-size: ${props => props.theme.fontSize.md};
   line-height: 150%;
 
-  ${customMQ} {
-    margin: 1.5rem 0;
+  ${media.mobile} {
+    margin: ${props => props.theme.space[16]} 0;
   }
 `;
 
 export const Contact = styled.div`
   display: flex;
 
-  ${customMQ} {
+  ${media.mobile} {
     margin: 0 auto;
   }
 `;
@@ -39,11 +35,11 @@ export const Contact = styled.div`
 export const ContactItem = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 0 0 2rem;
-  font-size: 1.3rem;
+  margin: 0 0 0 ${props => props.theme.space[20]};
+  font-size: ${props => props.theme.fontSize.sm};
 
   :hover {
-    color: ${props => props.theme.colors.primary_1000};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   :nth-of-type(1) {
@@ -56,7 +52,7 @@ export const ContactItem = styled.div`
   }
 
   svg {
-    margin: 0 0.5rem 0 0;
-    font-size: 1.5rem;
+    margin: 0 ${props => props.theme.space[4]} 0 0;
+    font-size: ${props => props.theme.fontSize.md};
   }
 `;

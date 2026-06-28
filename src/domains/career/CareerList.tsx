@@ -38,11 +38,11 @@ function CareerList() {
         {sortedCareer.map(item => (
           <CareerItem key={`${item.company}-${item.startDate}`}>
             <CareerCompany>{item.company}</CareerCompany>
+            <CareerRole>{item.role}</CareerRole>
             <CareerPeriod>
               {formatDate(item.startDate)} ~{' '}
               {item.endDate ? formatDate(item.endDate) : '현재'}
             </CareerPeriod>
-            <CareerRole>{item.role}</CareerRole>
           </CareerItem>
         ))}
       </CareerItems>

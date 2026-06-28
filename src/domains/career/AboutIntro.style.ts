@@ -1,20 +1,20 @@
 import styled from '@emotion/styled';
 
 export const IntroSection = styled.section`
-  margin-bottom: 6rem;
+  margin-bottom: ${props => props.theme.space[64]};
 `;
 
 export const SectionHeading = styled.h2`
-  font-size: 1.5rem;
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 500;
-  color: ${props => props.theme.colors.darkgray_800};
-  margin-bottom: 2rem;
+  color: ${props => props.theme.colors.text.secondary};
+  margin-bottom: ${props => props.theme.space[20]};
 `;
 
 export const IntroText = styled.p`
-  font-size: 1.5rem;
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 400;
-  color: ${props => props.theme.colors.text_1000};
+  color: ${props => props.theme.colors.text.primary};
   line-height: 180%;
   word-break: keep-all;
 `;

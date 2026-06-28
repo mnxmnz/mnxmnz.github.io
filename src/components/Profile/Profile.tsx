@@ -7,8 +7,8 @@ import ProfileImg from './ProfileImg';
 function Profile({ padding }: { padding: string }) {
   return (
     <ProfileWrap padding={padding}>
-      <ProfileImg />
       <Description />
+      <ProfileImg />
     </ProfileWrap>
   );
 }
