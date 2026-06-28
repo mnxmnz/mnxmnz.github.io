@@ -10,17 +10,15 @@ type LogoProps = {
 };
 
 function useLogoImage() {
-  const { logo } = useStaticQuery<LogoProps>(
-    graphql`
-      query {
-        logo: file(name: { eq: "logo" }) {
-          childImageSharp {
-            gatsbyImageData(width: 220)
-          }
+  const { logo } = useStaticQuery<LogoProps>(graphql`
+    query {
+      logo: file(name: { eq: "logo" }) {
+        childImageSharp {
+          gatsbyImageData(width: 220)
         }
       }
-    `,
-  );
+    }
+  `);
 
   return logo;
 }

@@ -10,17 +10,15 @@ type ProfileProps = {
 };
 
 function useProfileImage() {
-  const { profile } = useStaticQuery<ProfileProps>(
-    graphql`
-      query {
-        profile: file(name: { eq: "profile" }) {
-          childImageSharp {
-            gatsbyImageData(width: 220)
-          }
+  const { profile } = useStaticQuery<ProfileProps>(graphql`
+    query {
+      profile: file(name: { eq: "profile" }) {
+        childImageSharp {
+          gatsbyImageData(width: 220)
         }
       }
-    `,
-  );
+    }
+  `);
 
   return profile;
 }

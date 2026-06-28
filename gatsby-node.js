@@ -39,9 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      posts: allMarkdownRemark(
-        sort: { frontmatter: { date: DESC } }
-      ) {
+      posts: allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
         edges {
           node {
             fields {

@@ -121,7 +121,8 @@ module.exports = {
                 const url = siteUrl + node.fields.slug;
                 return {
                   title: node.frontmatter.title,
-                  description: node.frontmatter.summary || node.frontmatter.title,
+                  description:
+                    node.frontmatter.summary || node.frontmatter.title,
                   url,
                   guid: url,
                   pubDate: new Date(node.frontmatter.date).toUTCString(),
