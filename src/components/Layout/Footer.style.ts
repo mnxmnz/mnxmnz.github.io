@@ -81,25 +81,25 @@ export const NavTitle = styled.p`
 `;
 
 export const NavLinkItem = styled(Link)`
-  margin: ${props => props.theme.space[24]} 0 0;
+  margin: 0 0 ${props => props.theme.space[24]};
 
   :hover {
     color: ${props => props.theme.colors.accent.default};
   }
 
-  :nth-of-type(1) {
+  :nth-last-of-type(1) {
     margin: 0;
   }
 `;
 
 export const NavMoreItem = styled.div`
-  margin: ${props => props.theme.space[24]} 0 0;
+  margin: 0 0 ${props => props.theme.space[24]};
 
   :hover {
     color: ${props => props.theme.colors.accent.default};
   }
 
-  :nth-of-type(1) {
+  :nth-last-of-type(1) {
     margin: 0;
   }
 

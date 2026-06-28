@@ -32,6 +32,7 @@ export const CardTitle = styled.h1`
   word-break: keep-all;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  margin: 0 0 ${props => props.theme.space[8]};
   font-size: ${props => props.theme.fontSize.h4};
   font-weight: 500;
   line-height: 140%;
@@ -45,13 +46,12 @@ export const CardSummary = styled.h2`
   -webkit-line-clamp: 2;
   overflow: hidden;
   word-break: keep-all;
-  margin: ${props => props.theme.space[12]} 0 0;
+  margin: 0 0 ${props => props.theme.space[20]};
   font-size: ${props => props.theme.fontSize.md};
   line-height: 150%;
 `;
 
 export const CardDescription = styled.p`
-  margin: ${props => props.theme.space[12]} 0 0;
   font-size: ${props => props.theme.fontSize.sm};
   color: ${props => props.theme.colors.text.secondary};
 `;
