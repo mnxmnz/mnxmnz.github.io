@@ -11,8 +11,8 @@ type LatestPostsProps = PostItemListProps & {
 
 function LatestPosts({ posts, category }: LatestPostsProps) {
   const label = category
-    ? `${category} 카테고리 최신글 보러가기`
-    : '최신글 보러가기';
+    ? `${category} 카테고리 보러 가기`
+    : '최신 글 보러 가기';
 
   return (
     <>

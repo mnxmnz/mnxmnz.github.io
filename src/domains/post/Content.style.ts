@@ -5,13 +5,13 @@ export const StContent = styled.div`
   -webkit-text-size-adjust: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 2.4rem 0;
+  padding: ${props => props.theme.space[24]} 0;
   word-wrap: break-word;
 
   line-height: 175%;
-  font-size: 1.6rem;
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 400;
-  color: ${props => props.theme.colors.text_1000};
+  color: ${props => props.theme.colors.text.primary};
 
   h1,
   h2,
@@ -19,58 +19,58 @@ export const StContent = styled.div`
   h4 {
     font-weight: 600;
     line-height: 130%;
-    padding: 0 0 0.8rem 0;
-    border-bottom: 0.1rem solid ${props => props.theme.colors.darkgray_100};
+    padding: 0 0 ${props => props.theme.space[8]} 0;
+    border-bottom: 0.1rem solid ${props => props.theme.colors.border.subtle};
   }
 
   h1,
   h2,
   h3 {
-    margin: 0 0 2.4rem 0;
+    margin: 0 0 ${props => props.theme.space[24]} 0;
   }
 
   h4 {
-    margin: 0 0 2rem 0;
+    margin: 0 0 ${props => props.theme.space[20]} 0;
   }
 
   h1 {
-    font-size: 3.2rem;
+    font-size: ${props => props.theme.fontSize.h1};
   }
 
   h2 {
-    font-size: 2.8rem;
+    font-size: ${props => props.theme.fontSize.h2};
   }
 
   h3 {
-    font-size: 2.4rem;
+    font-size: ${props => props.theme.fontSize.h3};
   }
 
   h4 {
-    font-size: 2rem;
+    font-size: ${props => props.theme.fontSize.h4};
   }
 
   * + h1 {
-    margin-top: 6.2rem;
+    margin-top: ${props => props.theme.space[64]};
   }
 
   * + h2 {
-    margin-top: 5.8rem;
+    margin-top: ${props => props.theme.space[64]};
   }
 
   * + h3 {
-    margin-top: 5.2rem;
+    margin-top: ${props => props.theme.space[48]};
   }
 
   * + h4 {
-    margin-top: 4.8rem;
+    margin-top: ${props => props.theme.space[48]};
   }
 
   h2 + h3 {
-    margin-top: 2.4rem;
+    margin-top: ${props => props.theme.space[24]};
   }
 
   h3 + h4 {
-    margin-top: 2rem;
+    margin-top: ${props => props.theme.space[20]};
   }
 
   hr + h1,
@@ -81,21 +81,21 @@ export const StContent = styled.div`
   }
 
   p {
-    margin: 1.8rem 0;
+    margin: ${props => props.theme.space[20]} 0;
   }
 
   blockquote {
-    margin: 2rem 0;
-    padding: 0.4rem 1.4rem;
-    border-left: 0.4rem solid ${props => props.theme.colors.primary_1000};
-    background-color: ${props => props.theme.colors.lightgray_500};
+    margin: ${props => props.theme.space[20]} 0;
+    padding: ${props => props.theme.space[4]} ${props => props.theme.space[16]};
+    border-left: 0.4rem solid ${props => props.theme.colors.accent.default};
+    background-color: ${props => props.theme.colors.surface.subtle};
 
     strong {
       font-weight: 600;
     }
 
     p {
-      margin: 0.4rem 0;
+      margin: ${props => props.theme.space[4]} 0;
     }
   }
 
@@ -103,10 +103,10 @@ export const StContent = styled.div`
   ul {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 0 0 0 3.2rem;
+    padding: 0 0 0 ${props => props.theme.space[32]};
 
     p {
-      margin: 0.4rem 0;
+      margin: ${props => props.theme.space[4]} 0;
     }
   }
 
@@ -127,37 +127,37 @@ export const StContent = styled.div`
   }
 
   details {
-    border: 0.1rem solid ${props => props.theme.colors.primary_1000};
-    border-radius: 1rem;
-    margin: 1.8rem 0;
-    padding: 1.4rem;
-    background-color: ${props => props.theme.colors.lightprimary_500};
+    border: 0.1rem solid ${props => props.theme.colors.accent.default};
+    border-radius: ${props => props.theme.radius.md};
+    margin: ${props => props.theme.space[20]} 0;
+    padding: ${props => props.theme.space[16]};
+    background-color: ${props => props.theme.colors.surface.accent};
 
     summary {
       cursor: pointer;
     }
 
     summary::marker {
-      color: ${props => props.theme.colors.primary_1000};
+      color: ${props => props.theme.colors.accent.default};
     }
 
     p {
-      margin: 0.8rem 0;
+      margin: ${props => props.theme.space[8]} 0;
     }
 
     blockquote {
-      margin: 1.4rem 0 0;
+      margin: ${props => props.theme.space[16]} 0 0;
       background-color: inherit;
     }
   }
 
   hr {
-    border: 0.1rem solid ${props => props.theme.colors.darkgray_100};
-    margin: 4rem 0;
+    border: 0.1rem solid ${props => props.theme.colors.border.subtle};
+    margin: ${props => props.theme.space[40]} 0;
   }
 
   a {
-    color: ${props => props.theme.colors.primary_1000};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   a:active,
@@ -173,28 +173,28 @@ export const StContent = styled.div`
   img {
     width: 100%;
     border-style: none;
-    border-radius: 1rem;
+    border-radius: ${props => props.theme.radius.md};
   }
 
   em {
-    font-size: 1.2rem;
+    font-size: ${props => props.theme.fontSize.sm};
     font-style: italic;
     display: block;
     text-align: center;
-    margin: -1.6rem auto 0;
+    margin: -${props => props.theme.space[16]} auto 0;
   }
 
   table {
     display: table;
-    border: 0.2rem solid ${props => props.theme.colors.darkgray_300};
+    border: 0.2rem solid ${props => props.theme.colors.border.default};
     border-collapse: collapse;
-    margin: 0.8rem 0;
+    margin: ${props => props.theme.space[8]} 0;
   }
 
   thead {
     display: table-header-group;
     font-weight: 600;
-    border-bottom: 0.4rem solid ${props => props.theme.colors.darkgray_300};
+    border-bottom: 0.4rem solid ${props => props.theme.colors.border.default};
   }
 
   tr {
@@ -204,20 +204,21 @@ export const StContent = styled.div`
   th,
   td {
     display: table-cell;
-    padding: 0.8rem;
-    border: 0.2rem solid ${props => props.theme.colors.darkgray_300};
+    padding: ${props => props.theme.space[8]};
+    border: 0.2rem solid ${props => props.theme.colors.border.default};
   }
 
   .deckgo-highlight-code-carbon {
-    margin: 1.4rem 0 2.2rem 0;
-    border-radius: 1rem;
-    font-size: 1.4rem;
+    margin: ${props => props.theme.space[16]} 0
+      ${props => props.theme.space[24]} 0;
+    border-radius: ${props => props.theme.radius.md};
+    font-size: ${props => props.theme.fontSize.sm};
   }
 
   code {
-    padding: 0.2rem 0.6rem;
-    border-radius: 0.4rem;
-    background: #e9ecef;
+    padding: ${props => props.theme.space[4]} ${props => props.theme.space[8]};
+    border-radius: ${props => props.theme.radius.sm};
+    background: ${props => props.theme.colors.surface.code};
     font-size: 85%;
   }
 `;
