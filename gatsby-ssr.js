@@ -21,6 +21,17 @@ export const onRenderBody = ({
   setHtmlAttributes({ lang: 'ko' });
 
   setHeadComponents([
+    <link
+      key="preconnect-jsdelivr"
+      rel="preconnect"
+      href="https://cdn.jsdelivr.net"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="pretendard-font"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css"
+    />,
     <meta key="theme-color" name="theme-color" content="#6868AC" />,
     <meta
       key="naver-site-verification"
