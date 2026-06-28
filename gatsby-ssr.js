@@ -12,3 +12,14 @@ export const wrapRootElement = ({ element }) => (
 );
 
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>;
+
+export const onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents([
+    <script
+      key="theme-init"
+      dangerouslySetInnerHTML={{
+        __html: `(function(){try{var s=localStorage.getItem('theme');var t=s||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+      }}
+    />,
+  ]);
+};
