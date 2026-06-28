@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  Category,
-  Count,
-  SelectedCategoryWrap,
-} from './SelectedCategory.style';
+import PageTitle from '@/components/PageTitle/PageTitle';
 
 function SelectedCategory({
   category,
@@ -13,12 +9,7 @@ function SelectedCategory({
   category: string;
   count: number;
 }) {
-  return (
-    <SelectedCategoryWrap>
-      <Category>{category}</Category>
-      <Count>총 {count}개의 포스팅</Count>
-    </SelectedCategoryWrap>
-  );
+  return <PageTitle title={category} description={`총 ${count}개의 글`} />;
 }
 
 export default SelectedCategory;

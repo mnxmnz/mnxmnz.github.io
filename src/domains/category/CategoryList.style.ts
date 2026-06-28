@@ -2,26 +2,28 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 export const CategoryListWrap = styled.div`
-  margin: 5rem 0 0;
-  border-radius: 1rem;
+  margin: 0;
 `;
 
 export const Category = styled(Link)`
   display: flex;
   justify-content: space-between;
-  margin: 0 0 1.3rem;
-  padding: 2rem;
-  border-radius: 1rem;
-  font-size: 1.8rem;
+  align-items: center;
+  padding: 0 0 ${props => props.theme.space[20]};
+  margin: 0 0 ${props => props.theme.space[20]};
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border.subtle};
+  font-size: ${props => props.theme.fontSize.md};
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 0 0.2rem ${props => props.theme.colors.black_200};
+  transition: color 0.3s ease;
 
   :hover {
-    background-color: ${props => props.theme.colors.lightgray_500};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   :nth-last-of-type(1) {
+    padding: 0;
     margin: 0;
+    border-bottom: none;
   }
 `;

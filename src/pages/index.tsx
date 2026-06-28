@@ -2,8 +2,8 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
+import PageTitle from '@/components/PageTitle/PageTitle';
 import PostItemList from '@/components/PostList/PostItemList';
-import Profile from '@/components/Profile/Profile';
 import { IndexProps } from '@/typings/typings';
 
 function IndexPage({
@@ -14,7 +14,7 @@ function IndexPage({
   return (
     <>
       <SEO />
-      <Profile padding="6rem 0" />
+      <PageTitle title="전체 글" />
       <PostItemList posts={edges} />
     </>
   );
@@ -22,9 +22,7 @@ function IndexPage({
 
 export const indexQuery = graphql`
   {
-    posts: allMarkdownRemark(
-      sort: { frontmatter: { date: DESC } }
-    ) {
+    posts: allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
       edges {
         node {
           id
@@ -36,11 +34,6 @@ export const indexQuery = graphql`
             title
             summary
             date(formatString: "YYYY-MM-DD")
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 820)
-              }
-            }
           }
         }
       }

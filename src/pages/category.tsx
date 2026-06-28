@@ -1,14 +1,14 @@
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
-import Profile from '@/components/Profile/Profile';
+import PageTitle from '@/components/PageTitle/PageTitle';
 import CategoryList from '@/domains/category/CategoryList';
 
 function CategoryPage() {
   return (
     <>
       <SEO title="Category" />
-      <Profile padding="6rem 0 1rem" />
+      <PageTitle title="카테고리" />
       <CategoryList />
     </>
   );
