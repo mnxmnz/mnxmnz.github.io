@@ -2,7 +2,6 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import SEO from '@/components/Layout/SEO';
-import Profile from '@/components/Profile/Profile';
 import Markdown from '@/domains/post/Content';
 import DescriptionData from '@/domains/post/Description';
 import LatestPosts from '@/domains/post/LatestPosts';
@@ -45,7 +44,6 @@ function PostTemplate({
       />
       <Markdown html={html} />
       <ShareButton title={title} slug={slug} />
-      <Profile padding="8rem 0 8rem 0" />
       <LatestPosts
         posts={posts}
         category={hasRelatedPosts ? category : undefined}
@@ -98,11 +96,6 @@ export const profileQuery = graphql`
             title
             summary
             date(formatString: "YYYY-MM-DD")
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 820)
-              }
-            }
           }
         }
       }
@@ -123,11 +116,6 @@ export const profileQuery = graphql`
             title
             summary
             date(formatString: "YYYY-MM-DD")
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 820)
-              }
-            }
           }
         }
       }

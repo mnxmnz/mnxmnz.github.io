@@ -40,11 +40,6 @@ export const categoryListQuery = graphql`
             title
             summary
             date(formatString: "YYYY-MM-DD")
-            thumbnail {
-              childImageSharp {
-                gatsbyImageData(width: 820)
-              }
-            }
           }
         }
       }

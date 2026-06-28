@@ -7,26 +7,15 @@ import {
   PostCard,
   PostItemWrap,
 } from './PostItem.style';
-import ThumbnailImg from './Thumbnail';
 
 import { PostItemProps } from '@/typings/typings';
 
-function PostItem({
-  title,
-  date,
-  summary,
-  thumbnail: {
-    childImageSharp: { gatsbyImageData },
-  },
-  link,
-  time,
-}: PostItemProps) {
+function PostItem({ title, date, summary, link, time }: PostItemProps) {
   return (
     <PostItemWrap
       to={link}
       aria-label={`${title} 포스트 읽기, ${date}, 읽는 시간 ${time}분`}
     >
-      <ThumbnailImg thumbnail={gatsbyImageData} alt={title} />
       <PostCard>
         <CardTitle>{title}</CardTitle>
         <CardSummary>{summary}</CardSummary>

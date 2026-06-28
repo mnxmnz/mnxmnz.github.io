@@ -1,5 +1,3 @@
-import { IGatsbyImageData } from 'gatsby-plugin-image';
-
 export type DescriptionProps = {
   title: string;
   date: string;
@@ -9,9 +7,6 @@ export type DescriptionProps = {
 
 export type ThumbnailProps = {
   thumbnail: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    };
     publicURL?: string;
   };
 };

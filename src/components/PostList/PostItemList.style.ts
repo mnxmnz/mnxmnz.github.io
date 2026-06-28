@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
-import { customMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const PostItemListWrap = styled.div`
   width: 76.8rem;
   margin: 0 auto;
 
-  ${customMQ} {
+  ${media.mobile} {
     width: 100%;
   }
 `;
