@@ -74,51 +74,81 @@ function useTableOfContents(containerId: string) {
     }
 
     const footer = document.querySelector('footer');
+    const container = document.getElementById(containerId);
+
+    let headingOffsets: number[] = [];
+    let footerStart = Infinity;
+    let tocBottom = 0;
+    let pageBottom = Infinity;
+
+    const measure = () => {
+      const { scrollY } = window;
+
+      headingOffsets = headingsRef.current.map(
+        heading => heading.getBoundingClientRect().top + scrollY,
+      );
+      footerStart = footer
+        ? footer.getBoundingClientRect().top + scrollY
+        : Infinity;
+      tocBottom = navRef.current
+        ? navRef.current.getBoundingClientRect().bottom
+        : 0;
+      pageBottom = document.documentElement.scrollHeight;
+    };
 
     const update = () => {
-      if (footer && navRef.current) {
-        const footerTop = footer.getBoundingClientRect().top;
-        const tocBottom = navRef.current.getBoundingClientRect().bottom;
+      const { scrollY } = window;
 
-        setIsHidden(footerTop <= tocBottom + FOOTER_GAP);
-      }
+      setIsHidden(scrollY >= footerStart - tocBottom - FOOTER_GAP);
 
       if (lockRef.current) {
         return;
       }
 
-      const reachedBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4;
-
-      if (reachedBottom) {
+      if (scrollY + window.innerHeight >= pageBottom - 4) {
         setActiveId(items[items.length - 1].id);
 
         return;
       }
 
+      const activeLine = scrollY + ACTIVE_OFFSET;
       let current = items[0].id;
 
-      for (const heading of headingsRef.current) {
-        if (heading.getBoundingClientRect().top - ACTIVE_OFFSET <= 0) {
-          current = heading.id;
-        } else {
+      for (let index = 0; index < headingOffsets.length; index += 1) {
+        if (headingOffsets[index] > activeLine) {
           break;
         }
+
+        current = items[index].id;
       }
 
       setActiveId(current);
     };
 
+    const remeasure = () => {
+      measure();
+      update();
+    };
+
+    measure();
     update();
+
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('resize', remeasure);
+
+    const observer = new ResizeObserver(remeasure);
+
+    if (container) {
+      observer.observe(container);
+    }
 
     return () => {
       window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      window.removeEventListener('resize', remeasure);
+
+      observer.disconnect();
     };
-  }, [items]);
+  }, [containerId, items]);
 
   useEffect(() => {
     const nav = navRef.current;
