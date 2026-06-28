@@ -3,7 +3,7 @@ module.exports = {
     siteUrl: 'https://mnxmnz.github.io',
     title: '김민지 블로그',
     description:
-      '안녕하세요 👋 개발자 김민지입니다. 개발 관련 지식을 기록하고 공유하고 있습니다',
+      '안녕하세요 개발자 김민지입니다. 개발 관련 지식을 기록하고 공유하고 있습니다',
     author: '김민지',
   },
   plugins: [

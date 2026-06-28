@@ -7,7 +7,7 @@ function AboutIntro() {
     <IntroSection>
       <SectionHeading>About</SectionHeading>
       <IntroText>
-        안녕하세요. 3년 차 개발자 김민지입니다.
+        안녕하세요 3년 차 개발자 김민지입니다.
         <br />
         사용자에게 좋은 경험을 제공하기 위해 요구 사항을 개발하는 거에 그치지
         않고 추가 개선점을 찾아내는 걸 중요하게 생각합니다. 서비스를 직접
