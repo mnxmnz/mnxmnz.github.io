@@ -9,7 +9,7 @@ export const NAV_LINK_ITEMS = [
   },
   {
     title: 'About',
-    url: '/archive',
+    url: '/about',
   },
 ];
 
