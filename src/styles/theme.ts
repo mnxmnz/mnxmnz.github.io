@@ -50,7 +50,8 @@ export const theme = {
 };
 
 export const media = {
+  compact: `@media all and (min-width: 250px) and (max-width: 330px)`,
   mobile: `@media all and (min-width: 250px) and (max-width: 800px)`,
   tablet: `@media all and (min-width: 250px) and (max-width: 1240px)`,
-  compact: `@media all and (min-width: 250px) and (max-width: 330px)`,
+  desktop: `@media all and (min-width: 1280px)`,
 };
