@@ -26,6 +26,14 @@ export const PostCard = styled.div`
   flex-direction: column;
 `;
 
+export const CardCategory = styled.span`
+  align-self: flex-start;
+  margin: 0 0 ${props => props.theme.space[12]};
+  font-size: ${props => props.theme.fontSize.sm};
+  font-weight: 500;
+  color: ${props => props.theme.colors.text.secondary};
+`;
+
 export const CardTitle = styled.h1`
   display: -webkit-box;
   -webkit-box-orient: vertical;

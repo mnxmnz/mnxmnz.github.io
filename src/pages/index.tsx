@@ -33,6 +33,7 @@ export const indexQuery = graphql`
           frontmatter {
             title
             summary
+            category
             date(formatString: "YYYY-MM-DD")
           }
         }
