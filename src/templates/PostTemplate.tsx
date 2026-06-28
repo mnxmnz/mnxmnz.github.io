@@ -6,6 +6,7 @@ import Markdown from '@/domains/post/Content';
 import DescriptionData from '@/domains/post/Description';
 import LatestPosts from '@/domains/post/LatestPosts';
 import ShareButton from '@/domains/post/ShareButton';
+import Toc from '@/domains/post/Toc';
 import { PostTemplateProps } from '@/typings/typings';
 
 function PostTemplate({
@@ -36,6 +37,7 @@ function PostTemplate({
         time={timeToRead}
       />
       <Markdown html={html} />
+      <Toc key={slug} />
       <ShareButton title={title} slug={slug} />
       <LatestPosts
         posts={posts}

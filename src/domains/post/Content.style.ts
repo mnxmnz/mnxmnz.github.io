@@ -21,6 +21,7 @@ export const StContent = styled.div`
     line-height: 130%;
     padding: 0 0 ${props => props.theme.space[8]} 0;
     border-bottom: 0.1rem solid ${props => props.theme.colors.border.subtle};
+    scroll-margin-top: 10rem;
   }
 
   h1,
