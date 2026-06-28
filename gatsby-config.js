@@ -24,17 +24,49 @@ module.exports = {
                 path
               }
             }
+            allMarkdownRemark {
+              nodes {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  date
+                }
+              }
+            }
           }
         `,
-        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-          return allPages.filter(page => !page.path.includes('/404'));
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allMarkdownRemark: { nodes: posts },
+        }) => {
+          const lastmodBySlug = posts.reduce((acc, node) => {
+            if (node.fields?.slug) {
+              acc[node.fields.slug] = node.frontmatter.date;
+            }
+
+            return acc;
+          }, {});
+
+          return allPages
+            .filter(page => !page.path.includes('/404'))
+            .map(page => ({
+              ...page,
+              lastmod: lastmodBySlug[page.path],
+            }));
         },
-        serialize: ({ path }) => {
-          return {
+        serialize: ({ path, lastmod }) => {
+          const entry = {
             url: path,
             changefreq: 'daily',
             priority: path === '/' ? 1.0 : 0.7,
           };
+
+          if (lastmod) {
+            entry.lastmod = lastmod;
+          }
+
+          return entry;
         },
       },
     },
