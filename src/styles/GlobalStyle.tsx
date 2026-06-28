@@ -1,9 +1,9 @@
-import { Global, css } from '@emotion/react';
+import { Global, Theme, css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 
-import { customMQ } from './theme';
+import { media } from './theme';
 
-const style = css`
+const style = (theme: Theme) => css`
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
 
   ${emotionReset}
@@ -23,15 +23,28 @@ const style = css`
   #gatsby-focus-wrapper {
     width: 100%;
     height: 100%;
-    color: rgb(41 40 45 / 100%);
-    font-family: 'Pretendard Variable', Pretendard, -apple-system,
-      BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-      'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    color: ${theme.colors.text.primary};
+    background-color: ${theme.colors.surface.default};
+    font-family:
+      'Pretendard Variable',
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      'Helvetica Neue',
+      'Segoe UI',
+      'Apple SD Gothic Neo',
+      'Noto Sans KR',
+      'Malgun Gothic',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      sans-serif;
     font-size: 62.5%;
     font-weight: 400;
 
-    ${customMQ} {
+    ${media.mobile} {
       font-size: 55%;
     }
   }
@@ -53,7 +66,7 @@ const style = css`
   textarea:focus-visible,
   select:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid rgb(104 104 172 / 100%);
+    outline: 2px solid ${theme.colors.accent.default};
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -86,18 +99,18 @@ const style = css`
     border: 2px solid transparent;
     border-radius: 10px;
     background-clip: padding-box;
-    background-color: rgb(98 92 96 / 70%);
+    background-color: ${theme.colors.text.secondary};
   }
 
   ::-webkit-scrollbar-track {
     border-radius: 10px;
-    box-shadow: inset 0 0 5px white;
-    background-color: rgb(241 237 233 / 50%);
+    box-shadow: inset 0 0 5px ${theme.colors.text.inverse};
+    background-color: ${theme.colors.surface.subtle};
   }
 
   ::selection {
-    background-color: rgb(104 104 172 / 80%);
-    color: rgb(255 255 255 / 100%);
+    background-color: ${theme.colors.accent.default};
+    color: ${theme.colors.text.inverse};
   }
 `;
 

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import { headerMQ, minimumMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const HeaderWrap = styled.header`
   position: fixed;
@@ -11,10 +11,9 @@ export const HeaderWrap = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.7);
+  background: ${props => props.theme.colors.surface.glass};
   backdrop-filter: blur(10px);
-  transition: box-shadow 0.5s;
-  border-bottom: 0.1rem solid ${props => props.theme.colors.darkgray_100};
+  border-bottom: 0.1rem solid ${props => props.theme.colors.border.subtle};
 `;
 
 export const Nav = styled.nav`
@@ -24,9 +23,9 @@ export const Nav = styled.nav`
   width: 120rem;
   height: 6rem;
 
-  ${headerMQ} {
+  ${media.tablet} {
     width: 100%;
-    padding: 0 2rem 0 1.5rem;
+    padding: 0 ${props => props.theme.space[20]};
   }
 `;
 
@@ -42,19 +41,19 @@ export const Logo = styled(GatsbyImage)`
 
 export const NavItem = styled.div`
   display: flex;
-  font-size: 1.5rem;
+  font-size: ${props => props.theme.fontSize.md};
 
-  ${minimumMQ} {
+  ${media.compact} {
     display: none;
   }
 `;
 
 export const NavContents = styled(Link)`
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 ${props => props.theme.space[20]};
   font-weight: 500;
 
   :hover {
-    color: ${props => props.theme.colors.primary_1000};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   :nth-of-type(1) {

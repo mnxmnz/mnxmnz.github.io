@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { customMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const LayoutWrap = styled.div`
   height: 100%;
@@ -15,10 +15,11 @@ export const Main = styled.main`
   flex: 1;
   width: 76.8rem;
   margin: 0 auto;
-  padding: 6rem 0 0;
+  padding: ${props => props.theme.space[64]} 0 0;
 
-  ${customMQ} {
+  ${media.mobile} {
     width: 100%;
-    padding: 6rem 1.4rem 0;
+    padding: ${props => props.theme.space[64]} ${props => props.theme.space[20]}
+      0;
   }
 `;

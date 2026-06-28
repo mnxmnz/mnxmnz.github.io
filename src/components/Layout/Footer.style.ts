@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import { customMQ, headerMQ } from '@/styles/theme';
+import { media } from '@/styles/theme';
 
 export const FooterWrap = styled.footer`
   display: flex;
   justify-content: center;
   position: relative;
   width: 100%;
-  margin: 8rem auto 0;
-  background-color: ${props => props.theme.colors.lightgray_500};
+  margin: ${props => props.theme.space[80]} auto 0;
+  background-color: ${props => props.theme.colors.surface.subtle};
 `;
 
 export const Contents = styled.div`
@@ -18,16 +18,17 @@ export const Contents = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 120rem;
-  padding: 3rem 0 5rem;
+  padding: ${props => props.theme.space[32]} 0 ${props => props.theme.space[48]};
 
-  ${headerMQ} {
+  ${media.tablet} {
     width: 100%;
-    padding: 3rem 1.5rem 5rem;
+    padding: ${props => props.theme.space[32]} ${props => props.theme.space[20]}
+      ${props => props.theme.space[48]};
   }
 
-  ${customMQ} {
+  ${media.mobile} {
     width: 100%;
-    padding: 3rem 1.5rem;
+    padding: ${props => props.theme.space[32]} ${props => props.theme.space[20]};
     flex-direction: column;
     justify-content: unset;
     align-items: unset;
@@ -37,8 +38,8 @@ export const Contents = styled.div`
 export const LogoWrap = styled.div`
   width: 100%;
 
-  ${customMQ} {
-    margin: 0 0 4rem 0;
+  ${media.mobile} {
+    margin: 0 0 ${props => props.theme.space[40]} 0;
   }
 `;
 
@@ -49,9 +50,9 @@ export const Logo = styled(GatsbyImage)`
 `;
 
 export const Copyright = styled.div`
-  margin: 1rem 0 0;
-  font-size: 1.2rem;
-  color: ${props => props.theme.colors.darkgray_800};
+  margin: ${props => props.theme.space[12]} 0 0;
+  font-size: ${props => props.theme.fontSize.sm};
+  color: ${props => props.theme.colors.text.secondary};
 `;
 
 export const Menu = styled.div`
@@ -59,10 +60,10 @@ export const Menu = styled.div`
 
   & > div:nth-of-type(2),
   & > div:nth-of-type(3) {
-    margin: 0 0 0 5rem;
+    margin: 0 0 0 ${props => props.theme.space[48]};
 
-    ${customMQ} {
-      margin: 0 0 0 3rem;
+    ${media.mobile} {
+      margin: 0 0 0 ${props => props.theme.space[32]};
     }
   }
 `;
@@ -70,20 +71,20 @@ export const Menu = styled.div`
 export const Nav = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
+  font-size: ${props => props.theme.fontSize.md};
 `;
 
 export const NavTitle = styled.p`
-  margin: 0 0 3rem 0;
+  margin: 0 0 ${props => props.theme.space[32]} 0;
   font-weight: 500;
-  color: ${props => props.theme.colors.darkgray_800};
+  color: ${props => props.theme.colors.text.secondary};
 `;
 
 export const NavLinkItem = styled(Link)`
-  margin: 2.2rem 0 0;
+  margin: ${props => props.theme.space[24]} 0 0;
 
   :hover {
-    color: ${props => props.theme.colors.primary_1000};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   :nth-of-type(1) {
@@ -92,10 +93,10 @@ export const NavLinkItem = styled(Link)`
 `;
 
 export const NavMoreItem = styled.div`
-  margin: 2.2rem 0 0;
+  margin: ${props => props.theme.space[24]} 0 0;
 
   :hover {
-    color: ${props => props.theme.colors.primary_1000};
+    color: ${props => props.theme.colors.accent.default};
   }
 
   :nth-of-type(1) {
@@ -108,7 +109,7 @@ export const NavMoreItem = styled.div`
   }
 
   svg {
-    margin: 0 0 0 0.5rem;
-    color: ${props => props.theme.colors.darkgray_800};
+    margin: 0 0 0 ${props => props.theme.space[4]};
+    color: ${props => props.theme.colors.text.secondary};
   }
 `;
