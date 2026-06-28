@@ -8,6 +8,38 @@ const style = (theme: Theme) => css`
 
   ${emotionReset}
 
+  :root {
+    color-scheme: light;
+    --color-text-primary: rgba(41, 40, 45, 1);
+    --color-text-secondary: rgba(98, 92, 96, 0.8);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+    --color-surface-default: rgba(255, 255, 255, 1);
+    --color-surface-glass: rgba(255, 255, 255, 0.8);
+    --color-surface-subtle: rgba(241, 237, 233, 0.5);
+    --color-surface-accent: rgba(231, 231, 250, 0.5);
+    --color-surface-code: rgba(233, 236, 239, 1);
+    --color-border-subtle: rgba(98, 92, 96, 0.1);
+    --color-border-default: rgba(98, 92, 96, 0.3);
+    --color-accent-default: rgba(104, 104, 172, 1);
+    --color-accent-hover: rgba(144, 144, 205, 1);
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --color-text-primary: rgba(236, 236, 239, 1);
+    --color-text-secondary: rgba(236, 236, 239, 0.55);
+    --color-text-inverse: rgba(255, 255, 255, 1);
+    --color-surface-default: rgba(26, 26, 30, 1);
+    --color-surface-glass: rgba(26, 26, 30, 0.8);
+    --color-surface-subtle: rgba(255, 255, 255, 0.05);
+    --color-surface-accent: rgba(154, 154, 214, 0.16);
+    --color-surface-code: rgba(255, 255, 255, 0.08);
+    --color-border-subtle: rgba(255, 255, 255, 0.1);
+    --color-border-default: rgba(255, 255, 255, 0.22);
+    --color-accent-default: rgba(154, 154, 214, 1);
+    --color-accent-hover: rgba(178, 178, 228, 1);
+  }
+
   *,
   *::after,
   *::before {

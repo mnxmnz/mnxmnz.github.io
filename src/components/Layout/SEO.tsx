@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import useSEO from '@/hooks/useSEO';
-import { theme } from '@/styles/theme';
 import { MetaProps } from '@/typings/typings';
 
 const Head = Helmet as unknown as React.ElementType;
@@ -96,7 +95,7 @@ const SEO = ({ title, description, cover }: MetaProps) => {
         },
         {
           name: 'theme-color',
-          content: theme.colors.accent.default,
+          content: '#6868AC',
         },
         {
           name: 'naver-site-verification',

@@ -1,24 +1,24 @@
 export const theme = {
   colors: {
     text: {
-      primary: 'rgba(41, 40, 45, 1)',
-      secondary: 'rgba(98, 92, 96, 0.8)',
-      inverse: 'rgba(255, 255, 255, 1)',
+      primary: 'var(--color-text-primary)',
+      secondary: 'var(--color-text-secondary)',
+      inverse: 'var(--color-text-inverse)',
     },
     surface: {
-      default: 'rgba(255, 255, 255, 1)',
-      glass: 'rgba(255, 255, 255, 0.8)',
-      subtle: 'rgba(241, 237, 233, 0.5)',
-      accent: 'rgba(231, 231, 250, 0.5)',
-      code: 'rgba(233, 236, 239, 1)',
+      default: 'var(--color-surface-default)',
+      glass: 'var(--color-surface-glass)',
+      subtle: 'var(--color-surface-subtle)',
+      accent: 'var(--color-surface-accent)',
+      code: 'var(--color-surface-code)',
     },
     border: {
-      subtle: 'rgba(98, 92, 96, 0.1)',
-      default: 'rgba(98, 92, 96, 0.3)',
+      subtle: 'var(--color-border-subtle)',
+      default: 'var(--color-border-default)',
     },
     accent: {
-      default: 'rgba(104, 104, 172, 1)',
-      hover: 'rgba(144, 144, 205, 1)',
+      default: 'var(--color-accent-default)',
+      hover: 'var(--color-accent-hover)',
     },
   },
   radius: {
