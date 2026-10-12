@@ -135,6 +135,7 @@ function useTableOfContents(containerId: string) {
 
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', remeasure);
+    document.addEventListener('toggle', remeasure, true);
 
     const observer = new ResizeObserver(remeasure);
 
@@ -145,6 +146,7 @@ function useTableOfContents(containerId: string) {
     return () => {
       window.removeEventListener('scroll', update);
       window.removeEventListener('resize', remeasure);
+      document.removeEventListener('toggle', remeasure, true);
 
       observer.disconnect();
     };

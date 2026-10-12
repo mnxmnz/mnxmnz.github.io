@@ -30,6 +30,53 @@ export const TocNav = styled.nav<{ faded: boolean }>`
   }
 `;
 
+export const MobileToc = styled.details`
+  margin: 0 0 ${props => props.theme.space[32]};
+  border-bottom: 1px solid ${props => props.theme.colors.border.subtle};
+  font-size: ${props => props.theme.fontSize.md};
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 5.6rem;
+    list-style: none;
+    cursor: pointer;
+    color: ${props => props.theme.colors.text.secondary};
+    font-weight: 500;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+    .toc-chevron {
+      margin-left: auto;
+      transition: transform 0.2s ease;
+    }
+  }
+  &[open] .toc-chevron {
+    transform: rotate(180deg);
+  }
+  nav {
+    padding: 0.4rem 0 2rem;
+    max-height: 32rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-size: 1.5rem;
+  }
+  ${media.desktop} {
+    display: none;
+  }
+`;
+
 export const TocList = styled.ul`
   display: flex;
   flex-direction: column;

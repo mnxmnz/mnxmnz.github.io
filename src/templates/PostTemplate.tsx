@@ -36,8 +36,8 @@ function PostTemplate({
         category={category}
         time={timeToRead}
       />
-      <Markdown html={html} />
       <Toc key={slug} />
+      <Markdown html={html} />
       <ShareButton title={title} slug={slug} />
       <LatestPosts
         posts={posts}
