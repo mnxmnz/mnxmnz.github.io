@@ -17,6 +17,5 @@ node_modules/
 .idea/
 .vscode/
 
-# Lock Files
-yarn.lock
+# Yarn is used by CI; keep yarn.lock tracked for reproducible installs.
 package-lock.json

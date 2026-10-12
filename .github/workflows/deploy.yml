@@ -19,38 +19,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-
-      - name: Cache Dependencies
-        id: yarn-cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-yarn-
+          node-version: '22.x'
+          cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Install Dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --production --pure-lockfile
+        run: yarn install --frozen-lockfile --production=false
 
-      - name: Cache Gatsby '.cache'
+      - name: Cache Gatsby build
         uses: actions/cache@v4
-        id: gatsby-cache
         with:
-          path: .cache
-          key: ${{ runner.OS }}-cache-gatsby
+          path: |
+            .cache
+            public
+          key: ${{ runner.OS }}-gatsby-node22-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.OS }}-cache-gatsby
-
-      - name: Cache Gatsby 'public'
-        uses: actions/cache@v4
-        id: gatsby-public
-        with:
-          path: public
-          key: ${{ runner.OS }}-public-gatsby
-          restore-keys: |
-            ${{ runner.OS }}-public-gatsby
+            ${{ runner.OS }}-gatsby-node22-${{ hashFiles('yarn.lock') }}-
 
       - name: Run Build
         run: yarn build --prefix-paths
