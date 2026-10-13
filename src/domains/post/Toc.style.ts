@@ -59,10 +59,13 @@ export const MobileToc = styled.details`
     transform: rotate(180deg);
   }
   nav {
-    padding: 0.4rem 0 2rem;
+    padding-top: 0.4rem;
     max-height: 32rem;
     overflow-y: auto;
     overscroll-behavior: contain;
+    > ul {
+      padding-bottom: 2rem;
+    }
   }
   a {
     display: flex;
